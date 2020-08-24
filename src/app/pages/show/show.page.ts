@@ -21,7 +21,10 @@ export class ShowPage implements OnInit {
   latitude;
   longitude;
   dataParseNextPage;
-  
+  /*nuevas variables*/
+  perdido = false;
+ 
+  /*nuevas variables*/
   slideOpts = {
     slidesPerView: 1,
   }

@@ -1,109 +1,78 @@
-<ion-header class="ion-no-border">
-  <ion-toolbar >
-      <ion-icon (click)="openModal()" slot="end" name="person-circle-outline" style="zoom:2.0;margin: .5em;"></ion-icon>
-  </ion-toolbar>
-</ion-header>
-<ion-content >
-<div *ngIf="show" >
-  <h4 class="bold margin" style="font-size: 1.7em;">Bienvenido</h4>
 
-      <!-- <ion-slides class="mini margin"  [options]="slideOpts">
-        <ion-slide class="slider-1 " (click)="showTerrace()" *ngFor="let moteles of [1,1,1,1,1,1,1,1,1,1,1,1,1]" >
-          <div>
-            <img class="border-radius-img" src="https://a0.muscache.com/im/pictures/5ca54900-ce6e-4bb2-88f9-964e28c6e810.jpg?aki_policy=xx_large">
-            <small class="title-card">Titulo grande del motel</small><br>
-            <small  class="subtitle-card">7:00 am - 8:00 pm</small>
-          </div>
-        </ion-slide>
-      </ion-slides>
-
-       <h4 class="margin bold">Sugerencias</h4> -->
-
-    <ion-slides class="thumbnail margin"  [options]="slideOptslarge">
-        <ion-slide class="slider-1 "  (click)="showTerrace(terrace.id)" *ngFor="let terrace of terraces">
-          <div *ngIf="!terraces?.length > 0">
-              <h2>No hay por el momento</h2>
-          </div>
-          <div *ngIf="terraces?.length > 0"> 
-            <img class="border-radius-img" src="https://terrazas.tk/{{terrace.image}}" style="min-height: 14em;">
-            <small class="title-card">{{terrace.name}}</small><br>
-            <small class="subtitle-card">Desde $ {{ terrace.price }}</small>
-            
-          </div>
-        </ion-slide>
-      
-      </ion-slides> 
-
-
-
-
+<ion-content [fullscreen]="true">
   
-      <ion-card class="border-radius-img" style="margin-top: 2em;"  (click)="showTerrace(terrace.id)"  *ngFor="let terrace of terracesthumbnail">
-        <ion-row>
-          <ion-col size="6">
-              <img style="margin: -.5em;" src="https://terrazas.tk/{{terrace.image}}" >
-          </ion-col>
-          <ion-col size="6">
-            <p>{{terrace.name}}</p>
-            <p>Desde $ {{ terrace.price }}</p>
-            <p>{{ terrace.distance}} KM</p>
-          </ion-col>
-        </ion-row>
-      </ion-card>
-    </div>
+  <div>
+    <img src="../assets/dog.svg" alt="">
+  </div>
+  
+  <!-- <lottie-animation-view [options]="lottieConfig" [width]="200" [height]="200">
+  
+  </lottie-animation-view> -->
+  
+  <h1 style="padding:1em">Guadalajara, <span style="color:grey"> JAL</span></h1>
+  
+  <ion-slides class="thumbnail margin"  [options]="menu">
+    <ion-slide class="slider-1 ">
+      <div style="background-color: #1B499E;padding:1em;color:white;border-radius: 1em;">
+        <img src="assets/veterinarios.svg" style="max-height: 5em;min-height: 5em;"  alt="">
+        <h2 class="bold">Veterinarios</h2>
+      </div>
+    </ion-slide>
+    <ion-slide class="slider-1 ">
+      <div style=" background-color: #EBB53F;padding:1em;color:white;border-radius: 1em;">
+        <img src="assets/adopcion.svg" style="max-height: 5em;min-height: 5em;"  alt="">
+        <h2 class="bold">Adopciones</h2>
+      </div>
+    </ion-slide>
+  
+    <ion-slide class="slider-1 ">
+      <div style="background-color: #1B499E;padding:1em;color:white;border-radius: 1em;">
+        <img src="assets/alert.svg" style="max-height: 5em;min-height: 5em;" alt="">
+        <h2 class="bold">Reportar</h2>
+      </div>
+    </ion-slide>
+  
+  
+  </ion-slides> 
 
-    <div *ngIf="!show" class="padding"  >
-      <h4>
-        <ion-skeleton-text animated style="width: 30%"></ion-skeleton-text>
-      </h4>
-      <ion-grid>
-
-     
-      <ion-row>
-        <ion-col size="11">
-          <ion-skeleton-text rounded animated style="height:16em !important;border-radius: 1em;"></ion-skeleton-text>
-        </ion-col>
-        <ion-col size="1">
-          <ion-skeleton-text animated style="height:16em !important;border-radius: 1em;"></ion-skeleton-text><br>
-        </ion-col>
-      </ion-row>
-
-    <ion-card style="border-radius: 1em !important;">
-      <ion-row>
-        <ion-col size="6">
-          <ion-skeleton-text animated style="margin: -.5em;height: 9em;"></ion-skeleton-text>
-        </ion-col>
-        <ion-col size="6">
-          <ion-skeleton-text animated style="width: 40%"></ion-skeleton-text>
-          <ion-skeleton-text animated style="width: 70%"></ion-skeleton-text>
-        </ion-col>
-      </ion-row>
-    </ion-card>
-
-    <ion-card style="border-radius: 1em !important;">
-      <ion-row>
-        <ion-col size="6">
-          <ion-skeleton-text animated style="margin: -.5em;height: 9em;"></ion-skeleton-text>
-        </ion-col>
-        <ion-col size="6">
-          <ion-skeleton-text animated style="width: 40%"></ion-skeleton-text>
-          <ion-skeleton-text animated style="width: 70%"></ion-skeleton-text>
-        </ion-col>
-      </ion-row>
-    </ion-card>
-    <ion-card style="border-radius: 1em !important;">
-      <ion-row>
-        <ion-col size="6">
-          <ion-skeleton-text animated style="margin: -.5em;height: 9em;"></ion-skeleton-text>
-        </ion-col>
-        <ion-col size="6">
-          <ion-skeleton-text animated style="width: 40%"></ion-skeleton-text>
-          <ion-skeleton-text animated style="width: 70%"></ion-skeleton-text>
-        </ion-col>
-      </ion-row>
-    </ion-card>
-
-    </ion-grid>
-    
-    </div>
-</ion-content>
+  <ion-slides class="thumbnail margin"  [options]="slide">
+    <ion-slide class="slider-1 "  (click)="showDog()" *ngFor="let terrace of [1,1,1,1]">
+     <div>
+        <img class="border-radius-img" src="https://ichef.bbci.co.uk/news/976/cpsprodpb/10C2F/production/_109655686_d2e4dadb-67f4-4200-a042-2702a22ed4c9.jpg" style="min-height: 14em;">
+        <small class="title-card">ccaca</small><br>
+        <small class="subtitle-card">Desde $ 2221</small>
+        
+      </div>
+    </ion-slide>
+  
+  </ion-slides> 
+  
+  
+  <ion-card class="border-radius-img" style="margin-top: 2em;"  (click)="showDog()" >
+    <ion-row>
+      <ion-col size="6">
+          <img style="margin: -.9em;" class="alligator-turtle"  src="https://image.cnbcfm.com/api/v1/image/105992231-1561667465295gettyimages-521697453.jpeg?v=1561667497&w=1600&h=900" >
+      </ion-col>
+      <ion-col size="6">
+        <h3>Radi</h3>
+        <p>Edad 2 años</p>
+        <p>todas sus vacunas</p>
+      </ion-col>
+    </ion-row>
+  </ion-card>
+  
+  <ion-card class="border-radius-img" style="margin-top: 2em;"  (click)="showDog()" >
+    <ion-row>
+      <ion-col size="6">
+          <img style="margin: -.9em;"  class="alligator-turtle"  src="https://www.guidedogs.org/wp-content/uploads/2019/11/website-donate-mobile.jpg
+          " >
+      </ion-col>
+      <ion-col size="6">
+        <h3>Radi</h3>
+      </ion-col>
+    </ion-row>
+  </ion-card>
+  
+  
+  </ion-content>
+  

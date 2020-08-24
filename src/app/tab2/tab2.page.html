@@ -1,7 +1,7 @@
 <ion-header class="ion-no-border">
     <ion-toolbar >
         <ion-title class="ion-text-center" color="tertiary" >
-          terraices
+          Radi
         </ion-title>
         <ion-icon slot="end" name="person-circle-outline" style="zoom:2.0;margin: .5em;"></ion-icon>
         <ion-buttons slot="start" style="margin: .5em 1.5em;" >
@@ -12,17 +12,81 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-<ion-searchbar 
-                  placeholder="Buscar terraza"
-                  animated
-                  class="searchbar-input"
-                  style="padding: 1em;border-radius: 50%;"
-                  (ionChange)="buscarCiudad($event)"
-                  [(ngModel)]="myInput"
-                  (ionClear)="onCancel($event)"
-                  >
-    </ion-searchbar>
-    <ion-card  *ngFor="let terrace of terraces">
+  <ion-row>
+    <ion-col size="10">
+      <ion-searchbar 
+      placeholder="Buscar"
+      animated
+      class="searchbar-input"
+      style="padding: 1em;border-radius: 50%;"
+      (ionChange)="buscarCiudad($event)"
+      [(ngModel)]="myInput"
+      (ionClear)="onCancel($event)"
+      >
+</ion-searchbar>
+    </ion-col>
+    <ion-col size="2">
+      <p><ion-icon style="zoom:2.0;" name="qr-code-outline"></ion-icon></p>
+    </ion-col>
+  </ion-row>
+<ion-row>
+
+
+  <ion-col size="8">
+    <p> </p>
+  </ion-col>
+  <ion-col size="2">
+   <ion-button color="secondary"><ion-icon name="filter-outline"></ion-icon> Filtro</ion-button>  
+  </ion-col>
+</ion-row>
+
+<ion-row style="padding: .8em;">
+  <ion-col>
+    <div style="background-color: #1B499E;padding:1em;color:white;border-radius: 1em;">
+      <img src="assets/veterinarios.svg" width="150" alt="">
+      <h2 class="bold">Veterinarios</h2>
+    </div>
+  </ion-col>
+  <ion-col>
+    <div style="background-color: #EBB53F;padding:1em;color:white;border-radius: 1em;">
+      <img src="assets/adopcion.svg" width="100" alt="">
+      <h2 class="bold">Adopciones</h2>
+    </div>
+  </ion-col>
+</ion-row>
+<ion-row style="padding: .8em;">
+  <ion-col>
+    <div style="background-color: #1B499E;padding:1em;color:white;border-radius: 1em;">
+      <img src="assets/alert.svg" width="100" alt="">
+      <h2 class="bold">Reportar</h2>
+    </div>
+  </ion-col>
+  <ion-col>
+    <div style="background-color: #EBB53F;padding:1em;color:white;border-radius: 1em;">
+      <img src="assets/adopcion.svg" width="100" alt="">
+      <h2 class="bold">Adopciones</h2>
+    </div>
+  </ion-col>
+</ion-row>
+<ion-row style="padding: .8em;">
+  <ion-col>
+    <div style="background-color: #1B499E;padding:1em;color:white;border-radius: 1em;">
+      <img src="assets/veterinarios.svg" width="150" alt="">
+      <h2 class="bold">Veterinarios</h2>
+    </div>
+  </ion-col>
+  <ion-col>
+    <div style="background-color: #EBB53F;padding:1em;color:white;border-radius: 1em;">
+      <img src="assets/adopcion.svg" width="100" alt="">
+      <h2 class="bold">Adopciones</h2>
+    </div>
+  </ion-col>
+</ion-row>
+
+
+  <ion-card  *ngFor="let terrace of terraces">
+
+    
       <ion-row>
         <ion-col size="6">
             <img style="margin: -.5em;" src="https://terrazas.tk/{{terrace.image}}" >

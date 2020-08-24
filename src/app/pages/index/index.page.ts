@@ -17,8 +17,21 @@ export class IndexPage implements OnInit {
     spaceBetween:10 
   }
 
+  menu = {
+    slidesPerView:2.2,
+    spaceBetween:10,
+    coverflowEffect: {
+      rotate: 50,
+      stretch: 0,
+      depth: 100,
+      modifier: 1,
+      slideShadows: true,
+    }
+  }
+
+
   slideOptslarge = {
-    slidesPerView: 1.1,
+    slidesPerView: 0.9,
     spaceBetween:10,
     coverflowEffect: {
       rotate: 50,
@@ -33,13 +46,20 @@ export class IndexPage implements OnInit {
 
 show = false;
 ciudad;
+
+lottieConfig = {};
   constructor(
     private navCtrl: NavController,
     private geolocation: Geolocation,
     private dataService:DataService,
     public alertController: AlertController,
     private modalController: ModalController) {
-
+      this.lottieConfig = {
+        path: 'https://assets7.lottiefiles.com/packages/lf20_ghDie2.json',
+        renderer: 'canvas',
+        autoplay: true,
+        loop: true
+    };
     this.ciudad = localStorage.getItem('ciudad');
     setTimeout(()=>{
       this.show = true;
@@ -83,7 +103,7 @@ ciudad;
   }
 
 
-  showTerrace(id){
+  showDog(id){
     console.log(id);
     this.navCtrl.navigateForward(`/show/${id}`);
   }

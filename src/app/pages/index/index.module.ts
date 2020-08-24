@@ -13,6 +13,7 @@ import { ProfilePage } from '../profile/profile.page';
 import { ProfilePageModule } from '../profile/profile.module';
 import { RegisterPage } from '../register/register.page';
 import { RegisterPageModule } from '../register/register.module';
+import { LottieAnimationViewModule } from 'ng-lottie';
 
 @NgModule({
   entryComponents: [
@@ -27,7 +28,8 @@ import { RegisterPageModule } from '../register/register.module';
     IndexPageRoutingModule,
     LoginPageModule,
     ProfilePageModule,
-    RegisterPageModule
+    RegisterPageModule,
+    LottieAnimationViewModule.forRoot()
   ],
   declarations: [IndexPage]
 })
