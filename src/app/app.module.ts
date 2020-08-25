@@ -11,6 +11,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { ComponentsModule } from './components/components.module';
 import { Stripe } from '@ionic-native/stripe/ngx';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 
@@ -23,6 +24,7 @@ import { Geolocation } from '@ionic-native/geolocation/ngx';
     AppRoutingModule,
     ComponentsModule,
     HttpClientModule,
+    BrowserAnimationsModule,
     ],
   providers: [
     StatusBar,

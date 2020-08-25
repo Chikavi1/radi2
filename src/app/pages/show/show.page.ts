@@ -17,17 +17,32 @@ export class ShowPage implements OnInit {
   reviews = [];
   images = [];
   private map;
-  marker;
-  latitude;
-  longitude;
+
   dataParseNextPage;
+
+
   /*nuevas variables*/
   perdido = false;
  
   /*nuevas variables*/
+
   slideOpts = {
     slidesPerView: 1,
   }
+
+   slideOptsVacums = {
+    slidesPerView:2.4,
+    spaceBetween:10,
+    coverflowEffect: {
+      rotate: 50,
+      stretch: 0,
+      depth: 100,
+      modifier: 1,
+      slideShadows: true,
+    }
+  }
+
+
   constructor(
               private navCtrl: NavController,
               private activatedRoute: ActivatedRoute,
@@ -44,8 +59,6 @@ export class ShowPage implements OnInit {
             this.services = data.data.services.split(',');
             this.reviews = data.reviews;
             this.images = data.images;
-            this.latitude = data.data.latitude;
-            this.longitude = data.data.longitude;
             this.dataParseNextPage = 
             {id: data.data.id,name: data.data.name, price: data.data.price,img:data.data.image};
           });

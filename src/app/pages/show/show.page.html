@@ -105,7 +105,24 @@
 
     <ion-grid>
       <h3 class="padding-1">Vacunas</h3>
-      <ion-row class="padding-1" >
+
+    <ion-slides class="thumbnail margin"  [options]="slideOptsVacums">
+      <ion-slide class="slider-1" *ngFor="let vacum of [1,1,1,1,1,1]" >
+        <div  style="background-color: #EBB53F;border-radius: 1em;padding: .5em;height: 13em;" >
+          <ion-row>
+            <ion-col><img src="assets/vacuna.png"  alt="" width="30"></ion-col>
+            <ion-col></ion-col>
+            <ion-col  >
+              <ion-icon class="ion-float-right" style="zoom:1.7;color:#013801;" name="shield-checkmark-outline"></ion-icon>
+            </ion-col>
+          </ion-row>
+          <p  class="ion-text-capitalize">Vacuna</p>
+        </div>
+      </ion-slide>
+    </ion-slides>
+
+
+      <!-- <ion-row class="padding-1" >
       <ion-col size="6" style="padding:.2em;" *ngFor="let service of [1,1,1,1]"  >
         <div  style="background-color: #EBB53F;border-radius: 1em;padding: .5em;" >
           <ion-row>
@@ -120,7 +137,7 @@
           <p  class="ion-text-capitalize">Vacuna</p>
         </div>
       </ion-col>
-      </ion-row>
+      </ion-row> -->
     </ion-grid>
 
    
