@@ -51,16 +51,8 @@ export class ShowPage implements OnInit {
           });
   }
   ionViewDidEnter(){
-  this.showMap();
 }
-  showMap(){
-    this.map = new Map('myMap',{attributionControl: false}).setView([this.latitude, this.longitude], 13);
-    tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png').addTo(this.map);
-    let iconMarker = icon({iconUrl: "https://image.flaticon.com/icons/png/512/235/235854.png",
-    iconSize: [30,30],});
-    this.marker = marker([this.latitude, this.longitude],{icon: iconMarker});
-    this.marker.addTo(this.map).bindPopup('Hey,jaja');
-  }
+  
 
   beforePage(){
     this.navCtrl.navigateBack('/tabs/tab1');
@@ -68,14 +60,6 @@ export class ShowPage implements OnInit {
 
   NextPage(){
 
-    const extras: NavigationExtras = {
-      queryParams:{
-        id: this.dataParseNextPage.id,
-        name: this.dataParseNextPage.name,
-        price: this.dataParseNextPage.price,
-        img: this.dataParseNextPage.img
-      }
-    }
-    this.navCtrl.navigateForward(['/available'],extras);
+    this.navCtrl.navigateForward(['/adopcion']);
   }
 }
