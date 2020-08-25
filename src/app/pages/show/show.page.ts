@@ -18,7 +18,6 @@ export class ShowPage implements OnInit {
   images = [];
   private map;
 
-  dataParseNextPage;
 
 
   /*nuevas variables*/
@@ -53,18 +52,11 @@ export class ShowPage implements OnInit {
 
   ngOnInit() {
     
-      this.dataService.getTerrace(this.terraceId)
-          .subscribe(data => {
-            this.terrace = data.data;
-            this.services = data.data.services.split(',');
-            this.reviews = data.reviews;
-            this.images = data.images;
-            this.dataParseNextPage = 
-            {id: data.data.id,name: data.data.name, price: data.data.price,img:data.data.image};
-          });
   }
+ 
   ionViewDidEnter(){
-}
+  
+  }
   
 
   beforePage(){
@@ -72,7 +64,6 @@ export class ShowPage implements OnInit {
   }
 
   NextPage(){
-
     this.navCtrl.navigateForward(['/adopcion']);
   }
 }

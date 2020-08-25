@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import { NavController } from '@ionic/angular';
+
 
 @Component({
   selector: 'app-adopcion',
@@ -8,12 +10,14 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 })
 export class AdopcionPage implements OnInit {
 
-  constructor(private _formBuilder: FormBuilder) { }
+  constructor(private _formBuilder: FormBuilder,private navCtrl: NavController,
+) { }
   isLinear = true;
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
   thirdFormGroup: FormGroup;
   nombre;
+
   ngOnInit() {
     this.firstFormGroup = this._formBuilder.group({
       firstCtrl: ['', Validators.required]
@@ -24,6 +28,10 @@ export class AdopcionPage implements OnInit {
     this.thirdFormGroup = this._formBuilder.group({
       thirdCtrl: ['', Validators.required]
     });
+  }
+
+beforePage(){
+    this.navCtrl.navigateBack('/tabs/tab1');
   }
 
 }

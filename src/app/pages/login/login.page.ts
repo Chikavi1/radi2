@@ -13,11 +13,19 @@ export class LoginPage implements OnInit {
 
   email;
   password;
+  lottieConfig = {};
 
   constructor(private toastController: ToastController,
               private navCtrl: NavController,
               private dataService: DataService,
               private modalCtrl: ModalController) {
+
+    this.lottieConfig = {
+      path: 'https://assets5.lottiefiles.com/packages/lf20_T7TNvI.json',
+      renderer: 'canvas',
+      autoplay: true,
+      loop: true
+  };
    
   }
   login(){
