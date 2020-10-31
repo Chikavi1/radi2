@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-intro',
@@ -21,8 +22,10 @@ export class IntroPage implements OnInit {
   lottieConfig;
   slide2animation;
   slide3animation;
-  yyy
-  constructor() { 
+  
+  select;
+
+  constructor(private navCtrl: NavController) { 
     this.lottieConfig = {
       path: 'https://assets7.lottiefiles.com/packages/lf20_ghDie2.json',
       renderer: 'canvas',
@@ -31,22 +34,27 @@ export class IntroPage implements OnInit {
   };
 
   this.slide2animation = {
-    path: 'https://assets3.lottiefiles.com/packages/lf20_XRLjtE.json',
+    path: 'https://assets10.lottiefiles.com/packages/lf20_T7TNvI.json',
     renderer: 'canvas',
     autoplay: true,
     loop: true
 };
 
-this.slide3animation = {
-  path: 'https://assets10.lottiefiles.com/packages/lf20_T7TNvI.json',
-  renderer: 'canvas',
-  autoplay: true,
-  loop: true
-};
+
 
   }
 
   ngOnInit() {
   }
 
+  selecciona(name){
+    this.select = name;
+  }
+
+  siguiente(){
+    console.log("siguiente");
+    localStorage.setItem('intro','true');
+    localStorage.setItem('opcion',this.select);
+    this.navCtrl.navigateForward(`index`);
+  }
 }

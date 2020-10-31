@@ -17,21 +17,10 @@ export class IndexPage implements OnInit {
     spaceBetween:10 
   }
 
-  menu = {
-    slidesPerView:2.2,
-    spaceBetween:10,
-    coverflowEffect: {
-      rotate: 50,
-      stretch: 0,
-      depth: 100,
-      modifier: 1,
-      slideShadows: true,
-    }
-  }
 
 
-  slideOptslarge = {
-    slidesPerView: 0.9,
+  slide = {
+    slidesPerView:  1.3,
     spaceBetween:10,
     coverflowEffect: {
       rotate: 50,

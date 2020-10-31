@@ -1,78 +1,50 @@
 
 <ion-content [fullscreen]="true">
   
-  <div>
-    <img src="../assets/dog.svg" alt="">
-  </div>
-  
   <!-- <lottie-animation-view [options]="lottieConfig" [width]="200" [height]="200">
   
   </lottie-animation-view> -->
   
   <h1 style="padding:1em">Guadalajara, <span style="color:grey"> JAL</span></h1>
-  
-  <ion-slides class="thumbnail margin"  [options]="menu">
-    <ion-slide class="slider-1 ">
-      <div style="background-color: #1B499E;padding:1em;color:white;border-radius: 1em;">
-        <img src="assets/veterinarios.svg" style="max-height: 5em;min-height: 5em;"  alt="">
-        <h2 class="bold">Veterinarios</h2>
-      </div>
-    </ion-slide>
-    <ion-slide class="slider-1 ">
-      <div style=" background-color: #EBB53F;padding:1em;color:white;border-radius: 1em;">
-        <img src="assets/adopcion.svg" style="max-height: 5em;min-height: 5em;"  alt="">
-        <h2 class="bold">Adopciones</h2>
-      </div>
-    </ion-slide>
-  
-    <ion-slide class="slider-1 ">
-      <div style="background-color: #1B499E;padding:1em;color:white;border-radius: 1em;">
-        <img src="assets/alert.svg" style="max-height: 5em;min-height: 5em;" alt="">
-        <h2 class="bold">Reportar</h2>
-      </div>
-    </ion-slide>
-  
-  
-  </ion-slides> 
+  <h3 style="padding:1em">Adopciones cerca de ti</h3>
 
   <ion-slides class="thumbnail margin"  [options]="slide">
     <ion-slide class="slider-1 "  (click)="showDog()" *ngFor="let terrace of [1,1,1,1]">
      <div>
         <img class="border-radius-img" src="https://ichef.bbci.co.uk/news/976/cpsprodpb/10C2F/production/_109655686_d2e4dadb-67f4-4200-a042-2702a22ed4c9.jpg" style="min-height: 14em;">
-        <small class="title-card">ccaca</small><br>
-        <small class="subtitle-card">Desde $ 2221</small>
+        <p>Radiador</p>
+        <p class="subtitle-card">Guadalajara, Jal</p>
         
       </div>
     </ion-slide>
   
   </ion-slides> 
   
+  <ion-item>
+    <ion-thumbnail slot="start">
+      <img style="width: 8em;"  src="https://image.cnbcfm.com/api/v1/image/105992231-1561667465295gettyimages-521697453.jpeg?v=1561667497&w=1600&h=900">
+    </ion-thumbnail>
+    <ion-label> 
+      <h3>Radi</h3>
+      <p>Edad 2 años</p>
+      <p>todas sus vacunas</p>
+    </ion-label>
+  </ion-item>
+
+  <ion-item>
+    <ion-thumbnail slot="start">
+      <img style="width: 8em;"  src="https://www.guidedogs.org/wp-content/uploads/2019/11/website-donate-mobile.jpg">
+    </ion-thumbnail>
+    <ion-label> 
+      <h3>Radi</h3>
+      <p>Edad 2 años</p>
+      <p>todas sus vacunas</p>
+    </ion-label>
+  </ion-item>
+
   
-  <ion-card class="border-radius-img" style="margin-top: 2em;"  (click)="showDog()" >
-    <ion-row>
-      <ion-col size="6">
-          <img style="margin: -.9em;" class="alligator-turtle"  src="https://image.cnbcfm.com/api/v1/image/105992231-1561667465295gettyimages-521697453.jpeg?v=1561667497&w=1600&h=900" >
-      </ion-col>
-      <ion-col size="6">
-        <h3>Radi</h3>
-        <p>Edad 2 años</p>
-        <p>todas sus vacunas</p>
-      </ion-col>
-    </ion-row>
-  </ion-card>
   
-  <ion-card class="border-radius-img" style="margin-top: 2em;"  (click)="showDog()" >
-    <ion-row>
-      <ion-col size="6">
-          <img style="margin: -.9em;"  class="alligator-turtle"  src="https://www.guidedogs.org/wp-content/uploads/2019/11/website-donate-mobile.jpg
-          " >
-      </ion-col>
-      <ion-col size="6">
-        <h3>Radi</h3>
-      </ion-col>
-    </ion-row>
-  </ion-card>
-  
+
   
   </ion-content>
   

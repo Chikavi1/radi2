@@ -61,6 +61,10 @@ const routes: Routes = [
     path: 'adopcion',
     loadChildren: () => import('./pages/adopcion/adopcion.module').then( m => m.AdopcionPageModule)
   },
+  {
+    path: 'menu',
+    loadChildren: () => import('./pages/menu/menu.module').then( m => m.MenuPageModule)
+  },
 
 
 ];

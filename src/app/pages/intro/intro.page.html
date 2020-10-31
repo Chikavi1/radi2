@@ -19,7 +19,7 @@
         <h1>Conoce más a tu mascota.</h1>
 
    
-        <lottie-animation-view [options]="slide3animation" [width]="240" [height]="240">
+        <lottie-animation-view [options]="slide2animation" [width]="240" [height]="240">
 
         </lottie-animation-view>
 
@@ -28,19 +28,32 @@
         <ion-grid>
 
        <ion-row>
-         <ion-col><h1 style="display: block !important;">Disfruta de los beneficios!</h1>
+         <ion-col><h1 style="display: block !important;">Selecciona un opción.</h1>
          </ion-col>
        </ion-row>
-       <lottie-animation-view [options]="slide2animation" [width]="240" [height]="240">
 
-      </lottie-animation-view>
        <ion-row>
-         <ion-col></ion-col>
-         <ion-col>
-          <ion-button style="display: block !important;">Descubrir app!</ion-button>
+         <ion-col size="1"></ion-col>
+         <ion-col size="5" (click)="selecciona('Tengo mascota')">
+           <div class="card-intro card-mascota m1">
+              <p>Tengo mascota.</p>   
+           </div>
          </ion-col>
-         <ion-col></ion-col>
-       </ion-row>
+
+         <ion-col size="5" (click)="selecciona('Quiero adoptar')">
+          <div class="card-intro card-adoptar m2">
+             <p>Quiero adoptar.</p>
+            </div>
+         </ion-col>
+
+        </ion-row>
+
+        <div [hidden]="!select"  style="margin-top: 1em;">
+          <small>opcion seleccionada:</small>
+          <h1>{{select}}</h1>
+          <ion-button (click)="siguiente()" size="large" style="right: 0;float: right;position: absolute;margin-top:1em;"><ion-icon name="arrow-forward-outline"></ion-icon></ion-button>
+        </div>
+
       </ion-grid>
 
       </ion-slide>
