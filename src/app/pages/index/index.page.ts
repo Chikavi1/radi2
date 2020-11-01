@@ -57,27 +57,27 @@ lottieConfig = {};
   }
 
   ngOnInit() {
-    this.dataService.getTerracesNormal().subscribe(
-      data => {
-        this.terracesthumbnail = data.data;
-      }
-    )
+    // this.dataService.getTerracesNormal().subscribe(
+    //   data => {
+    //     this.terracesthumbnail = data.data;
+    //   }
+    // )
 
 
 
-    this.geolocation.getCurrentPosition().then((resp) => {
-      this.dataService.getTerraces(resp.coords.latitude,resp.coords.longitude).subscribe(
-        data  => {
-          console.log(data);
-          this.terraces = data.data;
-        },
-        error => {
-        }
-      );
-    }).catch((error) => {
-       console.log('Error getting location', error);
-       console.log('necesitas de internet para que te funcione')
-     });
+    // this.geolocation.getCurrentPosition().then((resp) => {
+    //   this.dataService.getTerraces(resp.coords.latitude,resp.coords.longitude).subscribe(
+    //     data  => {
+    //       console.log(data);
+    //       this.terraces = data.data;
+    //     },
+    //     error => {
+    //     }
+    //   );
+    // }).catch((error) => {
+    //    console.log('Error getting location', error);
+    //    console.log('necesitas de internet para que te funcione')
+    //  });
   }
 
   async presentAlert(data,status) {
