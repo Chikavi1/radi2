@@ -15,32 +15,29 @@
   <lottie-animation-view [options]="lottieConfig" [width]="200" [height]="200">
   
   </lottie-animation-view>
-<ion-row style="margin:1em;">
-  <ion-col size="2">
-    <p><ion-icon style="margin:.5em;" name="mail-outline"></ion-icon></p>
-  </ion-col>
-  <ion-col size="10">
-    <ion-item >
-      <ion-label position="floating">Correo</ion-label>
-      <ion-input [(ngModel)]="email"></ion-input>
-    </ion-item>
-  </ion-col>
-</ion-row>
 
-<ion-row style="margin:1em;">
-  <ion-col size="2">
-    <p><ion-icon style="margin:.5em;" name="lock-open-outline"></ion-icon></p>
-  </ion-col>
-  <ion-col size="10">
-    <ion-item>
-      <ion-label position="floating">Contraseña</ion-label>
-      <ion-input type="password" [(ngModel)]="password"></ion-input>
-    </ion-item>
-  </ion-col>
-</ion-row>
 
-<ion-button (click)="login()" style="position: absolute;
-right: 2em;"  color="tertiary">Ingresar</ion-button>
+<div style="margin:1em;">
+
+  <ion-list class="line-input"> 
+    <ion-item> 
+      <ion-label><ion-icon style="margin:.5em;" name="mail-outline"></ion-icon></ion-label> 
+      <ion-input class="ion-text-right" placeholder="Correo"></ion-input> 
+    </ion-item> 
+  </ion-list>
+
+
+  <ion-list class="line-input"> 
+    <ion-item> 
+      <ion-label><ion-icon style="margin:.5em;" name="lock-open-outline"></ion-icon></ion-label> 
+      <ion-input type="password" class="ion-text-right" placeholder="Contraseña"></ion-input> 
+    </ion-item> 
+  </ion-list>
+  <ion-button (click)="login()" style="width: 100%;"  color="tertiary">Ingresar</ion-button>
+  <p style="text-align: center;color:blue">¿Olvidaste tu Contraseña?</p>
+</div>
+
+
 
 <p style=" position: fixed;
 left: 0;
