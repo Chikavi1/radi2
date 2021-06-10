@@ -1,7 +1,10 @@
 .padding-1{
     padding: 1em;
 }
+.cover{
+  mask-image: linear-gradient(to top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1));   
 
+  }
 .icon {
     display: inline-block;
     font-size: 35px;

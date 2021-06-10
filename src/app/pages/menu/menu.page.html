@@ -1,80 +1,91 @@
 
 <ion-content style="background-color: #eaecee;">
+  <div style="margin:2em;">
+    <ion-item lines="none">
+          <ion-avatar style="width:5em;height: 5em;" slot="start" lines="none">
+            <img  src="https://images.unsplash.com/photo-1527980965255-d3b416303d12?ixid=MnwxMjA3fDB8MHxzZWFyY2h8N3x8cGVvcGxlfGVufDB8MnwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60">
+          </ion-avatar>
+          <ion-label>
+            <h2>Luis Rojas</h2>
+            <h3>350 Puntos</h3>
+            <p>Ver perfil</p>
+          </ion-label>
+        </ion-item>
+  <h2 style="color:#868686;margin-left: .5em;" >Mascotas</h2>
 
-  <div style="width: 100%;height: 8em;background-color: #4963fd;color:white;padding:2em; position: sticky;
-  top: 0;z-index: 10;">
-    <h1>Menú</h1>
-  </div>
+  <ion-slides [options]="slide">
 
-<ion-row >
-  <ion-col>  
-    <ion-card style="background-color:#3a3d62;border-radius: 1em;" >
-      <img src="assets/veterinarios.svg" />
-      <ion-card-header>
-        <ion-card-subtitle style="color: aliceblue;">Veterinarios</ion-card-subtitle>
-      </ion-card-header>
-    </ion-card>
-  </ion-col>
 
-  <ion-col >  
-    <ion-card style="background-color:#3a3d62;border-radius: 1em;" >
-      <img src="assets/adopcion.svg" />
-      <ion-card-header>
-        <ion-card-subtitle style="color: aliceblue;">Adopciones</ion-card-subtitle>
-      </ion-card-header>
-    </ion-card>
-  </ion-col>
-</ion-row>
+    <ion-slide (click)="goToPage('/show/'+mascota.id)"  *ngFor="let mascota of mascotas">
+      <ion-card style="width:250px;height:250px;border-radius:1em; background-color: rgba(0,0,0,0.8);filter:brightness(0.8);">
+        <img style="width:250px;height:250px;border-radius:1em;" src="https://images.unsplash.com/photo-1571066470962-f10fcf2fdf9e?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTB8fGRvZ3xlbnwwfDJ8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60">
+        <p style="color:#17202F;margin-top: -2em;font-size: 1.5em;margin-left: .5em;font-weight: bold;">{{mascota.name}}</p>
+      </ion-card>
+    </ion-slide>
 
-  <!--
-  <ion-row style="padding: 0.8em;">
-    <ion-col size="6">
-      <div style="background-color: #eaecee;padding:2em;border-radius: 1em;max-height:12rem;height: 12rem;">
-        <img src="assets/veterinarios.svg"  width="100" alt="">
-        <p class="bold">Veterinarios</p>
-      </div>
-    </ion-col>
-    <ion-col size="6">
-      <div style="background-color: #eaecee;padding:2em;border-radius: 1em;max-height:12rem;height: 12rem;">
-        <img src="assets/adopcion.svg" width="100" alt="">
-        <p class="bold">Adopciones</p>
-      </div>
-    </ion-col>
-  </ion-row>-->
+    <ion-slide (click)="goToPage('/create-pet')">
+      <ion-card style="width:250px;height:250px;border-radius:1em; background-color: rgba(0,0,0,0.8);filter:brightness(0.8);">
 
-  <ion-row style="padding: 0.8em;">
-    <ion-col>
-      <div style="background-color: #eaecee;padding:2em;border-radius: 1em;max-height:12rem;height: 12rem;">
-        <img src="assets/alert.svg" width="100" alt="">
-        <p class="bold">Reportar</p>
-      </div>
-    </ion-col>
-    <ion-col>
-      <div style="background-color: #eaecee;padding:2em;border-radius: 1em;max-height:12rem;height: 12rem;">
-        <img src="assets/adopcion.svg" width="100" alt="">
-        <p class="bold">Adopciones</p>
-      </div>
-    </ion-col>
-  </ion-row>
-  <ion-row style="padding: 0.8em;">
-    <ion-col>
-      <div style="background-color: #eaecee;padding:2em;border-radius: 1em;max-height:12rem;height: 12rem;">
-        <img src="assets/veterinarios.svg" width="150" alt="">
-        <p class="bold">Veterinarios</p>
-      </div>
-    </ion-col>
-    <ion-col>
-      <div style="background-color: #eaecee;padding:2em;border-radius: 1em;max-height:12rem;height: 12rem;">
-        <img src="assets/adopcion.svg" width="100" alt="">
-        <p class="bold">Adopciones</p>
-      </div>
-    </ion-col>
-  </ion-row>
+        <h1 style="color:white;margin-top:2em;">Agregar <br> mascota</h1>
+      </ion-card>
+    </ion-slide>
   
-  <ion-item button (click)="buttonClick()">
-    <ion-label>
-      Button Item
-    </ion-label>
+  </ion-slides>
+
+
+  <h2 style="color:#868686;margin-left: .5em;" >Configuración</h2>
+
+  <ion-item lines="none" (click)="goToPage('/edit-profile')">
+    <ion-icon slot="end" name="person-circle-outline"></ion-icon>
+    <ion-label>Información personal</ion-label>
   </ion-item>
 
+  <ion-item lines="none" (click)="goToPage('/rewards')">
+    <ion-icon slot="end" name="wallet-outline"></ion-icon>
+    <ion-label>Puntos</ion-label>
+  </ion-item>
+
+  <ion-item lines="none" (click)="goToPage('/payments')">
+    <ion-icon slot="end" name="card-outline"></ion-icon>
+    <ion-label>Pagos</ion-label>
+  </ion-item>
+
+  <ion-item lines="none" (click)="goToPage('/notifications')">
+    <ion-icon slot="end" name="notifications-outline"></ion-icon>
+    <ion-label>Notificaciones</ion-label>
+  </ion-item>
+
+  <h2 style="color:#868686;margin-left: .5em;">Ayuda</h2>
+
+  <ion-item lines="none">
+    <ion-icon slot="end" name="help-circle-outline"></ion-icon>
+    <ion-label>Cómo funciona radi</ion-label>
+  </ion-item>
+
+  <ion-item lines="none">
+    <ion-icon slot="end" name="information-circle-outline"></ion-icon>
+    <ion-label>Consejos</ion-label>
+  </ion-item>
+
+  <ion-item lines="none">
+    <ion-icon slot="end" name="clipboard-outline"></ion-icon>
+    <ion-label>Guías</ion-label>
+  </ion-item>
+
+  <ion-item lines="none">
+    <ion-icon slot="end" name="chatbox-ellipses-outline"></ion-icon>
+    <ion-label>Envianos tus comentarios</ion-label>
+  </ion-item>
+
+  <ion-item lines="none">
+    <ion-icon slot="end" name="document-text-outline"></ion-icon>
+    <ion-label>Términos de servicio</ion-label>
+  </ion-item>
+
+  <ion-item lines="none">
+    <ion-icon slot="end" ></ion-icon>
+    <ion-label style="color:red;font-weight: bold;font-size:1.2em;">Cerrar sesión</ion-label>
+  </ion-item>
+
+</div>
 </ion-content>

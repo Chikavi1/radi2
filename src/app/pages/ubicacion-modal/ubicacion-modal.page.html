@@ -1,0 +1,24 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar >
+      <ion-title class="ion-text-center" color="tertiary" >
+        
+      </ion-title>
+      <ion-icon slot="end" name="close-outline" (click)="exit()" style="zoom:2.0;margin: .5em;"></ion-icon>
+      <ion-buttons slot="start" style="margin: .5em 1.5em;" >
+        <ion-buttons slot="start">
+        </ion-buttons>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content >
+  <div style="padding: 2em;">
+      <h1 style="font-size: 2em;">¿Dónde te encuentras?</h1>
+      <p>Comparte tu ubicacion para mostrarte los resultados más cercanos, tu ubicación no se comparte con nadie.</p>
+      
+      <div style="margin:3em;">
+        <ion-button expand="block" fill="outline" (click)="cargarUbicacion()"> Utilizar mi ubicación actual </ion-button>
+      </div>
+
+    </div>
+</ion-content>

@@ -23,7 +23,7 @@ export class SuccessPage implements OnInit {
   }
 
   goHome(){
-    this.navCtrl.navigateBack('/index');
+    this.navCtrl.navigateBack('/tabs/index');
   }
 
 }

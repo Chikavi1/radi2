@@ -49,7 +49,8 @@ const routes: Routes = [
   {
     path: 'reservation',
     loadChildren: () => import('./pages/reservation/reservation.module').then( m => m.ReservationPageModule)
-  },  {
+  },
+  {
     path: 'reviews',
     loadChildren: () => import('./pages/reviews/reviews.module').then( m => m.ReviewsPageModule)
   },
@@ -69,6 +70,60 @@ const routes: Routes = [
     path: 'blog',
     loadChildren: () => import('./pages/blog/blog.module').then( m => m.BlogPageModule)
   },
+  {
+    path: 'ubicacion-modal',
+    loadChildren: () => import('./pages/ubicacion-modal/ubicacion-modal.module').then( m => m.UbicacionModalPageModule)
+  },
+  {
+    path: 'rewards',
+    loadChildren: () => import('./pages/rewards/rewards.module').then( m => m.RewardsPageModule)
+  },
+  {
+    path: 'veterinarians/:id',
+    loadChildren: () => import('./pages/veterinarians/veterinarians.module').then( m => m.VeterinariansPageModule)
+  },
+  {
+    path: 'calendar-reservation',
+    loadChildren: () => import('./pages/calendar-reservation/calendar-reservation.module').then( m => m.CalendarReservationPageModule)
+  },
+  {
+    path: 'chat',
+    loadChildren: () => import('./pages/chat/chat.module').then( m => m.ChatPageModule)
+  },
+  {
+    path: 'reservations',
+    loadChildren: () => import('./pages/reservations/reservations.module').then( m => m.ReservationsPageModule)
+  },
+  {
+    path: 'edit-profile',
+    loadChildren: () => import('./pages/edit-profile/edit-profile.module').then( m => m.EditProfilePageModule)
+  },
+ 
+  {
+    path: 'notifications',
+    loadChildren: () => import('./pages/notifications/notifications.module').then( m => m.NotificationsPageModule)
+  },
+  {
+    path: 'tips',
+    loadChildren: () => import('./pages/tips/tips.module').then( m => m.TipsPageModule)
+  },
+  {
+    path: 'feedback',
+    loadChildren: () => import('./pages/feedback/feedback.module').then( m => m.FeedbackPageModule)
+  },
+  {
+    path: 'create-pet',
+    loadChildren: () => import('./pages/create-pet/create-pet.module').then( m => m.CreatePetPageModule)
+  },
+  {
+    path: 'order',
+    loadChildren: () => import('./pages/order/order.module').then( m => m.OrderPageModule)
+  },  {
+    path: 'service-modal',
+    loadChildren: () => import('./pages/service-modal/service-modal.module').then( m => m.ServiceModalPageModule)
+  },
+
+
 
 
 ];

@@ -3,59 +3,103 @@
         <ion-title class="ion-text-center" color="tertiary" >
           Radi
         </ion-title>
-        <ion-icon slot="end" name="person-circle-outline" style="zoom:2.0;margin: .5em;"></ion-icon>
-        <ion-buttons slot="start" style="margin: .5em 1.5em;" >
+        <!-- <ion-icon slot="end" name="person-circle-outline" style="zoom:2.0;margin: .5em;"></ion-icon> -->
+        <!-- <ion-buttons slot="start" style="margin: .5em 1.5em;" >
           <ion-buttons slot="start">
           </ion-buttons>
-      </ion-buttons>
+      </ion-buttons> -->
     </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
   <ion-row>
-    <ion-col size="10">
+    <ion-col size="9">
       <ion-searchbar 
-      placeholder="Buscar"
+      placeholder=" Buscar"
       animated
       class="searchbar-input"
       style="padding: 1em;border-radius: 50%;"
-      (ionChange)="buscarCiudad($event)"
+      (ionChange)="buscar($event)"
       [(ngModel)]="myInput"
       (ionClear)="onCancel($event)"
       >
 </ion-searchbar>
     </ion-col>
-    <ion-col size="2">
-      <p><ion-icon style="zoom:2.0;" name="qr-code-outline"></ion-icon></p>
+    <ion-col size="1">
+      <p><ion-icon style="zoom:1.5;" name="qr-code-outline"></ion-icon></p>
+    </ion-col>
+    <ion-col size="1">
+      <p><ion-icon style="zoom:1.5;margin-left: .5em;" name="filter-outline"></ion-icon></p>
     </ion-col>
   </ion-row>
 
 
-<ion-row>
-  <ion-col size="9">
-    <p> </p>
-  </ion-col>
-  <ion-col size="2">
-    <p style="color:blue;text-align: right;display:block;"><ion-icon  name="filter-outline"></ion-icon> Filtro</p>
-  </ion-col>
-</ion-row>
+<div style="margin:5em 1em" *ngIf="!buscando">
+  <h2>Encuentra lo que más amas.</h2>
+  <p style="color:#6e6e6e;font-size: 1.3em;font-weight: 300;">Encuentra veterinarios, servicios, mascotas y más.</p>
+</div>
 
+<div *ngIf="buscando">
 
-
-  <ion-card  *ngFor="let terrace of terraces">
-
+  <ion-item-divider mode="md" sticky="true">
     
-      <ion-row>
-        <ion-col size="6">
-            <img style="margin: -.5em;" src="https://terrazas.tk/{{terrace.image}}" >
-        </ion-col>
-        <ion-col size="6">
-          <p>{{terrace.name}}</p>
-          <p>Desde $ {{ terrace.price }}</p>
-          <p>{{ terrace.distance}} KM</p>
-        </ion-col>
+    <ion-item lines="none" style="border-radius: 1em !important;">
+      <ion-thumbnail slot="start">
+        <img style="width: 14em;"  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6Fw4LXP2Bj39x0c9-EWHRilLrBF9LGH0Www&usqp=CAU" style="border-radius: 1em !important;">
+      </ion-thumbnail>
+      <ion-label> 
+        <h3>Chikavi</h3>
+        <p>Veterinaria</p>
+      </ion-label>
+    </ion-item>
+</ion-item-divider>
+
+<ion-item-divider mode="md" sticky="true">
+  <ion-item lines="none" style="border-radius: 1em !important;">
+    <ion-thumbnail slot="start">
+      <img style="width: 14em;"  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6Fw4LXP2Bj39x0c9-EWHRilLrBF9LGH0Www&usqp=CAU" style="border-radius: 1em !important;">
+    </ion-thumbnail>
+    <ion-label> 
+      <h3>Chikavi</h3>
+      <p>Veterinaria</p>
+    </ion-label>
+  </ion-item>
+</ion-item-divider>
+
+<ion-item-divider mode="md" sticky="true" *ngFor="let item of [1,1,1,1,1,1]">
+  
+  <ion-item lines="none" style="border-radius: 1em !important;">
+    <ion-thumbnail slot="start">
+      <img style="width: 14em;"  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6Fw4LXP2Bj39x0c9-EWHRilLrBF9LGH0Www&usqp=CAU" style="border-radius: 1em !important;">
+    </ion-thumbnail>
+    <ion-label> 
+      <h3 style="font-weight: bold;">Chikavi</h3>
+      <p>Veterinaria</p>
+    </ion-label>
+  </ion-item>
+</ion-item-divider>
+
+<div style="margin: 1em;font-weight: 400;font-size: 1.1em;">
+  <p>Buscar por Veterinarias</p>
+  <p>Buscar por Mascotas</p>
+  <p>Buscar por Organizaciónes</p>
+</div>
+
+</div>
+<!-- <ion-card  *ngFor="let terrace of terraces">
+  
+  
+  <ion-row>
+    <ion-col size="6">
+      <img style="margin: -.5em;" src="https://terrazas.tk/{{terrace.image}}" >
+    </ion-col>
+    <ion-col size="6">
+      <p>{{terrace.name}}</p>
+      <p>Desde $ {{ terrace.price }}</p>
+      <p>{{ terrace.distance}} KM</p>
+    </ion-col>
       </ion-row>
-    </ion-card>
+    </ion-card> -->
 
     
 

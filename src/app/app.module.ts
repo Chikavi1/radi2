@@ -12,8 +12,22 @@ import { ComponentsModule } from './components/components.module';
 import { Stripe } from '@ionic-native/stripe/ngx';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CalendarModule } from 'ion2-calendar';
+import { FormsModule } from '@angular/forms';
 
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireDatabaseModule } from '@angular/fire/database';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
 
+import { firebaseConfig } from './credentials';
+
+import { File } from '@ionic-native/file/ngx';
+import { Camera } from '@ionic-native/Camera/ngx';
+import { Crop } from '@ionic-native/crop/ngx';
+import { IonicSelectableModule } from 'ionic-selectable';
+import { FileTransfer } from '@ionic-native/file-transfer/ngx';
+import { NativeGeocoder} from '@ionic-native/native-geocoder/ngx';
+import { Network } from '@ionic-native/network/ngx';
 
 @NgModule({
   declarations: [AppComponent],
@@ -22,15 +36,28 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     BrowserModule,
     IonicModule.forRoot(), 
     AppRoutingModule,
+    AngularFireModule.initializeApp(firebaseConfig),
+    AngularFirestoreModule.enablePersistence(),
+    AngularFireDatabaseModule,
     ComponentsModule,
     HttpClientModule,
     BrowserAnimationsModule,
+    CalendarModule,
+    FormsModule,
+    IonicSelectableModule,
     ],
   providers: [
+    
     StatusBar,
     SplashScreen,
     Stripe,
     Geolocation,
+    Camera,
+    File,
+    Crop,
+    Network,
+    FileTransfer,
+    NativeGeocoder,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]

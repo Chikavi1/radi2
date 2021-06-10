@@ -7,6 +7,8 @@ import { NavController } from '@ionic/angular';
   styleUrls: ['./intro.page.scss'],
 })
 export class IntroPage implements OnInit {
+
+  
   slide = {
     slidesPerView: 1,
     spaceBetween:10,
@@ -55,6 +57,6 @@ export class IntroPage implements OnInit {
     console.log("siguiente");
     localStorage.setItem('intro','true');
     localStorage.setItem('opcion',this.select);
-    this.navCtrl.navigateForward(`index`);
+    this.navCtrl.navigateForward(`tabs/index`);
   }
 }

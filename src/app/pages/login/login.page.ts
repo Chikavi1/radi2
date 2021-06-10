@@ -29,17 +29,23 @@ export class LoginPage implements OnInit {
    
   }
   login(){
-    this.dataService.login(this.email,this.password).subscribe(data=>{
-      if(data.access_token){
-        localStorage.setItem('token',data.access_token);
-        localStorage.setItem('user_id',data.user_id);
-        localStorage.setItem('name',data.user_name);
-        this.goToProfile();
+    // solo para pruebas
+    this.goToProfile();
+    localStorage.setItem('name','Luis Rojas');
 
-      }else{
-        this.presentToast("Verifica si tu correo o contraseña son correctos.","danger");
-      }
-    });
+    // solo para pruebas
+
+    // this.dataService.login(this.email,this.password).subscribe(data=>{
+    //   if(data.access_token){
+    //     localStorage.setItem('token',data.access_token);
+    //     localStorage.setItem('user_id',data.user_id);
+    //     localStorage.setItem('name',data.user_name);
+    //     this.goToProfile();
+
+    //   }else{
+    //     this.presentToast("Verifica si tu correo o contraseña son correctos.","danger");
+    //   }
+    // });
   }
   ngOnInit() {
   }

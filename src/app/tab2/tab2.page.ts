@@ -8,7 +8,8 @@ import { DataService } from '../services/data.service';
 })
 export class Tab2Page {
   terraces:any;
-
+  buscando = false;
+  datos = [];
   constructor(public dataService:DataService){
     this.dataService.getTerracesNormal().subscribe(
       data => {
@@ -21,6 +22,27 @@ export class Tab2Page {
   onCancel(e){
    this.terraces = [];
   }
+
+  buscar( event ) {
+    const valor: string = event.detail.value;
+
+    if ( valor.length === 0 ) {
+      this.buscando = false;
+      this.datos = [];
+      return;
+    }
+
+    // console.log(valor);
+    this.buscando = true;
+
+    this.dataService.search( valor )
+        .subscribe( resp => {
+          console.log( resp );
+         this.datos = resp['results'];
+          this.buscando = false;
+        });
+  }
+
 
   buscarCiudad(e){
     if(e.target.value.length > 4){

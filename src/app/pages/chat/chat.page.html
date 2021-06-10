@@ -1,0 +1,26 @@
+<ion-content >
+  <ion-grid >
+
+    <ion-row #scrollBottom *ngFor="let student of students" [ngClass]="student.role == 2 ? 'right' : 'left'">
+      <ion-col  >
+        <p>{{ student.text }}</p>
+        <span>{{ student.date.toMillis()  | date:' h:mm: a'}}</span>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
+
+
+<ion-footer id="p">
+  <ion-row>
+    <ion-col size="9">
+      <ion-textarea [(ngModel)]="text"   placeholder="Escribe tu mensaje aqui..."></ion-textarea>
+
+    </ion-col>
+    <ion-col size="3">
+      <ion-button [disabled]="!text " (click)="enviar()">Enviar</ion-button>
+
+    </ion-col>
+
+  </ion-row>
+</ion-footer>

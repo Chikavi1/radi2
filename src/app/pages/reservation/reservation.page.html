@@ -1,4 +1,4 @@
-<ion-header class="ion-no-border">
+<!-- <ion-header class="ion-no-border">
   <ion-toolbar >
       <ion-title class="ion-text-center" color="tertiary" >
         Mis Reservas
@@ -57,4 +57,197 @@
 
 </ion-content>
 
+ -->
 
+ <ion-content [fullscreen]="true">
+  <h2 style="font-size: 1.8em;margin: 1em;color:#192547; font-weight: bold;margin:2em;">Reservación</h2>
+  <ion-slides pager="true" class="thumbnail margin"  [options]="slideOpts" style="margin-bottom: 3em;">
+    <ion-slide >
+      <div class="ticket">
+        <div class="ticket__content">
+          <div style="display: flex; justify-content: center; text-align: center;margin: -1em;" >
+    
+            <ngx-qrcode   style="zoom:2.5" [value]="createdCode"></ngx-qrcode>
+          </div>
+          ashdjasna
+          <ion-item-divider mode="md">
+          </ion-item-divider>
+          <p>12 de junio del 2020 8:20PM</p>
+            </div>
+      </div>
+    </ion-slide>
+    <ion-slide >
+      <ion-card class="content">
+        <h2>Ubicación</h2>
+        <img  (click)="goToPage('/perfil-perro')" width="150" style="border-radius: 0.7em;" src="https://i0.wp.com/cssscript.com/wp-content/uploads/2018/03/Simple-Location-Picker.png?fit=561%2C421&ssl=1">
+      </ion-card>
+    </ion-slide>
+    <ion-slide >
+      <ion-card class="content">
+        <h2>Mascota</h2>
+        <img  (click)="goToPage('/perfil-perro')" width="150" style="border-radius: 0.7em;" src="https://images.unsplash.com/photo-1588943211346-0908a1fb0b01?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTB8fGRvZ3xlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60">
+
+      </ion-card>
+    </ion-slide>
+
+    <ion-slide>
+      <ion-card class="content">
+        <h2>Datos del pago</h2>
+        <ion-row>
+          <ion-col><p style="color:rgb(82, 82, 82);font-size: 1.5em;">Total</p></ion-col>
+          <ion-col><p style="color:green;font-size: 1.5em;">{{ amount }} {{ currency }}</p></ion-col>
+        </ion-row>
+        
+        <ion-row>
+          <ion-col>
+            <div style="height: 4em;width: 3em;">
+
+              <svg  version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+              viewBox="0 0 291.764 291.764" style="enable-background:new 0 0 291.764 291.764;" xml:space="preserve">
+              <g>
+                <g>
+                  <g>
+                    <path  style="fill:#2394BC;" d="M119.259,100.23l-14.643,91.122h23.405l14.634-91.122
+                    C142.655,100.23,119.259,100.23,119.259,100.23z M189.857,137.348c-8.179-4.039-13.193-6.765-13.193-10.896
+                    c0.1-3.756,4.24-7.604,13.485-7.604c7.604-0.191,13.193,1.596,17.433,3.374l2.124,0.948l3.182-19.065
+          c-4.623-1.787-11.953-3.756-21.007-3.756c-23.113,0-39.388,12.017-39.489,29.204c-0.191,12.683,11.652,19.721,20.515,23.943
+          c9.054,4.331,12.136,7.139,12.136,10.987c-0.1,5.908-7.321,8.634-14.059,8.634c-9.336,0-14.351-1.404-21.964-4.696l-3.082-1.404
+          l-3.273,19.813c5.498,2.444,15.609,4.595,26.104,4.705c24.563,0,40.546-11.835,40.747-30.152
+          C209.596,151.335,203.351,143.639,189.857,137.348z M272.891,100.512h-18.108c-5.58,0-9.82,1.605-12.236,7.331l-34.766,83.509
+          h24.563l6.765-18.08h27.481l3.51,18.153h21.664L272.891,100.512z M245.921,155.026c0.474,0.046,9.428-29.514,9.428-29.514
+          l7.13,29.514C262.479,155.026,250.544,155.026,245.921,155.026z M85.059,100.23l-22.931,61.909L59.63,149.93
+          c-4.24-14.087-17.533-29.395-32.368-36.999l20.998,78.33h24.764l36.799-91.021H85.059V100.23z"/>
+      </g>
+    </g>
+    <path style="fill:#EFC75E;" d="M51.916,111.982c-1.787-6.948-7.486-11.634-15.226-11.734H0.374L0,101.934
+    c28.329,6.984,52.107,28.474,59.821,48.688L51.916,111.982z"/>
+  </g>
+  <g>
+  </g>
+  <g>
+  </g>
+  <g>
+  </g>
+  <g>
+  </g>
+  <g>
+  </g>
+  <g>
+  </g>
+  <g>
+  </g>
+  <g>
+  </g>
+  <g>
+  </g>
+  <g>
+  </g>
+  <g>
+  </g>
+  <g>
+  </g>
+  <g>
+  </g>
+  <g>
+  </g>
+  <g>
+  </g>
+  </svg>
+  </div>
+  
+          </ion-col>
+          <ion-col>
+            <p>**** **** **** {{ card_last4 }}</p>
+          </ion-col>
+
+        </ion-row>
+
+        <ion-row>
+          <ion-col></ion-col>
+          <ion-col>
+            <p style="text-align: right;" >{{ card_exp_month }} / {{ card_exp_year }}</p>
+            <p style="text-align: right;font-size: 1,3em;font-weight: 300;">{{ payment_description }}</p>
+    
+          </ion-col>
+        </ion-row>
+         
+      
+        <!-- <p>{{ card_brand }}</p> -->
+       
+        
+      </ion-card>
+    </ion-slide>
+
+  </ion-slides>
+
+  <ion-card >
+    <ion-card-header>
+      <ion-card-subtitle>veterinaria</ion-card-subtitle>
+      <ion-card-title>Mariely</ion-card-title>
+    </ion-card-header>
+    
+    <ion-card-content>
+      Keep close to Nature's heart... and break clear away, once in awhile,
+      and climb a mountain or spend a week in the woods. Wash your spirit clean.
+    </ion-card-content>
+  </ion-card>
+
+
+  <ion-card style="background:#4ba8aa">
+    <ion-card-header>
+      <ion-card-title style="color:white;">Recomendaciones</ion-card-title>
+    </ion-card-header>
+    
+    <ion-card-content style="color:white;">
+      Keep close to Nature's heart... and break clear away, once in awhile,
+      and climb a mountain or spend a week in the woods. Wash your spirit clean.
+    </ion-card-content>
+  </ion-card>
+
+<!-- 
+
+  <h2 style="padding: 1.6em;color:#17202F;font-weight: 300;">Información personal</h2>
+
+  <ion-row>
+    <ion-col style="margin:.7em">
+      <img width="150" style="border-radius: 0.7em;" src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8bWVufGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60">
+    </ion-col>
+    <ion-col>
+      <p style="font-weight: bold;font-size: 1.2em;">Veterinaria Mariely</p>
+      <p>San pedro tlaquepaque</p>
+      <p>33-27-27-69-23</p>
+    </ion-col>
+
+  </ion-row>
+
+  <p style="font-size: 1.3em;color:#7c7c7c;font-weight: 300;text-align: center;" (click)="openReview()">Calificar</p>
+
+    <ion-item-divider  mode="md" style="margin: .5em;">
+
+    </ion-item-divider>
+
+
+  <h2 style="padding: 1.6em;">Información de la mascota</h2>
+
+
+  <ion-row>
+    <ion-col style="margin:.7em">
+    </ion-col>
+    <ion-col>
+      <p style="font-weight: bold;font-size: 1.2em;">Radi</p>
+      <p>3 años</p>
+      <p>Macho</p>
+      <p>Criollo</p>
+      <p>3 vacunas</p>
+      <p></p>
+    </ion-col>
+
+  </ion-row> -->
+
+  <ion-row>
+  <ion-col size="12">
+    <ion-button  style="border-radius: 1em !important;" color="dark" expand="full" (click)="goToPage('/perfil-perro')" >Ver Perfil</ion-button>
+  </ion-col>
+
+  </ion-row>
+ </ion-content>

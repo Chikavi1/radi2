@@ -9,7 +9,8 @@
   <ion-slides class="thumbnail margin"  pager="true"  [options]="slideOpts">
     <ion-slide class="slider-1 " >
       <div>
-        <img  src="https://post.medicalnewstoday.com/wp-content/uploads/sites/3/2020/02/322868_1100-1100x628.jpg" style="width: 120% !important;">
+        <img src="https://images.unsplash.com/photo-1571066470962-f10fcf2fdf9e?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTB8fGRvZ3xlbnwwfDJ8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="">
+        <!-- <img  src="https://post.medicalnewstoday.com/wp-content/uploads/sites/3/2020/02/322868_1100-1100x628.jpg" style="width: 120% !important;"> -->
       </div>
     </ion-slide>
     <ion-slide class="slider-1 " *ngFor="let image of images">
@@ -20,7 +21,7 @@
 
     <ion-row > 
     <ion-col size="9" class="padding-1">
-      <h3 style="font-weight: bold;">Radi</h3>
+      <h3 style="font-weight: bold;">{{pet.name}}</h3>
     </ion-col>
   </ion-row>
 
@@ -83,7 +84,7 @@
 </ion-grid>
 
   <div class="padding-1">
-    <p>{{ terrace.description }}</p>
+    <p>{{ pet.description }}</p>
     <ion-row>
         <ion-col>
           <ion-item lines="none">

@@ -1,51 +1,70 @@
-
-<ion-content [fullscreen]="true" class="body">
+<ion-content [fullscreen]="true" class="body" >
+  <ion-refresher slot="fixed" pullFactor="0.5" pullMin="100" pullMax="200" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
   
-  <!-- <lottie-animation-view [options]="lottieConfig" [width]="200" [height]="200">
-  
-  </lottie-animation-view> -->
-  
-  <h1 style="padding:1em">Guadalajara, <span style="color:grey"> JAL</span></h1>
-  <h3 style="padding:1em">Adopciones cerca de ti</h3>
+  <h1 style="padding:1em;" (click)="abrirUbicacion()">{{ city }}<span style="color:grey"></span></h1>
+  <h3 style="padding:1em">Veterinarios cerca de ti</h3>
 
   <ion-slides class="thumbnail margin"  [options]="slide">
-    <ion-slide class="slider-1 "  (click)="showDog()" *ngFor="let terrace of [1,1,1,1]">
-     <div>
-        <img class="border-radius-img" src="https://ichef.bbci.co.uk/news/976/cpsprodpb/10C2F/production/_109655686_d2e4dadb-67f4-4200-a042-2702a22ed4c9.jpg" style="min-height: 14em;">
-        <p>Radiador</p>
-        <p class="subtitle-card">Guadalajara, Jal</p>
+    <ion-slide class="slider-1 "  (click)="showVeterinarian()" *ngFor="let terrace of [1,1,1,1,1,1,1,1,1,1,1,1,1]">
+     <div style="text-align: left;">
+        <img class="border-radius-img" src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nnx8ZG9jdG9yfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" style="min-height: 14em;">
+        <p style="margin-left: 1em;font-weight: bold;">Veterinaria lolis</p>
+        <p class="subtitle-card" style="margin-left: 1em;">Guadalajara, Jal</p>
         
       </div>
     </ion-slide>
 
   </ion-slides> 
-  
-  <h3 style="padding:1em">Otras Adopciones cerca de ti</h3>
+  <h3 style="padding:1em">Top Servicios</h3>
 
-  <ion-item style="margin:0.7em;border-radius: 1em !important;">
+  <ion-slides style="margin:1em;" [options]="slideMini">
+
+    <ion-slide (click)="openServiceModal()">
+      <ion-chip outline color="primary">
+        <ion-label>Consultas</ion-label>
+      </ion-chip>
+    </ion-slide>
+    
+    <ion-slide>
+      <ion-chip outline color="primary">
+        <ion-label>Estilistas</ion-label>
+      </ion-chip>
+     
+    </ion-slide>
+
+      <ion-slide>
+        <ion-chip outline color="primary">
+          <ion-label>Hoteles</ion-label>
+        </ion-chip>
+
+      </ion-slide>
+      
+  
+
+  <ion-slide>
+    <ion-chip outline color="primary">
+      <ion-label>Tratamientos</ion-label>
+    </ion-chip>
+  
+</ion-slide>
+    
+
+  </ion-slides>
+
+  <h3 style="padding:1em">Otras Veterinarias cerca de ti</h3>
+
+  <ion-item lines="none" (click)="goToPage('/veterinarians/'+veterinaria.id)" style="margin:0.7em;border-radius: 1em !important;" *ngFor="let veterinaria of veterinarians">
     <ion-thumbnail slot="start">
-      <img style="width: 8em;"  src="https://image.cnbcfm.com/api/v1/image/105992231-1561667465295gettyimages-521697453.jpeg?v=1561667497&w=1600&h=900">
+      <img style="width: 14em;border-radius: 1em !important;"  [src]="veterinaria.profile">
     </ion-thumbnail>
     <ion-label> 
-      <h3>Radi</h3>
-      <p>Edad 2 años</p>
-      <p>todas sus vacunas</p>
+      <h3>{{ veterinaria.name }}</h3>
+      <p>Guadalajara</p>
+      <p>{{ veterinaria.distance | number : '.2-2' }} km</p>
     </ion-label>
   </ion-item>
-
-  <ion-item style="margin:0.7em;">
-    <ion-thumbnail slot="start">
-      <img style="width: 8em;"  src="https://www.guidedogs.org/wp-content/uploads/2019/11/website-donate-mobile.jpg">
-    </ion-thumbnail>
-    <ion-label> 
-      <h3>Radi</h3>
-      <p>Edad 2 años</p>
-      <p>todas sus vacunas</p>
-    </ion-label>
-  </ion-item>
-
-  
-  
 
   
   </ion-content>

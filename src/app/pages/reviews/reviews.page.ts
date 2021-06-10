@@ -7,7 +7,7 @@ import { ModalController } from '@ionic/angular';
   styleUrls: ['./reviews.page.scss'],
 })
 export class ReviewsPage {
-rate = 4;
+rate = 5;
   constructor(private modalCtrl: ModalController) { }
 
 

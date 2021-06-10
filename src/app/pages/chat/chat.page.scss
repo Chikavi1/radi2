@@ -1,0 +1,25 @@
+.left {
+    float: left;
+    background-color: #F1F0F0;
+    color: black;
+    clear: both;
+    max-width: 60%;
+    text-align: left;
+    border-radius: .5em;
+    padding: 0em .3em;
+    margin: 0.3em 0.5em;
+  }
+  
+   .right {
+    float: right;
+    max-width: 60%;
+    text-align: right;
+    //margin-right: 10%;
+    background-color: #0084FF;
+    color: white;
+    clear: both;
+    border-radius: .5em;
+    padding: 0em .3em;
+    margin: 0.3em 0.5em;
+  }
+  

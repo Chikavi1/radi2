@@ -1,0 +1,35 @@
+<ion-header class="ion-no-border">
+    <ion-toolbar >
+        <ion-title class="ion-text-center" color="tertiary" >
+            Pagos
+        </ion-title>
+        <ion-icon slot="end" name="close-outline" (click)="exit()" style="zoom:2.0;margin: .5em;"></ion-icon>
+        <ion-buttons slot="start" style="margin: .5em 1.5em;" >
+          <ion-buttons slot="start">
+          </ion-buttons>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+  
+
+<ion-content style="background-color: #eaecee;">
+    <div style="margin:2em;">
+
+        <p style="font-size: 1.8em;margin: 1em;color:#192547; font-weight: bold;">Pagos</p>
+        <ion-item detail  lines="none" (click)="goToPage('/reviews')">
+        <ion-label>
+          Formas de pago
+        </ion-label>
+      </ion-item>
+      
+      
+      <ion-item detail  lines="none" (click)="goToPage('/reviews')">
+        <ion-icon slot="end" name="bag-check-outline"></ion-icon>
+        <ion-label>
+          Cupones o descuentos
+        </ion-label>
+      </ion-item>
+    </div>
+
+
+</ion-content>

@@ -1,0 +1,27 @@
+
+<ion-content>
+
+  <ion-calendar style="margin-top: 4em;" [(ngModel)]="date"
+              [options]="optionsRange"
+              (change)="onChange($event)"
+              [type]="type"
+              disableWeeks="[0, 6]"
+              [format]="'YYYY-MM-DD'">
+</ion-calendar>
+
+<!-- {{ dia }} -->
+<h2 style="padding: 1em;font-weight: bold;">Horarios Disponibles</h2>
+
+<div style="margin:1.5em;">
+
+  <ion-chip *ngFor="let item of horasDisponibles;index as i;" outline color="tertiary">
+    <ion-label  [color]="activarChip==i ? 'tertiary' : 'dark'" (click)="setIndex(i,item.hour)"  > {{ item.hour }}</ion-label>
+  </ion-chip>
+</div>
+
+
+</ion-content>
+
+<ion-footer *ngIf="habilitaBoton">
+  <ion-button expand="full" color="tertiary" (click)="goOrder()">Ver orden</ion-button>
+</ion-footer>

@@ -108,23 +108,30 @@ export class CardPage implements OnInit {
 
  pagar(){
    console.log(this.data.day);
-   
-   if(localStorage.getItem('user_id')){
-    this.dataService.createReservation(
-      this.data.id,localStorage.getItem('user_id'),this.data.price,this.data.day)
-      .subscribe( resultado =>{
-      const extras: NavigationExtras = {
-        queryParams:{
-          invoice: resultado.message
+
+   const extras: NavigationExtras = {
+          queryParams:{
+            invoice: 'simon'
+          }
         }
-      }
-      if(resultado.message){
-          this.navCtrl.navigateForward('/success',extras);
-        }
-    });
-   }else{
-     alert("necesitas estar logeado prro");
-   }
+   this.navCtrl.navigateForward('/success',extras);
+// se comento para hacer pruebas
+  //  if(localStorage.getItem('user_id')){
+  //   this.dataService.createReservation(
+  //     this.data.id,localStorage.getItem('user_id'),this.data.price,this.data.day)
+  //     .subscribe( resultado =>{
+  //     const extras: NavigationExtras = {
+  //       queryParams:{
+  //         invoice: resultado.message
+  //       }
+  //     }
+  //     if(resultado.message){
+  //         this.navCtrl.navigateForward('/success',extras);
+  //       }
+  //   });
+  //  }else{
+  //    alert("necesitas estar logeado prro");
+  //  }
 
   
  }

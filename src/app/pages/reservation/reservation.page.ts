@@ -12,13 +12,25 @@ import { ReviewsPage } from '../reviews/reviews.page';
   styleUrls: ['./reservation.page.scss'],
 })
 export class ReservationPage{
-  isAuth:boolean;
-  reservations;
-  name;
-  today;
 
+
+
+  reservations;
+  paymentMethod:any;
+  
+  amount;
+  currency;
+  payment_description;
+  card_brand;
+  card_last4;
+  card_exp_month;
+  card_exp_year;
+
+
+
+  createdCode = 'sadniasdnoasda';
   slideOpts = {
-    slidesPerView: 1,
+    slidesPerView: 1.15,
     spaceBetween:3,
     pager: true
   }
@@ -26,32 +38,29 @@ export class ReservationPage{
   constructor(private dataService:DataService,
               private modalController:ModalController,
               private navCtrl: NavController) { 
-               
-                var dateTime = moment( '2016-06-30');
-                var full = dateTime.format('dddd D, MMMM YYYY');
-                console.log(full);
   }
 
   ionViewWillEnter () {
-    console.log("se ejecuta");
-    if(localStorage.getItem("token")){
-      this.isAuth = true;
-      this.name = localStorage.getItem("name");
-      this.dataService.getReserves(localStorage.getItem("user_id")).subscribe(data=>{
-        this.reservations = data;
-       
-        this.reservations.map(function(reservation){
-          moment.locale('es');
-          var dateTime = moment(reservation.day);
-          reservation.day = dateTime.format('dddd, D MMMM YYYY');
-          return reservation;
-        });
 
-       });
-    }else{
-      this.isAuth = false;
-    }
+    this.dataService.getPaymentMethod().subscribe( data => {
+      let card = data.charges.data[0].payment_method_details.card;
+      this.amount              = data.amount;
+      this.currency            = data.currency;
+      this.payment_description = data.description;
+      this.card_brand          = card.brand;
+      this.card_last4          = card.last4;
+      this.card_exp_month      = card.exp_month;
+      this.card_exp_year       = card.exp_year;
+    
+    
+    });
+
+
+
   }
+
+
+
 
   openReview(){
     this.presentModal(ReviewsPage);
@@ -64,9 +73,7 @@ export class ReservationPage{
     }
   }
 
-  showTerrace(id){
-    this.navCtrl.navigateForward(`/show/${id}`);
-  }
+
 
   async presentModal(component) {
     const modal = await this.modalController.create({
@@ -75,8 +82,6 @@ export class ReservationPage{
     });
     modal.onDidDismiss().then(()=>{
       if(localStorage.getItem("token")){
-        this.isAuth = true;
-        this.name = localStorage.getItem("name");
         this.dataService.getReserves(localStorage.getItem("user_id")).subscribe(data=>{
           this.reservations = data;
           this.reservations.map(function(reservation){
@@ -87,7 +92,6 @@ export class ReservationPage{
           });
          });
       }else{
-        this.isAuth = false;
       }
     });
     return await modal.present();

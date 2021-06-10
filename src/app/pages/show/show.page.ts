@@ -11,8 +11,8 @@ import {Map,tileLayer,marker,icon} from 'leaflet';
   styleUrls: ['./show.page.scss'],
 })
 export class ShowPage implements OnInit {
-  terraceId = null;
-  terrace = [];
+  PetId = null;
+  pet = [];
   services: any;
   reviews = [];
   images = [];
@@ -47,7 +47,13 @@ export class ShowPage implements OnInit {
               private activatedRoute: ActivatedRoute,
               private dataService: DataService,
               private router:Router ) {
-    this.terraceId = this.activatedRoute.snapshot.paramMap.get('id');
+    this.PetId = this.activatedRoute.snapshot.paramMap.get('id');
+    
+    this.dataService.getPet(this.PetId).subscribe( data => {
+      console.log(data);
+      this.pet = data;
+    });
+
    }
 
   ngOnInit() {
@@ -60,7 +66,7 @@ export class ShowPage implements OnInit {
   
 
   beforePage(){
-    this.navCtrl.navigateBack('/tabs/tab1');
+    this.navCtrl.back();
   }
 
   NextPage(){

@@ -14,8 +14,9 @@
 <ion-content>
 <p style="margin: 2em;">Escribe una reseña.</p>
 
-<div class="center">
-    <bar-rating   [(rate)]="rate" [max]="5" [theme]="'stars'" [showText]="true"
+<div class="center" >
+    <bar-rating size="default"
+    [(rate)]="rate" [max]="5" [theme]="'stars'" [showText]="true"
     [titles]="['Pesimo','Malo', 'Regular','Bueno', 'Excelente']" required></bar-rating>
 
  
@@ -23,10 +24,11 @@
 <div style="margin:2em;">
 
 <ion-item>
-  <ion-textarea rows="6" cols="20" placeholder="Cuentamos como fue tu experiencia..."></ion-textarea>
+  <ion-textarea class="text-area" rows="6" cols="20" placeholder="Cuentamos como fue tu experiencia..."></ion-textarea>
 </ion-item>
 
-<ion-button style="margin-top: 2em;" expand="full" shape="round" >Enviar</ion-button>
+
+<button ion-button class="boton boton_vacuna" style="margin-top:1em;" expand="full" (click)="visita()">Enviar</button>
 </div>
 
 </ion-content>

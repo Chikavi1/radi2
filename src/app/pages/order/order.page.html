@@ -1,0 +1,75 @@
+<ion-content>
+
+  <ion-card style="border-radius: 1em;">
+    <ion-card-header (click)="metodoPago()">
+
+      <ion-item lines="none">
+        <ion-icon slot="end" name="cash-outline" style="color:green;"></ion-icon>
+        <ion-label>Método de pago </ion-label>
+      </ion-item>
+    </ion-card-header>
+
+</ion-card>
+
+<ion-card style="border-radius: 1em;">
+  <ion-card-header (click)="metodoCupones()">
+
+    <ion-item lines="none">
+      <ion-icon slot="end" name="pricetag-outline" style="color:orange;"></ion-icon>
+      <ion-label>Cupones</ion-label>
+    </ion-item>
+  </ion-card-header>
+
+</ion-card>
+
+
+<ion-card style="border-radius: 1em;">
+  <ion-card-header>
+
+    <ion-item lines="none">
+      <ion-thumbnail slot="start">
+          <img style="border-radius: .5em;" src="https://images.unsplash.com/photo-1592198600249-ba40a4d08cde?ixid=MnwxaMjA3fDB8MHxzZWFyY2h8MXx8c2VydmljZXN8ZW58MHwxfDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60">
+      </ion-thumbnail>
+          
+          <ion-label >
+            <h2>Veterinaria mariely</h2>
+            <h3>Consulta</h3>
+            <p>12/06/2021 <br> 11:00am - 12:00pm</p>
+          </ion-label>
+       
+    </ion-item>
+  </ion-card-header>
+  <ion-item>
+    <ion-label>Servicio</ion-label>
+    <ion-note slot="end" color="success">MX240.00</ion-note>
+  </ion-item>
+  <ion-item>
+    <ion-label>Comisión por servicio</ion-label>
+    <ion-note slot="end" color="success">MX10.00</ion-note>
+  </ion-item>
+  <ion-item lines="none">
+    <ion-label>Total </ion-label>
+    <ion-note slot="end" color="success">MX250.00</ion-note>
+  </ion-item>
+</ion-card>
+
+
+
+
+<ion-card style="border-radius: 1em;">
+  <ion-row style="margin:1em;">
+    <ion-col>
+      <h2>Total</h2>
+    </ion-col>
+    <ion-col>
+      <h1>MX $250.00</h1>
+    </ion-col>
+  </ion-row>
+</ion-card>
+
+
+</ion-content>
+
+<ion-footer >
+  <ion-button expand="full" color="tertiary" (click)="goSuccess()">Reservar</ion-button>
+</ion-footer>

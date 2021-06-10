@@ -1,0 +1,65 @@
+<ion-content>
+  <p style="font-size: 1.8em;margin: 1em;color:#192547; font-weight: bold;margin-top:2em;">Reservaciones</p>
+<div style="margin:2em 1.5em;">
+    <ion-segment 
+        value="all" 
+        color="tertiary" 
+        scrollable="true"
+        mode="ios"
+        [(ngModel)]="segmentModel" 
+        (ionChange)="segmentChanged($event)">
+
+          <ion-segment-button value="all">
+            <ion-label>Proximos</ion-label>
+          </ion-segment-button>
+
+          <ion-segment-button value="favorites">
+            <ion-label>Anteriores</ion-label>
+          </ion-segment-button>
+
+    </ion-segment>
+
+
+    <div *ngIf="segmentModel === 'all'">
+      <ion-card *ngFor="let reservation of [1,1,1,1]" style="border-radius: 1em;" (click)="goToPage('/reservation')">
+        <ion-card-header>
+          <ion-card-subtitle>03/04/2021 3:10 PM</ion-card-subtitle>
+          <ion-card-title>Veterinaria mariely</ion-card-title>
+        </ion-card-header>
+        
+        <ion-card-content>
+          <ion-item detail  lines="none" >
+            <ion-label>
+              Radi
+              <p style="color:green;font-weight: bold;">Completado</p>
+            </ion-label>
+          </ion-item>
+          
+          
+        </ion-card-content>
+      </ion-card>
+
+    </div>
+
+
+    <div *ngIf="segmentModel === 'favorites'">
+      <ion-card >
+        <ion-card-header>
+          <ion-card-subtitle>Segment Content</ion-card-subtitle>
+          <ion-card-title>Anteriores</ion-card-title>
+        </ion-card-header>
+        
+        <ion-card-content>
+          Keep close to Nature's heart... and break clear away, once in awhile,
+          and climb a mountain or spend a week in the woods. Wash your spirit clean.
+        </ion-card-content>
+      </ion-card>
+    </div>
+
+
+
+
+  
+</div>
+
+</ion-content>
