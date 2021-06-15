@@ -10,10 +10,13 @@ import { DataService } from 'src/app/services/data.service';
 export class MenuPage {
 
   mascotas = [];
-
+  mostrar = false;
   constructor(public navCtrl:NavController,private api: DataService){
 
 
+    setTimeout(() => {
+      this.mostrar = true;
+     }, 4200);
 
     this.api.getPets(1).subscribe( datos => {
       console.log(datos);
@@ -24,7 +27,7 @@ export class MenuPage {
 
   slide = {
     slidesPerView:  1.13,
-    spaceBetween:10,
+    spaceBetween:5,
     coverflowEffect: {
       rotate: 50,
       stretch: 0,

@@ -20,6 +20,7 @@ export class IndexPage implements OnInit {
 
 
 veterinarians:any;
+mostrar = false;
 
    slideOpts = {
     slidesPerView: 1.7,
@@ -60,6 +61,11 @@ lottieConfig = {};
     private network: Network
 
     ) {
+
+      setTimeout(() => {
+        this.mostrar = true;
+       }, 1200);
+
 
       let options: NativeGeocoderOptions = {
         useLocale: true,
@@ -178,12 +184,6 @@ lottieConfig = {};
   }
 
 
-  showVeterinarian(id){
-    console.log(id);
-    this.navCtrl.navigateForward(`/veterinarians`);
-  }
-
- 
 
   openModal(){
     if(localStorage.getItem('token')){

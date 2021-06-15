@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NavigationExtras } from '@angular/router';
 import { NavController } from '@ionic/angular';
 import { CalendarComponentOptions, DayConfig } from 'ion2-calendar';
 import { DataService } from '../../services/data.service';
@@ -14,6 +15,9 @@ export class CalendarReservationPage implements OnInit {
   optionsRange:CalendarComponentOptions;
   public disabledDates: Date[] = [new Date(2021, 4, 25)];
  
+  veterinarian_id = 1;
+  veterinarian_name = 'vet las huertas';
+
    activarChip;
    habilitaBoton = false;
  
@@ -50,22 +54,16 @@ export class CalendarReservationPage implements OnInit {
   }
 
  
-obtenerHoras(){
-    this.DataService.getHours().subscribe( ( data ) => {
-      console.log(data);
-      this.horasDisponibles = data;
-    });
-  }
 
+  
   onChange($event) {
-    this.diaSeleccionado = $event;
+    this.diaSeleccionado = $event.format('YYYY-MM-DD');
 
     this.DataService.getHours2().subscribe( ( data ) => {
       console.log(data);
       this.horasDisponibles = data;
     });
 
-    console.log($event);
   }
 
   setIndex(index,hour) {
@@ -77,7 +75,17 @@ obtenerHoras(){
 
 
   goOrder(){
-    this.navCtrl.navigateForward(`/order`);
+    console.log(this.diaSeleccionado,this.horaSeleccionada);
+    let navigationExtras: NavigationExtras = {
+      state: {
+        veterinarian_id: this.veterinarian_id,
+        veterinarian_name: this.veterinarian_name,
+        date: this.diaSeleccionado,
+        hour: this.horaSeleccionada
+      } 
+    };
+
+    this.navCtrl.navigateForward(`/order`,navigationExtras);
   }
 
 }

@@ -77,10 +77,11 @@
       </div>
     </ion-slide>
     <ion-slide >
-      <ion-card class="content">
-        <h2>Ubicación</h2>
-        <img  (click)="goToPage('/perfil-perro')" width="150" style="border-radius: 0.7em;" src="https://i0.wp.com/cssscript.com/wp-content/uploads/2018/03/Simple-Location-Picker.png?fit=561%2C421&ssl=1">
-      </ion-card>
+      <ion-card class="content" (click)="openMap()">
+        <!-- <h2>Ubicación</h2> -->
+            <div id="mapId" style="width: 100%; height: 100%;">
+            </div>
+          </ion-card>
     </ion-slide>
     <ion-slide >
       <ion-card class="content">
@@ -184,6 +185,9 @@
     <ion-card-header>
       <ion-card-subtitle>veterinaria</ion-card-subtitle>
       <ion-card-title>Mariely</ion-card-title>
+      <p (click)="mandarMensaje()">
+        mandar mensaje
+      </p>
     </ion-card-header>
     
     <ion-card-content>

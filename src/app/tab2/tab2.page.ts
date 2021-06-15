@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { ModalController, NavController } from '@ionic/angular';
+import { SearchModalPage } from '../pages/search-modal/search-modal.page';
 import { DataService } from '../services/data.service';
 
 @Component({
@@ -7,20 +9,49 @@ import { DataService } from '../services/data.service';
   styleUrls: ['tab2.page.scss']
 })
 export class Tab2Page {
-  terraces:any;
+
+  isEmpty = false;
   buscando = false;
   datos = [];
-  constructor(public dataService:DataService){
-    this.dataService.getTerracesNormal().subscribe(
-      data => {
-       this.terraces = data.data;
-       console.log(data.data);
-      })
+
+  pets:any;
+  vets:any;
+  organizations:any;
+  products:any;
+  services:any;
+
+  constructor(public navCtrl:NavController,public dataService:DataService,    
+            private modalController: ModalController
+    ){
+
   }
 
 
+  openModal(busqueda){
+    this.presentModal(SearchModalPage,busqueda);
+  }
+
+  async presentModal(component,busqueda) {
+    const modal = await this.modalController.create({
+      component: component,
+      cssClass: 'my-custom-class',
+      componentProps: {
+      'busqueda': busqueda,
+      'nombre' : 'luis'
+     
+    }
+    });
+
+    modal.onDidDismiss().then( () => {
+
+    });
+
+    return await modal.present();
+  }
+
+
+
   onCancel(e){
-   this.terraces = [];
   }
 
   buscar( event ) {
@@ -32,27 +63,31 @@ export class Tab2Page {
       return;
     }
 
-    // console.log(valor);
     this.buscando = true;
 
     this.dataService.search( valor )
         .subscribe( resp => {
-          console.log( resp );
-         this.datos = resp['results'];
-          this.buscando = false;
+          console.log(resp);
+          if(  ( resp.vets === undefined || resp.vets.length == 0 )
+            && ( resp.pets === undefined || resp.pets.length == 0)
+            && ( resp.organizations === undefined || resp.organizations.length == 0)  ){
+            this.isEmpty = true;
+            console.log('que paso pa');
+          }else{
+            this.isEmpty = false;
+          }
+            this.vets = resp.vets;
+            this.pets = resp.pets;
+            this.organizations = resp.organizations;
+            this.products = resp.products;
+            this.services = resp.services;
+            
         });
   }
 
 
-  buscarCiudad(e){
-    if(e.target.value.length > 4){
-      console.log(e.target.value);
-      this.dataService.search(e.target.value).subscribe(
-        data => {
-         this.terraces = data.data.data;
-         console.log(data.data.data);
-        })
-    }
+  goToPage(pagina){
+    this.navCtrl.navigateForward(pagina);
   }
 
 }

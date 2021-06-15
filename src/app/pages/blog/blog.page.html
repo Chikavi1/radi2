@@ -1,50 +1,94 @@
 
 <ion-content [fullscreen]="true" class="body">
   
-  <!-- <lottie-animation-view [options]="lottieConfig" [width]="200" [height]="200">
-  
-  </lottie-animation-view> -->
+<div *ngIf="!mostrar">
+
+
+  <ion-row style="margin-top: 3em;">
+    <ion-col>
+      <ion-skeleton-text animated style="width: 100%;border-radius:.3em;height:1.5em ;"></ion-skeleton-text>
+    </ion-col>
+    <ion-col>
+      <ion-skeleton-text animated style="width: 100%;border-radius:.3em;height:1.5em;"></ion-skeleton-text>
+    </ion-col>
+  </ion-row>
+
+  <ion-skeleton-text animated style="width: 90%;margin:1.5em;border-radius:1em;height:10em ;"></ion-skeleton-text>
+
+  <ion-skeleton-text animated style="width: 60%;height:1em;margin-left: 1em;"></ion-skeleton-text>
+
+
+  <ion-row>
+    <ion-skeleton-text animated style="border-radius:1em;width: 75%;height:15em;margin-left: 1.5em;margin-top: 1em;"></ion-skeleton-text>
+    <ion-skeleton-text animated style="width: 10%;margin-left: 1.5em;margin-top: 1em;"></ion-skeleton-text>
+  </ion-row>
+  <ion-skeleton-text animated style="width: 45%;margin-left: 2em;margin-top: 1em;"></ion-skeleton-text>
+  <ion-skeleton-text animated style="width: 33%;margin-left: 2em;margin-top: 1em;"></ion-skeleton-text>
+  <ion-skeleton-text animated style="width: 65%;height:1em;margin-left: 2em;margin-top: 2em;"></ion-skeleton-text>
+
+<ion-row *ngFor="let terrace of [1,1,1,1]">
+  <ion-col size="3">
+    <ion-skeleton-text animated style="width: 80%;height:4em !important; border-radius:.8em;margin-left: 2em;margin-top: 2em;"></ion-skeleton-text>
+  </ion-col>
+  <ion-col size="8" style="margin-left: 1em;">
+    <ion-row>
+      <ion-skeleton-text animated style="width: 90%;border-radius:3em;height:.8em;margin-top:2.5em;"></ion-skeleton-text>
+    </ion-row>
+    <ion-skeleton-text animated style="width: 40%;border-radius:3em;height:.5em;"></ion-skeleton-text>
+    <ion-skeleton-text animated style="width: 20%;border-radius:3em;height:.4em;margin-top:.5em;"></ion-skeleton-text>
+  </ion-col>
+</ion-row>
+</div>
+
+<div *ngIf="mostrar">
+
+
   <ion-segment 
-  value="all" 
+  style="margin-top: 3em;"
+  value="adopciones" 
   color="tertiary" 
   scrollable="true"
   mode="ios"
   [(ngModel)]="segmentModel" 
   (ionChange)="segmentChanged($event)">
 
-    <ion-segment-button value="all">
+    <ion-segment-button value="adopciones">
       <ion-label>Adopciones</ion-label>
     </ion-segment-button>
 
-    <ion-segment-button value="favorites">
+    <ion-segment-button value="perdidos">
       <ion-label>Perdidos</ion-label>
+    </ion-segment-button>
+  
+    <ion-segment-button value="organizaciones">
+      <ion-label>Organizaciones</ion-label>
     </ion-segment-button>
 
     
 
   </ion-segment>
    
-<div *ngIf="segmentModel === 'all'">
-  <ion-card >
+<div *ngIf="segmentModel === 'adopciones'">
+  <ion-card style="background:#53e1bf;" >
     <ion-card-header>
-      <ion-card-subtitle>Segment Content</ion-card-subtitle>
+      <ion-card-subtitle style="color:white;font-size: 1.2em;font-weight: 400;">Guia rápida</ion-card-subtitle>
       <ion-card-title>Adopciones</ion-card-title>
     </ion-card-header>
     
-    <ion-card-content>
-      Keep close to Nature's heart... and break clear away, once in awhile,
-      and climb a mountain or spend a week in the woods. Wash your spirit clean.
+    <ion-card-content style="color:white;font-size: 1.2em;font-weight: 400;">
+     Toma una guia rápida antes de adoptar.
     </ion-card-content>
   </ion-card>
 
   <h3 style="padding:1em">Adopciones cerca de ti</h3>
 
   <ion-slides class="thumbnail margin"  [options]="slide">
-    <ion-slide class="slider-1 " (click)="goToPage('/show/'+1)" *ngFor="let terrace of [1,1,1,1]">
-     <div>
+    <ion-slide class="slider-1 " (click)="goToPage('/show/'+pet.id)" *ngFor="let pet of petsNear">
+     <div style="text-align: left;">
         <img class="border-radius-img" src="https://images.unsplash.com/photo-1571066470962-f10fcf2fdf9e?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTB8fGRvZ3xlbnwwfDJ8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" style="min-height: 14em;">
-        <p>Radiador</p>
-        <p class="subtitle-card">Guadalajara, Jal</p>
+        <p>{{ pet.name }}</p>
+        <p class="subtitle-card">{{ pet.breed }}</p>
+        <p>{{ pet.distance | number : '.2-2'  }} km</p>
         
       </div>
     </ion-slide>
@@ -53,9 +97,9 @@
   
   <h3 style="padding:1em">Otras Adopciones cerca de ti</h3>
 
-  <ion-item lines="none" (click)="goToPage('/show/'+1)" *ngFor="let terrace of [1,1,1,1]" style="margin:0.7em;border-radius: 1em !important;">
+  <ion-item lines="none" (click)="goToPage('/show/'+1)" style="margin:0.7em;border-radius: 1em !important;" *ngFor="let terrace of [1,1,1,1]" >
     <ion-thumbnail slot="start">
-      <img style="width: 13em;border-radius: 1em !important;"  src="https://images.unsplash.com/photo-1571066470962-f10fcf2fdf9e?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTB8fGRvZ3xlbnwwfDJ8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60">
+      <img style="width: 14em;border-radius: 1em !important;"  src="https://images.unsplash.com/photo-1571066470962-f10fcf2fdf9e?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTB8fGRvZ3xlbnwwfDJ8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60">
     </ion-thumbnail>
     <ion-label> 
       <h3>Radi</h3>
@@ -63,19 +107,70 @@
       <p>todas sus vacunas</p>
     </ion-label>
   </ion-item>
+
+
 </div>
-  
-  <ion-card *ngIf="segmentModel === 'favorites'">
+
+<div *ngIf="segmentModel === 'perdidos'">
+  <ion-card style="background: #f6d3af;" >
     <ion-card-header>
-      <ion-card-subtitle>Segment Content</ion-card-subtitle>
+      <ion-card-subtitle style="color:white;font-size: 1.2em;font-weight: 400;">Guia rápida</ion-card-subtitle>
       <ion-card-title>Perdidos</ion-card-title>
     </ion-card-header>
   
-    <ion-card-content>
-      Keep close to Nature's heart... and break clear away, once in awhile,
-      and climb a mountain or spend a week in the woods. Wash your spirit clean.
+    <ion-card-content style="color:white;font-size: 1.2em;font-weight: 400;">
+     Queremos informate como puedes ayudarnos a encontrar mascotas cerca de tu ubicación.
     </ion-card-content>
   </ion-card>
+
+  <h3 style="padding:1em">Mascotas Perdidas</h3>
+
+  <ion-item lines="none" (click)="goToPage('/show/'+1)" style="margin:0.7em;border-radius: 1em !important;" *ngFor="let terrace of [1,1,1,1]" >
+    <ion-thumbnail slot="start">
+      <img style="width: 14em;border-radius: 1em !important;"  src="https://images.unsplash.com/photo-1571066470962-f10fcf2fdf9e?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTB8fGRvZ3xlbnwwfDJ8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60">
+    </ion-thumbnail>
+    <ion-label> 
+      <h3>Radi</h3>
+      <p>Edad 2 años</p>
+      <p>todas sus vacunas</p>
+    </ion-label>
+  </ion-item>
+
+</div>
+
+<div *ngIf="segmentModel === 'organizaciones'">
+  <ion-card style="background:#ddc6e7;" >
+    <ion-card-header>
+      <ion-card-subtitle style="color:white;font-size: 1.2em;font-weight: 400;">Guia rápida</ion-card-subtitle>
+      <ion-card-title>Organizaciones</ion-card-title>
+    </ion-card-header>
+  
+    <ion-card-content style="color:white;font-size: 1.2em;font-weight: 400;">
+      Puedes apoyar a las organizaciones, no importa la cantidad lo que cuenta es la intención.
+    </ion-card-content>
+  </ion-card>
+
+
+  <h3 style="padding:1em">Organizaciones</h3>
+
+  <ion-item lines="none" (click)="goToPage('/organization/'+1)" style="margin:0.7em;border-radius: 1em !important;" *ngFor="let terrace of [1,1,1,1]" >
+    <ion-thumbnail slot="start">
+      <img style="width: 14em;border-radius: 1em !important;"  src="https://images.unsplash.com/photo-1571066470962-f10fcf2fdf9e?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTB8fGRvZ3xlbnwwfDJ8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60">
+    </ion-thumbnail>
+    <ion-label> 
+      <h3>Radi</h3>
+      <p>Edad 2 años</p>
+      <p>todas sus vacunas</p>
+    </ion-label>
+  </ion-item>
+
+
+
+</div>
+  
+  
  
+
+</div>
   </ion-content>
   

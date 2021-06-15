@@ -29,6 +29,26 @@
 @import '~ngx-bar-rating/themes/br-default-theme';
 @import '~ngx-bar-rating/themes/br-movie-theme';
 @import '~ngx-bar-rating/themes/br-stars-theme';
+@import "~leaflet/dist/leaflet.css";
+
+.leaflet-routing-alternatives-container{
+  display: none !important;
+}
+
+.leaflet-popup-content-wrapper,
+    .leaflet-popup-tip {
+    background: #1cb07c;
+    color:white;
+    box-shadow: 0 3px 14px rgba(0,0,0,0.4);
+}
+
+.leaflet-popup-close-button{
+  color:white !important;
+}
+.leaflet-popup-tip-container{
+  display: none !important;
+
+}
 
 .ion-color-vibrant {
     --ion-color-base: #3c40c6c7;

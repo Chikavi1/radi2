@@ -118,9 +118,22 @@ const routes: Routes = [
   {
     path: 'order',
     loadChildren: () => import('./pages/order/order.module').then( m => m.OrderPageModule)
-  },  {
+  },
+  {
     path: 'service-modal',
     loadChildren: () => import('./pages/service-modal/service-modal.module').then( m => m.ServiceModalPageModule)
+  },
+  {
+    path: 'map-modal',
+    loadChildren: () => import('./pages/map-modal/map-modal.module').then( m => m.MapModalPageModule)
+  },
+  {
+    path: 'search-modal',
+    loadChildren: () => import('./pages/search-modal/search-modal.module').then( m => m.SearchModalPageModule)
+  },
+  {
+    path: 'organization/:id',
+    loadChildren: () => import('./organization/organization.module').then( m => m.OrganizationPageModule)
   },
 
 

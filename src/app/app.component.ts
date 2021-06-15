@@ -27,7 +27,7 @@ export class AppComponent {
       this.statusBar.styleBlackTranslucent();
       this.splashScreen.hide();
       if(localStorage.getItem('intro')){
-        this.router.navigateByUrl('/reservation');
+        this.router.navigateByUrl('/order');
       }else{
         this.router.navigateByUrl('/intro');
       }
@@ -35,17 +35,14 @@ export class AppComponent {
     });
 
     let disconnectSubscription = this.network.onDisconnect().subscribe(() => {
-      console.log('network was disconnected :-(');
+      console.log('Se ha desconectado :-(');
     });
 
     let connectSubscription = this.network.onConnect().subscribe(() => {
-      console.log('network connected!');
-      // We just got a connection but we need to wait briefly
-       // before we determine the connection type. Might need to wait.
-      // prior to doing any api requests as well.
+      console.log('Se ha conectado!');
       setTimeout(() => {
         if (this.network.type === 'wifi') {
-          console.log('we got a wifi connection, woohoo!');
+          console.log('Tenemos conexión a internet, woohoo!');
         }
       }, 3000);
     });

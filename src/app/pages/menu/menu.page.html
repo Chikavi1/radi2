@@ -1,5 +1,44 @@
 
 <ion-content style="background-color: #eaecee;">
+
+<div *ngIf="!mostrar">
+
+
+  <ion-row style="margin-left: 1em;">
+    <ion-col size="3">
+      <ion-skeleton-text animated style="width: 5em;margin:1.5em;border-radius:50%;height:5em ;"></ion-skeleton-text>
+    </ion-col>
+    <ion-col size="8">
+      <ion-skeleton-text animated style="width: 30%;margin-left:1.5em;margin-top:2.5em;"></ion-skeleton-text>
+      <ion-skeleton-text animated style="width: 25%;margin-left:1.5em;"></ion-skeleton-text>
+      <ion-skeleton-text animated style="width: 18%;margin-left:1.5em;"></ion-skeleton-text>
+
+    </ion-col>
+  </ion-row>
+  
+  <ion-skeleton-text animated style="width: 30%;margin-left:3em;height: 1em;"></ion-skeleton-text>
+
+  <ion-row style="margin-top:1em;">
+    <ion-skeleton-text animated style="width: 60%;height: 15em;margin-left:4em;border-radius: 1em;"></ion-skeleton-text>
+    <ion-skeleton-text animated style="width: 3%;height: 15em;margin-left:2.5em;border-radius: 1em 0em 0em 1em;"></ion-skeleton-text>
+  </ion-row>
+
+  <ion-skeleton-text animated style="width: 35%;margin-left:3em;height: 1em;margin-top:2em;"></ion-skeleton-text>
+
+  <ion-row *ngFor="let prueba of [1,1,1,1]">
+    <ion-col size="8">
+      <ion-skeleton-text animated style="width: 75%;margin-left:3em;height: 1em;margin-top:2em;"></ion-skeleton-text>
+    </ion-col>
+    <ion-col size="3">
+      <ion-skeleton-text animated style="width: 45%;margin-left:3em;height: 1em;margin-top:2em;"></ion-skeleton-text>
+    </ion-col>
+  </ion-row>
+
+  <ion-skeleton-text animated style="width: 35%;margin-left:3em;height: 1em;margin-top:2em;"></ion-skeleton-text>
+  
+</div>
+
+  <div *ngIf="mostrar">
   <div style="margin:2em;">
     <ion-item lines="none">
           <ion-avatar style="width:5em;height: 5em;" slot="start" lines="none">
@@ -86,6 +125,6 @@
     <ion-icon slot="end" ></ion-icon>
     <ion-label style="color:red;font-weight: bold;font-size:1.2em;">Cerrar sesión</ion-label>
   </ion-item>
-
+</div>
 </div>
 </ion-content>

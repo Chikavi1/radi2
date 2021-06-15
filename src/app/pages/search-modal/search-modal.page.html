@@ -1,0 +1,44 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar >
+      <ion-title class="ion-text-center" color="tertiary" >
+        Buscando por {{ parametro }}
+      </ion-title>
+      <ion-icon slot="end" name="close-outline" (click)="exit()" style="zoom:2.0;margin: .5em;"></ion-icon>
+      <ion-buttons slot="start" style="margin: .5em 1.5em;" >
+        <ion-buttons slot="start">
+        </ion-buttons>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+
+  <ion-item-divider mode="md" *ngFor="let item of [1,1,1,1,1,1]">
+  
+    <ion-item lines="none" style="border-radius: 1em !important;">
+      <ion-thumbnail slot="start">
+        <img style="width: 14em;"  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6Fw4LXP2Bj39x0c9-EWHRilLrBF9LGH0Www&usqp=CAU" style="border-radius: 1em !important;">
+      </ion-thumbnail>
+      <ion-label> 
+        <h3 style="font-weight: bold;">Chikavi</h3>
+        <p>Veterinaria</p>
+      </ion-label>
+    </ion-item>
+  </ion-item-divider>
+
+  <ion-item-divider mode="md"  *ngFor="let item of [1,1,1,1,1,1]">
+  
+    <ion-item lines="none" style="border-radius: 1em !important;">
+      <ion-thumbnail slot="start">
+        <img style="width: 14em;"  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6Fw4LXP2Bj39x0c9-EWHRilLrBF9LGH0Www&usqp=CAU" style="border-radius: 1em !important;">
+      </ion-thumbnail>
+      <ion-label> 
+        <h3 style="font-weight: bold;">Chikavi</h3>
+        <p>Veterinaria</p>
+      </ion-label>
+    </ion-item>
+  </ion-item-divider>
+  
+
+</ion-content>

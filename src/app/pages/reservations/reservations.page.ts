@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
+import { DataService } from 'src/app/services/data.service';
 
 @Component({
   selector: 'app-reservations',
@@ -7,9 +8,36 @@ import { NavController } from '@ionic/angular';
   styleUrls: ['./reservations.page.scss'],
 })
 export class ReservationsPage implements OnInit {
-  segmentModel = "all";
+  segmentModel = "pendientes";
 
-  constructor(public navCtrl:NavController) { }
+  datos:any;
+  completados:any = [];
+  pendientes:any   = [];
+
+  constructor(public navCtrl:NavController,
+              private data: DataService
+    ){
+
+
+    this.data.getReservation().subscribe( data => {
+
+      this.datos = data;      
+      this.datos.forEach(element => {
+
+        if( element.status === 1){
+          this.pendientes = this.pendientes.concat(element);
+        }
+
+        if( element.status === 2){
+           this.completados = this.completados.concat(element);
+        }
+
+      });
+      
+    });
+    
+
+   }
 
   ngOnInit() {
   }
@@ -19,8 +47,6 @@ export class ReservationsPage implements OnInit {
   }
 
   segmentChanged(event){
-    console.log(this.segmentModel);
-    console.log(event);
   }
 
 }

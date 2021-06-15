@@ -8,9 +8,8 @@ import { DataService } from 'src/app/services/data.service';
   styleUrls: ['./blog.page.scss'],
 })
 export class BlogPage implements OnInit {
-  blogs:any;
-  segmentModel = "favorites";
-
+  segmentModel = "adopciones";
+  petsNear:any = [];
 
   slide = {
     slidesPerView:  1.3,
@@ -24,15 +23,24 @@ export class BlogPage implements OnInit {
     }
   }
 
+  mostrar = false;
+  organizations:any = [];
+
+
   constructor(private dataService: DataService,
             private navCtrl: NavController
     ){
     
-     this.dataService.getBlogs().subscribe(
-      data => {
-      console.log(data);
-      this.blogs = data;
-        })
+      setTimeout(() => {
+        this.mostrar = true;
+       }, 3200);
+
+
+       dataService.getpetsnear(20.620623,-103.305768,2).subscribe( data => {
+        this.petsNear = data;
+        console.log(data);
+       });
+
   }
 
   goToPage(pagina){
@@ -44,8 +52,7 @@ export class BlogPage implements OnInit {
 
 
   segmentChanged(event){
-    console.log(this.segmentModel);
-    console.log(event);
+    
   }
 
 }

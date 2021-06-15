@@ -30,23 +30,33 @@ getPets( id ):any{
 }
 
 getPet(id):any{
-  return this.http.get(this.PRODUCTION_URL+'pets/show/'+id );
+  return this.http.get(this.DEVELOPMENT_URL+'pets/show/'+id );
 }
 
+getpetsnear(lat,lng,status):any{
+  return this.http.get(this.DEVELOPMENT_URL+'near_pets/'+lat+'/'+lng+'/'+status );
+
+}
 
 search( texto: string ):any {
-  return this.http.get(this.PRODUCTION_URL+'search?query='+texto );
+  return this.http.get(this.DEVELOPMENT_URL+'search_things/'+texto );
 }
 
 getVeterinarian(id):any{
   return this.http.get(this.PRODUCTION_URL+'get_vet/'+id );
 }
 
+getReviews(id):any{
+  return this.http.get(this.DEVELOPMENT_URL+'get_reviews/'+6);
+}
+
 getPaymentMethod():any{
   return this.http.get(this.DEVELOPMENT_URL+'retrieve_payments/' );
 }
 
-
+getReservation():any{
+  return this.http.get(this.DEVELOPMENT_URL+'get_reservations_user/1' );
+}
 
 
 createDog(datos):any{
@@ -188,5 +198,50 @@ return this.http.get('https://mocki.io/v1/8d54ea32-51fb-4685-a162-ea8c8afd1502')
     }
     return this.http.get(this.PRODUCTION_URL+'/api/auth/logout',header);
   }
+
+
+
+  // cus_JflvtvjRFHD3op
+
+  // stripe functions
+  createCostumer(token,email,name):any
+  {
+    return this.http.get(this.DEVELOPMENT_URL+'createCostumer/'+token+'/'+email+'/'+name);
+  }
+
+
+  getCostumer(costumer_id):any
+  {
+    return this.http.get(this.DEVELOPMENT_URL+'getCostumer/'+costumer_id);
+  }
+
+  getCards(customer_id):any
+  {
+    return this.http.get(this.DEVELOPMENT_URL+'getCards/'+customer_id);
+  }
+
+  getCard(customer_id,card):any
+  {
+    return this.http.get(this.DEVELOPMENT_URL+'getCard/'+customer_id+'/'+card);
+
+  }
+
+  addcard(customer_id,token):any
+  {
+    return this.http.get(this.DEVELOPMENT_URL+'addCard/'+customer_id+'/'+token);
+
+  }
+
+  updateDefaultCard(customerId,cardId):any
+  {
+    return this.http.get(this.DEVELOPMENT_URL+'updateCostumer/'+customerId+'/'+cardId);
+
+  }
+  deleteCard(customerId,cardId):any
+  {
+    return this.http.get(this.DEVELOPMENT_URL+'deleteCard/'+customerId+'/'+cardId);
+
+  }
+
 
 }

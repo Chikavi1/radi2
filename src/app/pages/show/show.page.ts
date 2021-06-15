@@ -1,4 +1,4 @@
-import { Component, OnInit} from '@angular/core';
+import { Component} from '@angular/core';
 import { NavController } from '@ionic/angular';
 import { ActivatedRoute } from '@angular/router';
 import { DataService } from 'src/app/services/data.service';
@@ -10,7 +10,7 @@ import {Map,tileLayer,marker,icon} from 'leaflet';
   templateUrl: './show.page.html',
   styleUrls: ['./show.page.scss'],
 })
-export class ShowPage implements OnInit {
+export class ShowPage  {
   PetId = null;
   pet = [];
   services: any;
@@ -48,7 +48,7 @@ export class ShowPage implements OnInit {
               private dataService: DataService,
               private router:Router ) {
     this.PetId = this.activatedRoute.snapshot.paramMap.get('id');
-    
+    console.log(this.PetId);
     this.dataService.getPet(this.PetId).subscribe( data => {
       console.log(data);
       this.pet = data;
@@ -56,9 +56,6 @@ export class ShowPage implements OnInit {
 
    }
 
-  ngOnInit() {
-    
-  }
  
   ionViewDidEnter(){
   

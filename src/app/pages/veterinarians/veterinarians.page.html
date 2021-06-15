@@ -156,59 +156,45 @@
     <ion-item-divider mode="md">
     </ion-item-divider>
 
-    <h2 style="margin: 1em 0em;color:#777;font-weight: bold;">Comentarios</h2>
+    <h2 style="margin: 1em 0em;color:#777;font-weight: bold;">Reseñas</h2>
 
     <ion-slides  [options]="slideOpts">
-      <ion-slide>
-        <ion-card style="border-radius: 1em;">
+      <ion-slide *ngFor="let review of reviews" >
+        <ion-card style="border-radius: 1em;width: 100% !important;">
           <ion-card-header>
-              <ion-card-title style="color:#192547;font-weight: 700;">Luis Rojas</ion-card-title>
+              <ion-card-title style="color:#192547;font-weight: 700;text-align: left;">Luis Rojas</ion-card-title>
               <ion-card-subtitle>
-                <!-- <div style="
-                  clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
-                  height: 1em;
-                  width: 1em;
-                  background-color: #eab728;">
-                </div> -->
-                <p style="vertical-align: middle;color:#eab728
-              ">4.5 estrellas</p>
-
+                <p style="vertical-align: middle;text-align: left;color:#eab728
+              ">{{ review.score }} estrellas</p>
                 </ion-card-subtitle>
           </ion-card-header>
 
-        <ion-card-content>
-          <p>Excelente servicio me gustaria comenter Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque laboriosam minus sint?</p>
+        <ion-card-content >
+          <!-- cambiar despues OJO -->
+          <p style="text-align: left;">{{ review.commment }}</p>
+          <!-- cambiar despues OJO -->
+
         </ion-card-content>
       </ion-card>
       </ion-slide>
-      <ion-slide>
-        <ion-card style="border-radius: 1em;">
-          <ion-card-header>
-              <ion-card-title style="color:#192547;font-weight: 700;">Pau Rojas</ion-card-title>
-              <ion-card-subtitle>
-                <p style="vertical-align: middle;color:#eab728
-              ">4.5 estrellas</p>
-
-                </ion-card-subtitle>
-          </ion-card-header>
-
-        <ion-card-content>
-          <p>Excelente servicio me gustaria comenter Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque laboriosam minus sint?</p>
-        </ion-card-content>
-      </ion-card>      </ion-slide>
-
     </ion-slides>
 
+    <ion-item-divider mode="md">
+    </ion-item-divider>
 
+    <h2 style="margin: 1em 0em;color:#777;font-weight: bold;">Veterinarios similares</h2>
+
+    <ion-slides class="thumbnail margin"  [options]="slide">
+      <ion-slide class="slider-1 "  (click)="goToPage('/veterinarians/'+1)" *ngFor="let terrace of [1,1,1,1,1,1,1,1,1,1,1,1,1]">
+       <div style="text-align: left;">
+          <img class="border-radius-img" src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nnx8ZG9jdG9yfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" style="min-height: 14em;">
+          <p style="margin-left: 1em;font-weight: bold;">Veterinaria lolis</p>
+          <p class="subtitle-card" style="margin-left: 1em;">Guadalajara, Jal</p>
+          
+        </div>
+      </ion-slide>
+    </ion-slides> 
 
 
 </div>
-
-  <p (click)="mandarMensaje()">
-    mandar mensaje
-  </p>
 </ion-content>
-
-<ion-footer >
-  <ion-button expand="full" color="tertiary" (click)="goReservationCalendar()">Reservar</ion-button>
-</ion-footer>

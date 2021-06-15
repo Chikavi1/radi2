@@ -16,12 +16,18 @@ import { RegisterPageModule } from '../register/register.module';
 import { NgxQRCodeModule } from '@techiediaries/ngx-qrcode';
 import { ReviewsPage } from '../reviews/reviews.page';
 import { ReviewsPageModule } from '../reviews/reviews.module';
+import { MapModalPage } from '../map-modal/map-modal.page';
+import { MapModalPageModule } from '../map-modal/map-modal.module';
+
+
+
 @NgModule({
   entryComponents: [
     LoginPage,
     ProfilePage,
     RegisterPage,
-    ReviewsPage
+    ReviewsPage,
+    MapModalPage
   ],
   imports: [
     CommonModule,
@@ -32,6 +38,7 @@ import { ReviewsPageModule } from '../reviews/reviews.module';
     ProfilePageModule,
     RegisterPageModule,
     ReviewsPageModule,
+    MapModalPageModule,
     NgxQRCodeModule
   ],
   declarations: [ReservationPage]
