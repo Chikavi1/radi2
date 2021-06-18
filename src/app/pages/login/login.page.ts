@@ -5,6 +5,9 @@ import { RegisterPage } from '../register/register.page';
 import { GooglePlus } from '@ionic-native/google-plus/ngx';
 import jwt_decode from "jwt-decode";
 import { ForgotPassPage } from '../forgot-pass/forgot-pass.page';
+import { AngularFireAuth } from '@angular/fire/auth';
+import firebase from 'firebase/app';
+
 
 @Component({
   selector: 'app-login',
@@ -25,7 +28,8 @@ export class LoginPage implements OnInit {
               private navCtrl: NavController,
               private dataService: DataService,
               private modalCtrl: ModalController,
-              private googlePlus: GooglePlus
+              private googlePlus: GooglePlus,
+              public auth: AngularFireAuth
               ) {
 
     this.lottieConfig = {
@@ -35,7 +39,24 @@ export class LoginPage implements OnInit {
       loop: true
   };
    
+  this.auth.authState.subscribe( user => {
+    console.log('estado',user);
+  })
   }
+
+
+  loginProvider(provider) {
+    if(provider === 'google'){
+      this.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
+    }else{
+      this.auth.signInWithPopup(new firebase.auth.FacebookAuthProvider());
+
+    }
+  }
+  logout() {
+    this.auth.signOut();
+  }
+
   login(){
 
     // this.googlePlus.login({})

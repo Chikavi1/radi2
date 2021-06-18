@@ -10,6 +10,7 @@ import { RegisterPageModule } from '../register/register.module';
 import { RegisterPage } from '../register/register.page';
 import { ForgotPassPage } from '../forgot-pass/forgot-pass.page';
 import { ForgotPassPageModule } from '../forgot-pass/forgot-pass.module';
+import { AngularFireAuthModule } from '@angular/fire/auth';
 
 
 
@@ -25,7 +26,8 @@ import { ForgotPassPageModule } from '../forgot-pass/forgot-pass.module';
     LoginPageRoutingModule,
     LottieAnimationViewModule,
     RegisterPageModule,
-    ForgotPassPageModule
+    ForgotPassPageModule,
+    AngularFireAuthModule
 
   ],
   declarations: [LoginPage]

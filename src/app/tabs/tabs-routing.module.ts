@@ -36,10 +36,6 @@ const routes: Routes = [
         loadChildren: () => import('../pages/reservation/reservation.module').then( m => m.ReservationPageModule)
       },
       {
-        path: 'available',
-        loadChildren: () => import('../pages/available/available.module').then( m => m.AvailablePageModule)
-      },
-      {
         path: 'ubicacion-modal',
         loadChildren: () => import('../pages/ubicacion-modal/ubicacion-modal.module').then( m => m.UbicacionModalPageModule)
       },

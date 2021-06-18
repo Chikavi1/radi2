@@ -11,10 +11,6 @@ const routes: Routes = [
     loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule)
   },
   {
-    path: 'available',
-    loadChildren: () => import('./pages/available/available.module').then( m => m.AvailablePageModule)
-  },
-  {
     path: 'show/:id',
     loadChildren: () => import('./pages/show/show.module').then( m => m.ShowPageModule)
   },
@@ -134,7 +130,8 @@ const routes: Routes = [
   {
     path: 'organization/:id',
     loadChildren: () => import('./organization/organization.module').then( m => m.OrganizationPageModule)
-  },  {
+  },
+  {
     path: 'forgot-pass',
     loadChildren: () => import('./pages/forgot-pass/forgot-pass.module').then( m => m.ForgotPassPageModule)
   },

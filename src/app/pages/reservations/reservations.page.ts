@@ -22,6 +22,7 @@ export class ReservationsPage implements OnInit {
     this.data.getReservation().subscribe( data => {
 
       this.datos = data;      
+      console.log(this.datos);
       this.datos.forEach(element => {
 
         if( element.status === 1){

@@ -18,7 +18,7 @@ import { FormsModule,ReactiveFormsModule  } from '@angular/forms';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
-
+import { AngularFireAuthModule } from 'angularfire2/auth';
 import { firebaseConfig } from './credentials';
 
 import { File } from '@ionic-native/file/ngx';
@@ -54,7 +54,8 @@ import { ForgotPassPageModule } from './pages/forgot-pass/forgot-pass.module';
     FormsModule,
     IonicSelectableModule,
     LoginPageModule,
-    ForgotPassPageModule
+    ForgotPassPageModule,
+    AngularFireAuthModule
     ],
   providers: [
     

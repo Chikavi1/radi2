@@ -13,9 +13,9 @@ import { IonContent } from '@ionic/angular';
 
 export class ChatPage implements OnInit {
   @ViewChild(IonContent, {read: IonContent, static: false}) myContent: IonContent;
-  students: any;
+  messages: any;
   text:string = null;
-
+  id = '1234'
   constructor(private crudService: ChatService) {
 
   }
@@ -39,11 +39,14 @@ export class ChatPage implements OnInit {
     this.ScrollToBottom();
 
 
-    this.crudService.read_Students().subscribe(data => {
+    this.crudService.read_messages(this.id).subscribe(data => {
 
       this.ScrollToBottomMessage();
 
-      this.students = data.map(e => {
+      console.log(data);
+
+
+      this.messages = data.map(e => {
         return {
           id: e.payload.doc.id,
           date: e.payload.doc.data()['Date'],
@@ -52,7 +55,7 @@ export class ChatPage implements OnInit {
           role: e.payload.doc.data()['Role'],
         };
       })
-      console.log(this.students);
+      console.log(this.messages);
 
     });
   }
@@ -62,10 +65,10 @@ export class ChatPage implements OnInit {
     let record = {};
     record['Date'] = new Date();
     record['Text'] = this.text;
-    record['ChatID'] = "asd1";
+    record['ChatID'] = this.id;
     record['Role'] = 1;
 
-    this.crudService.create_NewStudent(record).then(resp => {
+    this.crudService.create_message(record).then(resp => {
       this.text = "";
       this.ScrollToBottomMessage();
 

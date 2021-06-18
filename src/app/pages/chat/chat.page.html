@@ -1,10 +1,10 @@
 <ion-content >
   <ion-grid >
 
-    <ion-row #scrollBottom *ngFor="let student of students" [ngClass]="student.role == 2 ? 'right' : 'left'">
+    <ion-row #scrollBottom *ngFor="let message of messages" [ngClass]="message.role == 2 ? 'right' : 'left'">
       <ion-col  >
-        <p>{{ student.text }}</p>
-        <span>{{ student.date.toMillis()  | date:' h:mm: a'}}</span>
+        <p>{{ message.text }}</p>
+        <span>{{ message.date.toMillis()  | date:' h:mm: a'}}</span>
       </ion-col>
     </ion-row>
   </ion-grid>

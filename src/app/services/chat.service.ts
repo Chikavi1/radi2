@@ -12,19 +12,19 @@ export class ChatService {
   ) { }
 
 
-  create_NewStudent(record) {
-    return this.firestore.collection('students').add(record);
+  create_message(record) {
+    return this.firestore.collection('messages').add(record);
   }
 
-  read_Students() {
-    return this.firestore.collection('students', ref => ref.where('ChatID', '==', "asd1").orderBy("Date", "asc")).snapshotChanges();
+  read_messages(id) {
+    return this.firestore.collection('messages', ref => ref.where('ChatID', '==', id).orderBy("Date", "asc")).snapshotChanges();
   }
 
-  update_Student(recordID,record){
-    this.firestore.doc('students/' + recordID).update(record);
+  update_message(recordID,record){
+    this.firestore.doc('messages/' + recordID).update(record);
   }
 
-  delete_Student(record_id) {
-    this.firestore.doc('students/' + record_id).delete();
+  delete_message(record_id) {
+    this.firestore.doc('messages/' + record_id).delete();
   }
 }
