@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NavigationExtras } from '@angular/router';
+import { NavigationExtras, Router } from '@angular/router';
 import { NavController } from '@ionic/angular';
 import { CalendarComponentOptions, DayConfig } from 'ion2-calendar';
 import { DataService } from '../../services/data.service';
@@ -13,21 +13,32 @@ export class CalendarReservationPage implements OnInit {
 
  
   optionsRange:CalendarComponentOptions;
+
   public disabledDates: Date[] = [new Date(2021, 4, 25)];
  
-  veterinarian_id = 1;
-  veterinarian_name = 'vet las huertas';
+
 
    activarChip;
    habilitaBoton = false;
  
    diaSeleccionado;
    horaSeleccionada;
- 
    horasDisponibles;
-   type: 'string'; // 'string' | 'js-date' | 'moment' | 'time' | 'object'
 
-  constructor( private DataService: DataService, private navCtrl: NavController) {
+
+   type: 'string'; // 'string' | 'js-date' | 'moment' | 'time' | 'object'
+    extras;
+  
+
+  constructor( private DataService: DataService,
+               private navCtrl: NavController,
+               private router: Router) 
+  {
+
+    this.extras = this.router.getCurrentNavigation().extras.state;
+    console.log(this.extras);
+
+
     let _daysConfig: DayConfig[] = [];
     for (let i = 0; i < 15; i++) {
       _daysConfig.push({
@@ -57,10 +68,9 @@ export class CalendarReservationPage implements OnInit {
 
   
   onChange($event) {
-    this.diaSeleccionado = $event.format('YYYY-MM-DD');
-
-    this.DataService.getHours2().subscribe( ( data ) => {
-      console.log(data);
+    this.diaSeleccionado = $event.format('YYYY-MM-DD HH:mm:ss');
+    console.log(this.diaSeleccionado);
+    this.DataService.getHours(this.extras.veterinarian_id,this.diaSeleccionado).subscribe( ( data ) => {
       this.horasDisponibles = data;
     });
 
@@ -78,8 +88,8 @@ export class CalendarReservationPage implements OnInit {
     console.log(this.diaSeleccionado,this.horaSeleccionada);
     let navigationExtras: NavigationExtras = {
       state: {
-        veterinarian_id: this.veterinarian_id,
-        veterinarian_name: this.veterinarian_name,
+        veterinarian_id: this.extras.veterinarian_id,
+        veterinarian_name: this.extras.veterinarian_name,
         date: this.diaSeleccionado,
         hour: this.horaSeleccionada
       } 
@@ -87,5 +97,7 @@ export class CalendarReservationPage implements OnInit {
 
     this.navCtrl.navigateForward(`/order`,navigationExtras);
   }
+
+
 
 }

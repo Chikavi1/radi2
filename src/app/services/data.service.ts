@@ -117,8 +117,14 @@ getVeterinans(){
 }
 
 
-getHours():any{
-  return this.http.get('https://mocki.io/v1/3768322f-f686-4d29-b117-601b54d30172');
+getHours(id,day):any{
+  let datos = {
+    "idVet": id,
+    "day": day,
+  }
+  console.log(datos);
+  return this.http.post(this.DEVELOPMENT_URL+'prereservation',datos);
+  // return this.http.get('https://mocki.io/v1/3768322f-f686-4d29-b117-601b54d30172');
 }
 
 getHours2():any{
@@ -165,7 +171,7 @@ return this.http.get('https://mocki.io/v1/8d54ea32-51fb-4685-a162-ea8c8afd1502')
 
 
   login(email,password):any{
-    return this.http.post(this.PRODUCTION_URL+'/api/auth/login',{
+    return this.http.post(this.DEVELOPMENT_URL+'api/login',{
       "email": email,
       "password": password,
     });

@@ -13,7 +13,7 @@ import { Stripe } from '@ionic-native/stripe/ngx';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CalendarModule } from 'ion2-calendar';
-import { FormsModule } from '@angular/forms';
+import { FormsModule,ReactiveFormsModule  } from '@angular/forms';
 
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
@@ -28,10 +28,18 @@ import { IonicSelectableModule } from 'ionic-selectable';
 import { FileTransfer } from '@ionic-native/file-transfer/ngx';
 import { NativeGeocoder} from '@ionic-native/native-geocoder/ngx';
 import { Network } from '@ionic-native/network/ngx';
+import { GooglePlus } from '@ionic-native/google-plus/ngx';
+import { LoginPage } from './pages/login/login.page';
+import { LoginPageModule } from './pages/login/login.module';
+import { ForgotPassPage } from './pages/forgot-pass/forgot-pass.page';
+import { ForgotPassPageModule } from './pages/forgot-pass/forgot-pass.module';
 
 @NgModule({
   declarations: [AppComponent],
-  entryComponents: [],
+  entryComponents: [
+    LoginPage,
+    ForgotPassPage
+  ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(), 
@@ -45,6 +53,8 @@ import { Network } from '@ionic-native/network/ngx';
     CalendarModule,
     FormsModule,
     IonicSelectableModule,
+    LoginPageModule,
+    ForgotPassPageModule
     ],
   providers: [
     
@@ -58,6 +68,7 @@ import { Network } from '@ionic-native/network/ngx';
     Network,
     FileTransfer,
     NativeGeocoder,
+    GooglePlus,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]

@@ -1,72 +1,57 @@
 <ion-header class="ion-no-border">
   <ion-toolbar >
       <ion-title class="ion-text-center" color="tertiary" >
-        
       </ion-title>
-      <ion-icon slot="end" name="close-outline" (click)="exit()" style="zoom:2.0;margin: .5em;"></ion-icon>
       <ion-buttons slot="start" style="margin: .5em 1.5em;" >
         <ion-buttons slot="start">
         </ion-buttons>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
-<ion-content padding>
-  
-  <img src="https://terrazas.tk/img/login.svg" style="width: 90%;padding:  1em 4em;" alt="">
-  <h2 style="color:#656867;font-size: 2em;padding: 0em 2em;">Registrate</h2>
-  
-  <ion-row style="margin: 1em 3em;">
-    <ion-col size="2">
-      <p><ion-icon style="margin:.5em;" name="receipt-outline"></ion-icon></p>
-    </ion-col>
-    <ion-col size="10">
-      <ion-item >
-        <ion-label position="floating">Nombre</ion-label>
-        <ion-input [(ngModel)]="name"></ion-input>
-      </ion-item>
-    </ion-col>
-  </ion-row>
 
-  <ion-row style="margin: 0.5em 3em;">
-    <ion-col size="2">
-      <p><ion-icon style="margin:.5em;" name="mail-outline"></ion-icon></p>
-    </ion-col>
-    <ion-col size="10">
-      <ion-item >
-        <ion-label position="floating">Correo</ion-label>
-        <ion-input [(ngModel)]="email"></ion-input>
-      </ion-item>
-    </ion-col>
-  </ion-row>
-  
-  <ion-row style="margin:  0.5em 3em;">
-    <ion-col size="2">
-      <p><ion-icon style="margin:.5em;" name="lock-open-outline"></ion-icon></p>
-    </ion-col>
-    <ion-col size="10">
-      <ion-item>
-        <ion-label position="floating">Contraseña</ion-label>
-        <ion-input type="password" [(ngModel)]="password"></ion-input>
-      </ion-item>
-    </ion-col>
-  </ion-row>
-  <ion-row style="margin:  0.5em 3em;">
-    <ion-col size="2">
-      <p><ion-icon style="margin:.5em;" name="lock-closed-outline"></ion-icon></p>
-    </ion-col>
-    <ion-col size="10">
-      <ion-item>
-        <ion-label position="floating">Confirma Contraseña</ion-label>
-        <ion-input type="password" [(ngModel)]="password_confirm"></ion-input>
-      </ion-item>
-    </ion-col>
-  </ion-row>
-  
-  <ion-button (click)="register()" style="position: absolute;
-  right: 2em;"  color="tertiary">Ingresar</ion-button>
-  
+<ion-content>
+
+<div style="margin:1em;">
+
+  <ion-list class="line-input"> 
+    <ion-item >  
+      <ion-input  [(ngModel)]="name"  type="text" class="ion-text-left" placeholder="Nombre"></ion-input> 
+      <!-- <ion-label><ion-icon style="margin:.5em;" name="mail-outline"></ion-icon></ion-label>  -->
+    </ion-item> 
+  </ion-list>
+
+  <ion-list class="line-input"> 
+    <ion-item >  
+      <ion-input  [(ngModel)]="email"  type="email" class="ion-text-left" placeholder="Correo"></ion-input> 
+      <!-- <ion-label><ion-icon style="margin:.5em;" name="mail-outline"></ion-icon></ion-label>  -->
+    </ion-item> 
+  </ion-list>
+
+  <ion-list class="line-input"> 
+    <ion-item> 
+      <ion-input [hidden]="showPassword" [(ngModel)]="password" type="password" class="ion-text-left" placeholder="Contraseña"></ion-input> 
+      <ion-input [hidden]="!showPassword" [(ngModel)]="password" type="text" class="ion-text-left" placeholder="Contraseña"></ion-input> 
+      <a class="type-toggle" (click)="toggleShow()">
+        <ion-icon class="show-option" [hidden]="showPassword" name="eye-off-outline"></ion-icon>
+        <ion-icon class="hide-option" [hidden]="!showPassword" name="eye-outline"></ion-icon>
+     </a>
+    
+
+    </ion-item> 
+  </ion-list>
+
 
   
+  <ion-button [disabled]="email == '' || password == '' " (click)="login()" style="width: 100%;"  color="tertiary">Crea una cuenta</ion-button>
+  <!-- <p style="text-align: center;color:blue">¿Olvidaste tu Contraseña?</p> -->
+</div>
 
+
+
+<p style=" position: fixed;
+left: 0;
+bottom: 0;
+width: 100%;
+text-align: center;
+font-weight: bold;">¿ya tienes una cuenta?<span style="color:cornflowerblue;" (click)="openModal()"> Inicia sesión</span></p>
 </ion-content>
-  

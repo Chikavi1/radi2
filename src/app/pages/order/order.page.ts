@@ -4,6 +4,8 @@ import { ModalController, NavController, ToastController } from '@ionic/angular'
 import { ModalComponent } from 'src/app/modal/modal.component';
 import { Stripe } from '@ionic-native/stripe/ngx';
 import { DataService } from 'src/app/services/data.service';
+import { CardPage } from '../card/card.page';
+import { PaymentsPage } from '../payments/payments.page';
 
 @Component({
   selector: 'app-order',
@@ -15,18 +17,12 @@ import { DataService } from 'src/app/services/data.service';
 export class OrderPage {
   stripe_Key = 'pk_test_51IiBSHJl56kWzuPaD4tpE247FRDmoSxUS8qxsVYDC1L9EidPqCUJuZpmpFvtDm1vcqLITJBQQxud22JQKdalUUXQ001rm7byf7';
   cardDetails;
-  extras;
-  customer_id = '';
-  number;
-
-  cards:any;
+ 
+extras;
+ 
 
 
-  slide = {
-    slidesPerView:  1.1,
-    spaceBetween:10,
-    
-  }
+  
 
   constructor( 
     public modalController: ModalController,
@@ -34,8 +30,8 @@ export class OrderPage {
     private stripe:Stripe,
     public toastController: ToastController,
     public router: Router,
-// borrar despues
-public data: DataService
+    // borrar despues
+    public data: DataService
 
 
     ) {
@@ -44,14 +40,14 @@ public data: DataService
 
 
       this.extras = this.router.getCurrentNavigation().extras.state;
-
-      this.customer_id = localStorage.getItem('customer_id');
-
-      this.obtenerTarjetas();
+      console.log(this.extras);
+      
      }
 
+  
+
   metodoPago(){
-    this.presentModal(ModalComponent);
+    this.presentModal(PaymentsPage);
   }
 
   metodoCupones(){
@@ -88,13 +84,12 @@ public data: DataService
     this.stripe.setPublishableKey(this.stripe_Key);
 
     this.cardDetails = {
-      number: this.number,
+      number: '4242424242424242',
       expMonth: 4,
       expYear: 24,
       cvc: 424
     }
 
-    console.log(this.cardDetails);
 
     this.stripe.createCardToken(this.cardDetails)
       .then(token => {
@@ -119,84 +114,5 @@ public data: DataService
 
   }
 
-  verifica_costumer(){
-    this.stripe.setPublishableKey(this.stripe_Key);
-
-    this.cardDetails = {
-      number: 5555555555554444,
-      expMonth: 4,
-      expYear: 24,
-      cvc: 424
-    }
-
-
-
-    // si tengo costumer haz esto
-    let costumer_id = localStorage.getItem('costumer_id');
-    let token = 'tok_1J2QwuJl56kWzuPasaOtFFlV';
-    let email = 'chikavi@hotmail.com';
-    let name  = 'francisco rojas';
-
-
-
-
-    if(costumer_id){
-      this.data.getCostumer(costumer_id).subscribe( data => {
-          // to do
-      });
-    }else{
-
-
-
-      //   this.stripe.createCardToken(this.cardDetails)
-      //   .then(token => {
-
-
-      //   this.data.createCostumer(token,email,name).subscribe( data => {
-      //     console.log(data);
-        
-      //   });
-
-      // })
-      // .catch(error => console.error(error));
-
-
-      this.data.createCostumer(token,email,name).subscribe( data => {
-            console.log(data);
-            localStorage.setItem('customer_id',data.id);
-          });
-
-     
-    }
-    
-
-
-  }
-
-addcard(){
-  console.log('dio click');
-  this.data.addcard(this.customer_id,'tok_1J2iSiJl56kWzuPav9EjFOu5').subscribe( data => {
-    console.log(data);
-  });
-}
-
-obtenerTarjetas(){
-  this.data.getCards(this.customer_id).subscribe( cards => {
-    this.cards = cards.data;
-  });
-}
-  
-deleteCard(customer_id,card_id){
-  this.data.deleteCard(customer_id,card_id).subscribe( datos => {
-    console.log(datos);
-  });
-}
-
-updateDefaultCard(customer_id,card_id){
-  this.data.updateDefaultCard(customer_id,card_id).subscribe( datos => {
-    console.log(datos);
-  });
-  this.obtenerTarjetas();
-}
 
 }

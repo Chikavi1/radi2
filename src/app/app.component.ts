@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { Platform } from '@ionic/angular';
+import { ModalController, Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { Router } from '@angular/router';
@@ -17,9 +17,24 @@ export class AppComponent {
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
     private router: Router,
-    private network: Network
+    private network: Network,
+    private modalController: ModalController
   ) {
     this.initializeApp();
+  }
+
+  async presentModal(component) {
+    const modal = await this.modalController.create({
+      component: component,
+      cssClass: 'my-custom-class',
+      
+    });
+
+    modal.onDidDismiss().then( () => {
+
+    });
+
+    return await modal.present();
   }
 
   initializeApp() {
@@ -27,7 +42,11 @@ export class AppComponent {
       this.statusBar.styleBlackTranslucent();
       this.splashScreen.hide();
       if(localStorage.getItem('intro')){
-        this.router.navigateByUrl('/order');
+        if(localStorage.getItem('user_id')){
+          this.router.navigateByUrl('/');
+        }else{
+          this.router.navigateByUrl('/login');
+        }
       }else{
         this.router.navigateByUrl('/intro');
       }

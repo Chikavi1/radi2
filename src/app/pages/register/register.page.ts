@@ -11,6 +11,7 @@ export class RegisterPage implements OnInit {
   email;
   password;
   password_confirm;
+  showPassword;
   constructor(private modalCtrl: ModalController) { }
 
   ngOnInit() {
@@ -21,6 +22,10 @@ export class RegisterPage implements OnInit {
 
   exit(){
     this.modalCtrl.dismiss();
+  }
+
+  toggleShow() {
+    this.showPassword = !this.showPassword;
   }
 
 }

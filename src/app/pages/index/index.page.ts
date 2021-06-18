@@ -72,27 +72,6 @@ lottieConfig = {};
         maxResults: 5
     };
 
-
-    this.network.onDisconnect().subscribe(() => {
-     this.presentToast('network was disconnected :-(');
-    });
-
-
-
-     this.network.onConnect().subscribe(() => {
-     this.presentToast('network connected!');
-      // We just got a connection but we need to wait briefly
-       // before we determine the connection type. Might need to wait.
-      // prior to doing any api requests as well.
-      setTimeout(() => {
-        if (this.network.type === 'wifi') {
-         this.presentToast('we got a wifi connection, woohoo!');
-        }
-      }, 3000);
-    });
-
-
-
     this.nativeGeocoder.forwardGeocode('san mateo evangelista 4167-1,lomas de san miguel,tlaquepaque,jalisco.', options)
     .then((result: NativeGeocoderResult[]) => {
       this.presentToast(" "+result[0].latitude+", "+result[0].longitude);
@@ -155,19 +134,6 @@ lottieConfig = {};
 
   ngOnInit() {
 
-    // this.geolocation.getCurrentPosition().then((resp) => {
-    //   this.dataService.getTerraces(resp.coords.latitude,resp.coords.longitude).subscribe(
-    //     data  => {
-    //       console.log(data);
-    //       this.terraces = data.data;
-    //     },
-    //     error => {
-    //     }
-    //   );
-    // }).catch((error) => {
-    //    console.log('Error getting location', error);
-    //    console.log('necesitas de internet para que te funcione')
-    //  });
   }
 
 

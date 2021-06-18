@@ -1,5 +1,5 @@
 import { Component} from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, NavigationExtras } from '@angular/router';
 import { NavController } from '@ionic/angular';
 import { DataService } from 'src/app/services/data.service';
 
@@ -24,7 +24,9 @@ reviews = [];
     this.dataService.getVeterinarian(this.veterinarianId).subscribe( data => {
       this.veterinarian = data;
       var servicios = data.services;
-      this.servicesVet = servicios.split(',');
+      if(servicios){
+        this.servicesVet = servicios.split(',');
+      }
     });
 
     this.dataService.getReviews(this.veterinarianId).subscribe( data => {
@@ -37,8 +39,19 @@ reviews = [];
 
 
 
-  goReservationCalendar(){
-    this.navCtrl.navigateForward(`/calendar-reservation`);
+  goReservationCalendar(id,name){
+
+    let navigationExtras: NavigationExtras = {
+      state: {
+        veterinarian_id: id,
+        veterinarian_name: name,
+      } 
+    };
+
+
+
+
+    this.navCtrl.navigateForward(`/calendar-reservation`,navigationExtras);
   }
 
 

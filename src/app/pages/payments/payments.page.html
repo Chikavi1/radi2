@@ -1,20 +1,52 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar >
+      <ion-title class="ion-text-center" color="tertiary" >
+        Tarjetas
+      </ion-title>
+      <ion-icon slot="end" name="close-outline" (click)="exit()" style="zoom:2.0;margin: .5em;"></ion-icon>
+      <ion-buttons slot="start" style="margin: .5em 1.5em;" >
+        <ion-buttons slot="start">
+        </ion-buttons>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
 
-<ion-content>
-  <div style="margin:2em;">
 
-    <p style="font-size: 1.8em;margin: 1em;color:#192547; font-weight: bold;">Pagos</p>
-    <ion-item detail  lines="none" (click)="goToPage('/reviews')">
-    <ion-label>
-      Formas de pago
-    </ion-label>
-  </ion-item>
-  
-  
-  <ion-item detail  lines="none" (click)="goToPage('/reviews')">
-    <ion-icon slot="end" name="bag-check-outline"></ion-icon>
-    <ion-label>
-      Cupones o descuentos
-    </ion-label>
-  </ion-item>
-</div>
+<ion-content>    
+<!-- <p>Customer_id: {{ customer_id }}</p> -->
+<ion-slides  [options]="slide">
+<ion-slide  *ngFor="let card of cards">
+
+  <ion-card style="width: 100;height: 17em;background-color: #052345;border-radius: 1em;">
+    <ion-card-header>
+      <ion-card-subtitle  (click)="deleteCard(card.customer,card.id)" style="text-align: right;color:white;">{{ card.brand }}</ion-card-subtitle>
+      <ion-card-title>
+        <p style="color:white;text-align:center;font-size: 1.7em;">
+          ****  ****  ****  {{ card.last4 }}
+        </p>
+      </ion-card-title>
+    </ion-card-header>
+    
+    <ion-card-content>
+      <p style="text-align: left;color:white;" (click)="deleteCard(card.customer,card.id)">Eliminar</p>
+      <p style="text-align: right;color:white;" (click)="updateDefaultCard(card.customer,card.id)">
+        {{ card.exp_month }}/{{ card.exp_year }} 
+      </p>
+      <p style="text-align: right;color:white;" (click)="updateDefaultCard(card.customer,card.id)">
+         Default
+        </p>
+    </ion-card-content>
+    
+  </ion-card>
+</ion-slide>
+</ion-slides> 
+<ion-row>
+  <ion-col></ion-col>
+  <ion-col></ion-col>
+  <ion-col>
+    <ion-button color="azul" (click)="agregarTarjeta()">Agregar Tarjeta</ion-button> 
+
+  </ion-col>
+</ion-row>
+
 </ion-content>

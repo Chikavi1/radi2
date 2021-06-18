@@ -2,7 +2,7 @@ import { Component, OnInit,Directive, HostListener, ElementRef } from '@angular/
 import { Stripe } from '@ionic-native/stripe/ngx';
 import * as moment from 'moment';
 import { isValid } from 'cc-validate';
-import { NavController } from '@ionic/angular';
+import { ModalController, NavController } from '@ionic/angular';
 import { ActivatedRoute, NavigationExtras } from '@angular/router';
 import { DataService } from 'src/app/services/data.service';
 
@@ -12,7 +12,7 @@ import { DataService } from 'src/app/services/data.service';
   styleUrls: ['./card.page.scss'],
 })
 
-export class CardPage implements OnInit {
+export class CardPage{
   
 
   paymentAmount:string = '3.33';
@@ -35,22 +35,26 @@ export class CardPage implements OnInit {
 
   logoimg = null;
 
-  data:any
-
   constructor(
     private stripe:Stripe,
+    private modalCtrl: ModalController,
     private navCtrl: NavController,
     private route: ActivatedRoute,
     private dataService:DataService) {
+
     this.yearLimitIonDateTime = moment().year()+8;
-    this.route.queryParams.subscribe(params =>{
-      this.data = params;
-      console.log(this.data);
-    });
-  }
-  ngOnInit(){
     
+
+
   }
+
+
+
+
+  exit(){
+    this.modalCtrl.dismiss();
+  }
+
 
   onEvent(event: KeyboardEvent,number) { 
     let result: any = isValid(number);
@@ -90,15 +94,8 @@ export class CardPage implements OnInit {
  }
 
  beforePage(){
-  const extras: NavigationExtras = {
-    queryParams:{
-      id: this.data.id,
-      name: this.data.name,
-      price: this.data.price,
-      img: this.data.img
-    }
-  }
-  this.navCtrl.navigateBack(['/available'],extras);
+
+  // this.navCtrl.navigateBack(['/available'],extras);
 }
 
  nextPage(){
@@ -107,8 +104,6 @@ export class CardPage implements OnInit {
  }
 
  pagar(){
-   console.log(this.data.day);
-
    const extras: NavigationExtras = {
           queryParams:{
             invoice: 'simon'

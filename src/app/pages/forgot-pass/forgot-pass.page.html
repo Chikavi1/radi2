@@ -1,0 +1,37 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar >
+      <ion-title class="ion-text-center" color="tertiary" >
+      </ion-title>
+      <ion-buttons slot="start" style="margin: .5em 1.5em;" >
+        <ion-buttons slot="start">
+        </ion-buttons>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+<div style="margin:1em;">
+
+  <ion-list class="line-input"> 
+    <ion-item >  
+      <ion-input  [(ngModel)]="email"  type="email" class="ion-text-left" placeholder="Correo"></ion-input> 
+      <!-- <ion-label><ion-icon style="margin:.5em;" name="mail-outline"></ion-icon></ion-label>  -->
+    </ion-item> 
+  </ion-list>
+
+
+
+  
+  <ion-button [disabled]="email == '' || password == '' " (click)="login()" style="width: 100%;"  color="tertiary">Enviar correo</ion-button>
+</div>
+
+
+
+<p style=" position: fixed;
+left: 0;
+bottom: 0;
+width: 100%;
+text-align: center;
+font-weight: bold;">¿recordaste tu Contraseña?<span style="color:cornflowerblue;" (click)="openModal()"> Inicia sesión</span></p>
+</ion-content>

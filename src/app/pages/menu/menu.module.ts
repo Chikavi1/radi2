@@ -7,13 +7,19 @@ import { IonicModule } from '@ionic/angular';
 import { MenuPageRoutingModule } from './menu-routing.module';
 
 import { MenuPage } from './menu.page';
+import { LoginPageModule } from '../login/login.module';
+import { LoginPage } from '../login/login.page';
 
 @NgModule({
+  entryComponents: [
+    LoginPage,
+  ],
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    MenuPageRoutingModule
+    MenuPageRoutingModule,
+    LoginPageModule
   ],
   declarations: [MenuPage]
 })

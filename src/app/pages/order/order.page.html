@@ -1,14 +1,12 @@
 <ion-content>
 
-  <!-- <ion-card style="border-radius: 1em;">
+  <ion-card style="border-radius: 1em;">
     <ion-card-header (click)="metodoPago()">
-
       <ion-item lines="none">
         <ion-icon slot="end" name="cash-outline" style="color:green;"></ion-icon>
         <ion-label>Método de pago </ion-label>
       </ion-item>
     </ion-card-header>
-
 </ion-card>
 
 <ion-card style="border-radius: 1em;">
@@ -20,10 +18,10 @@
     </ion-item>
   </ion-card-header>
 
-</ion-card> -->
+</ion-card>
 
 
-<!-- <ion-card style="border-radius: 1em;">
+<ion-card style="border-radius: 1em;">
   <ion-card-header>
 
     <ion-item lines="none">
@@ -31,8 +29,8 @@
           <img style="border-radius: .5em;" src="https://images.unsplash.com/photo-1592198600249-ba40a4d08cde?ixid=MnwxaMjA3fDB8MHxzZWFyY2h8MXx8c2VydmljZXN8ZW58MHwxfDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60">
       </ion-thumbnail>
           
-          <!-- <ion-label >
-            <h2 style="font-size:1.2em; font-weight:300;">{{ extras.veterinarian_name }}</h2>
+          <ion-label >
+            <h2 style="font-size:1.2em; font-weight:300;">{{ extras.veterinarian_name}}</h2>
             <p style="font-size: 1.1em;"> {{extras.date |  date:'fullDate':'es' }} <br>{{extras.hour}}</p>
             <h3>Consulta</h3>
           </ion-label> 
@@ -51,10 +49,10 @@
     <ion-label>Total </ion-label>
     <ion-note slot="end" color="success">MX250.00</ion-note>
   </ion-item>
-</ion-card> -->
+</ion-card>
 
 
-<!-- 
+
 
 <ion-card style="border-radius: 1em;">
   <ion-row style="margin:1em;">
@@ -65,46 +63,8 @@
       <h1>MX $250.00</h1>
     </ion-col>
   </ion-row>
-</ion-card> -->
+</ion-card>
 
-<p>Customer_id: {{ customer_id }}</p>
-
-
-<h2>Tarjetas</h2>
-
-<ion-slides  [options]="slide">
-<ion-slide  *ngFor="let card of cards">
-
-  <ion-card style="height: 15em;background-color: #052345;">
-    <ion-card-header>
-      <ion-card-subtitle  (click)="deleteCard(card.customer,card.id)" style="text-align: right;color:white;">{{ card.brand }}</ion-card-subtitle>
-      <ion-card-title>
-        <p style="color:white;text-align:center;font-size: 1.7em;">
-          ****  ****  ****  {{ card.last4 }}
-        </p>
-      </ion-card-title>
-    </ion-card-header>
-    
-    <ion-card-content>
-      <p style="text-align: left;color:white;" (click)="deleteCard(card.customer,card.id)">Eliminar</p>
-      <p style="text-align: right;color:white;" (click)="updateDefaultCard(card.customer,card.id)">
-        {{ card.exp_month }}/{{ card.exp_year }} 
-      </p>
-      <p style="text-align: right;color:white;" (click)="updateDefaultCard(card.customer,card.id)">
-         Default
-        </p>
-    </ion-card-content>
-    
-  </ion-card>
-</ion-slide>
-</ion-slides> 
-
-
-
-
-<ion-input type="number" value="333" [(ngModel)]="number" maxlength="16"></ion-input>
-
-<p (click)="addcard()">Agregar Tarjeta</p>
 
 </ion-content>
 

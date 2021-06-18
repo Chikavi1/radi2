@@ -10,6 +10,10 @@ import { OrderPage } from './order.page';
 import { ModalComponent } from 'src/app/modal/modal.component';
 import localeEsAr from '@angular/common/locales/es-AR';
 import { registerLocaleData } from '@angular/common';
+import { CardPage } from '../card/card.page';
+import { CardPageModule } from '../card/card.module';
+import { PaymentsPage } from '../payments/payments.page';
+import { PaymentsPageModule } from '../payments/payments.module';
 
 
 registerLocaleData(localeEsAr, 'es-Ar');
@@ -19,11 +23,15 @@ registerLocaleData(localeEsAr, 'es-Ar');
     CommonModule,
     FormsModule,
     IonicModule,
-    OrderPageRoutingModule
+    OrderPageRoutingModule,
+    CardPageModule,
+    PaymentsPageModule
   ],
   declarations: [OrderPage,ModalComponent],
   entryComponents: [
     ModalComponent,
+    CardPage,
+    PaymentsPage
   ],
 })
 export class OrderPageModule {}

@@ -1,9 +1,7 @@
 <ion-header class="ion-no-border">
   <ion-toolbar >
       <ion-title class="ion-text-center" color="tertiary" >
-        Ingresa
       </ion-title>
-      <ion-icon slot="end" name="close-outline" (click)="exit()" style="zoom:2.0;margin: .5em;"></ion-icon>
       <ion-buttons slot="start" style="margin: .5em 1.5em;" >
         <ion-buttons slot="start">
         </ion-buttons>
@@ -21,20 +19,28 @@
 
   <ion-list class="line-input"> 
     <ion-item> 
-      <ion-label><ion-icon style="margin:.5em;" name="mail-outline"></ion-icon></ion-label> 
-      <ion-input class="ion-text-right" placeholder="Correo"></ion-input> 
+      <ion-input [(ngModel)]="email"  type="email" class="ion-text-left" placeholder="Correo"></ion-input> 
+      <!-- <ion-label><ion-icon style="margin:.5em;" name="mail-outline"></ion-icon></ion-label>  -->
     </ion-item> 
   </ion-list>
-
 
   <ion-list class="line-input"> 
     <ion-item> 
-      <ion-label><ion-icon style="margin:.5em;" name="lock-open-outline"></ion-icon></ion-label> 
-      <ion-input type="password" class="ion-text-right" placeholder="Contraseña"></ion-input> 
+      <ion-input [hidden]="showPassword" [(ngModel)]="password" type="password" class="ion-text-left" placeholder="Contraseña"></ion-input> 
+      <ion-input [hidden]="!showPassword" [(ngModel)]="password" type="text" class="ion-text-left" placeholder="Contraseña"></ion-input> 
+      <a class="type-toggle" (click)="toggleShow()">
+        <ion-icon class="show-option" [hidden]="showPassword" name="eye-off-outline"></ion-icon>
+        <ion-icon class="hide-option" [hidden]="!showPassword" name="eye-outline"></ion-icon>
+     </a>
+    
+
     </ion-item> 
   </ion-list>
-  <ion-button (click)="login()" style="width: 100%;"  color="tertiary">Ingresar</ion-button>
-  <p style="text-align: center;color:blue">¿Olvidaste tu Contraseña?</p>
+
+
+
+  <ion-button [disabled]="email == '' || password == '' " (click)="login()" style="width: 100%;"  color="tertiary">Ingresar</ion-button>
+  <p style="text-align: center;color:blue" (click)="forgotPass()">¿Olvidaste tu Contraseña?</p>
 </div>
 
 
@@ -44,5 +50,5 @@ left: 0;
 bottom: 0;
 width: 100%;
 text-align: center;
-font-weight: bold;">¿No tienes una cuenta?<span style="color:cornflowerblue;" (click)="goToRegister()"> Registrate</span></p>
+font-weight: bold;">¿No tienes una cuenta?<span style="color:cornflowerblue;" (click)="registrate()"> Registrate</span></p>
 </ion-content>

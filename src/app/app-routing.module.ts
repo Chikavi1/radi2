@@ -134,7 +134,11 @@ const routes: Routes = [
   {
     path: 'organization/:id',
     loadChildren: () => import('./organization/organization.module').then( m => m.OrganizationPageModule)
+  },  {
+    path: 'forgot-pass',
+    loadChildren: () => import('./pages/forgot-pass/forgot-pass.module').then( m => m.ForgotPassPageModule)
   },
+
 
 
 
