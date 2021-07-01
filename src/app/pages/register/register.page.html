@@ -11,41 +11,71 @@
 
 <ion-content>
 
-<div style="margin:1em;">
-
-  <ion-list class="line-input"> 
-    <ion-item >  
-      <ion-input  [(ngModel)]="name"  type="text" class="ion-text-left" placeholder="Nombre"></ion-input> 
-      <!-- <ion-label><ion-icon style="margin:.5em;" name="mail-outline"></ion-icon></ion-label>  -->
-    </ion-item> 
-  </ion-list>
-
-  <ion-list class="line-input"> 
-    <ion-item >  
-      <ion-input  [(ngModel)]="email"  type="email" class="ion-text-left" placeholder="Correo"></ion-input> 
-      <!-- <ion-label><ion-icon style="margin:.5em;" name="mail-outline"></ion-icon></ion-label>  -->
-    </ion-item> 
-  </ion-list>
-
-  <ion-list class="line-input"> 
-    <ion-item> 
-      <ion-input [hidden]="showPassword" [(ngModel)]="password" type="password" class="ion-text-left" placeholder="Contraseña"></ion-input> 
-      <ion-input [hidden]="!showPassword" [(ngModel)]="password" type="text" class="ion-text-left" placeholder="Contraseña"></ion-input> 
-      <a class="type-toggle" (click)="toggleShow()">
-        <ion-icon class="show-option" [hidden]="showPassword" name="eye-off-outline"></ion-icon>
-        <ion-icon class="hide-option" [hidden]="!showPassword" name="eye-outline"></ion-icon>
-     </a>
+<form style="margin:1em;" [formGroup]="registrationForm" (ngSubmit)="submit()">
+  <ion-list class="line-input">
     
+      <ion-item style="margin-bottom:1em;" >  
+        <ion-label position="floating">Nombre</ion-label>
+        <ion-input autocapitalize inputmode="text" formControlName="name"></ion-input> 
+      </ion-item> 
 
-    </ion-item> 
+      <div *ngFor="let error of errorMessages.name">
+        <ng-container *ngIf="name.hasError(error.type) && (name.dirty || name.touched)">
+          <small class="error-message">{{error.message}}</small>
+        </ng-container>
+      </div>
+
+
+      <ion-item  style="margin-bottom:1em;">
+        <ion-label position="floating">Celular</ion-label>
+        <ion-input inputmode="tel" formControlName="phone"></ion-input>
+      </ion-item>
+
+      <div *ngFor="let error of errorMessages.phone">
+        <ng-container *ngIf="phone.hasError(error.type) && (phone.dirty || phone.touched)">
+          <small class="error-message">{{error.message}}</small>
+        </ng-container>
+      </div>
+
+
+      <ion-item  style="margin-bottom:1em;">
+        <ion-label position="floating">Correo</ion-label>
+        <ion-input inputmode="email" formControlName="email"></ion-input>
+      </ion-item>
+
+      <div *ngFor="let error of errorMessages.email">
+        <ng-container *ngIf="email.hasError(error.type) && (email.dirty || email.touched)">
+          <small class="error-message">{{error.message}}</small>
+        </ng-container>
+      </div>
+
+
+
+      <ion-item> 
+        <ion-input placeholder="Ingresa contraseña" [hidden]="showPassword"  formControlName="password" [(ngModel)]="contra"  type="password" class="ion-text-left" ></ion-input> 
+        <ion-input placeholder="Ingresa contraseña"  [hidden]="!showPassword" formControlName="password" [(ngModel)]="contra" type="text" class="ion-text-left" ></ion-input> 
+          <a class="type-toggle" (click)="toggleShow()">
+            <ion-icon class="show-option" [hidden]="showPassword" name="eye-off-outline"></ion-icon>
+            <ion-icon class="hide-option" [hidden]="!showPassword" name="eye-outline"></ion-icon>
+          </a>
+      </ion-item> 
+
+      <div *ngFor="let error of errorMessages.password">
+        <ng-container *ngIf="password.hasError(error.type) && (password.dirty || password.touched)">
+          <small  class="error-message">{{error.message}}</small>
+        </ng-container>
+      </div>
+
   </ion-list>
 
+  <ion-button  type="submit"  [disabled]="!registrationForm.valid" style="width: 100%;"  color="tertiary">Crea una cuenta</ion-button>
 
-  
-  <ion-button [disabled]="email == '' || password == '' " (click)="login()" style="width: 100%;"  color="tertiary">Crea una cuenta</ion-button>
-  <!-- <p style="text-align: center;color:blue">¿Olvidaste tu Contraseña?</p> -->
-</div>
 
+  <!-- <ion-button [disabled]="!registrationForm.valid" type="submit" expand="block">Submit <ion-icon slot="end"
+      name="create">
+    </ion-icon>
+  </ion-button> -->
+</form>
 
 
 <p style=" position: fixed;

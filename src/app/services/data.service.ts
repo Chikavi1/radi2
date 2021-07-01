@@ -177,13 +177,8 @@ return this.http.get('https://mocki.io/v1/8d54ea32-51fb-4685-a162-ea8c8afd1502')
     });
   }
 
-  create_user(){
-    return this.http.post(this.PRODUCTION_URL+'/api/auth/login',{
-      "name": "prueba",
-      "email": "chikavi2@hotmail.com",
-      "password": "chikavi99",
-      "password_confirmation": "chikavi99"
-    });
+  register(data){
+    return this.http.post(this.DEVELOPMENT_URL+'api/register',data);
   }
 
   get_user(token){

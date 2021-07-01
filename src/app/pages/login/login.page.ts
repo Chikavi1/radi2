@@ -40,22 +40,36 @@ export class LoginPage implements OnInit {
   };
    
   this.auth.authState.subscribe( user => {
+
+    if(!user){
+      return;
+    }
+
+
     console.log('estado',user);
+    let uuid:any = user;
+    localStorage.setItem('user_id',uuid.uid);
+    if(uuid){
+      this.goToPage('/');
+
+    }
+
+
   })
-  }
+
+}
+              
 
 
   loginProvider(provider) {
     if(provider === 'google'){
-      this.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
+      this.auth.signInWithRedirect(new firebase.auth.GoogleAuthProvider());
     }else{
-      this.auth.signInWithPopup(new firebase.auth.FacebookAuthProvider());
+      this.auth.signInWithRedirect(new firebase.auth.FacebookAuthProvider());
 
     }
   }
-  logout() {
-    this.auth.signOut();
-  }
+ 
 
   login(){
 
@@ -72,7 +86,7 @@ export class LoginPage implements OnInit {
       
       if(data.token){
         var decoded:any = jwt_decode(data.token);
-          localStorage.setItem('user_id',decoded);
+          localStorage.setItem('user_id',decoded.id);
           this.goToPage('/');
         // this.goToProfile();
 

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { DataService } from 'src/app/services/data.service';
 import { ModalController, NavController } from '@ionic/angular';
 import { ProfilePage } from '../profile/profile.page';
@@ -7,7 +7,6 @@ import * as moment from 'moment';
 import { ReviewsPage } from '../reviews/reviews.page';
 
 import * as Leaflet from 'leaflet';
-import { antPath } from 'leaflet-ant-path';
 import 'leaflet-routing-machine';
 
 import { MapModalPage } from '../map-modal/map-modal.page';
@@ -22,6 +21,8 @@ declare var L: any;
 
 
 export class ReservationPage{
+
+  @ViewChild('box',{static:false}) box: ElementRef;
 
   map: Leaflet.Map;
 
@@ -46,9 +47,16 @@ export class ReservationPage{
     pager: true
   }
 
+
+
   constructor(private dataService:DataService,
               private modalController:ModalController,
               private navCtrl: NavController) { 
+
+                setTimeout(() => {
+                  this.animationIn();
+                }, 300);
+            
   }
 
   ionViewDidEnter() { this.leafletMap(); }
@@ -67,11 +75,23 @@ export class ReservationPage{
     
     
     });
-
-
     
   }
-  
+
+  // animations
+
+  animationIn(){
+    this.box.nativeElement.classList.add('magictime');
+    this.box.nativeElement.classList.add('vanishIn');
+  }
+
+
+  animationOut() {
+    this.box.nativeElement.classList.add('magictime');
+    this.box.nativeElement.classList.add('vanishOut');
+}
+
+
   leafletMap() {
   let lat = 20.620575;
   let lng =  -103.305554;
@@ -152,7 +172,10 @@ export class ReservationPage{
   }
 
   openMap(){
-    this.presentModal(MapModalPage);
+    this.animationOut();
+    setTimeout(() => {
+      this.presentModal(MapModalPage);
+   }, 300);
   }
 
   openReview(){

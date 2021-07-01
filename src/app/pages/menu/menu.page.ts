@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AngularFireAuth } from '@angular/fire/auth';
 import { ModalController, NavController } from '@ionic/angular';
 import { DataService } from 'src/app/services/data.service';
 import { LoginPage } from '../login/login.page';
@@ -15,13 +16,14 @@ export class MenuPage {
   constructor(
     public navCtrl:NavController,
     private api: DataService,
-    private modalController: ModalController
+    private modalController: ModalController,
+    public auth: AngularFireAuth
     ){
 
 
     setTimeout(() => {
       this.mostrar = true;
-     }, 4200);
+     }, 1200);
 
     this.api.getPets(1).subscribe( datos => {
       console.log(datos);
@@ -49,6 +51,7 @@ export class MenuPage {
   }
 
   logout(){
+    this.auth.signOut();
     localStorage.removeItem('user_id');
     this.goToPage('/login');
   }
