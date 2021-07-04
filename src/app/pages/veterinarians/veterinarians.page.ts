@@ -23,6 +23,7 @@ reviews = [];
 
     this.dataService.getVeterinarian(this.veterinarianId).subscribe( data => {
       this.veterinarian = data;
+      console.log(data);
       var servicios = data.services;
       if(servicios){
         this.servicesVet = servicios.split(',');
