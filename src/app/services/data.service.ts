@@ -12,21 +12,40 @@ export class DataService {
   DEVELOPMENT_URL = "http://localhost:8080/";
   constructor(private http: HttpClient,private fileTransfer: FileTransfer) { }
 
+   headers = new HttpHeaders({
+    'Content-Type': 'application/json'
+  });
+
+   options = {
+    headers: this.headers
+  }
+
+
 // codigo solo de prueba eliminar despues
+
+
 
 updateProduct(datos):any{
   console.log(datos);
-  let headers = new HttpHeaders({
-    'Content-Type': 'application/json'
-  });
-  let options = {
-    headers: headers
-  }
-  return this.http.put(this.DEVELOPMENT_URL+'update_product',JSON.parse(JSON.stringify(datos)),options);
+
+  return this.http.put(this.DEVELOPMENT_URL+'update_product',JSON.parse(JSON.stringify(datos)),this.options);
 }
+
+// PETS
 
 getPets( id ):any{
   return this.http.get(this.PRODUCTION_URL+'pets/user/'+id );
+}
+
+
+createDog(datos):any{
+
+  console.log(datos);
+ 
+
+  // datos.photo = img;
+
+  return this.http.post(this.PRODUCTION_URL+'pets/store',JSON.parse(JSON.stringify(datos)),this.options).subscribe( data => console.log(data));
 }
 
 getPet(id):any{
@@ -38,46 +57,43 @@ getpetsnear(lat,lng,status):any{
 
 }
 
+
+// search
+
 search( texto: string ):any {
   return this.http.get(this.DEVELOPMENT_URL+'search_things/'+texto );
 }
 
-getVeterinarian(id):any{
-  return this.http.get(this.PRODUCTION_URL+'get_vet/'+id );
-}
 
-getReviews(id):any{
-  return this.http.get(this.DEVELOPMENT_URL+'get_reviews/'+6);
-}
+// VETS
 
-getPaymentMethod():any{
-  return this.http.get(this.DEVELOPMENT_URL+'retrieve_payments/' );
-}
-
-getReservation():any{
-  return this.http.get(this.DEVELOPMENT_URL+'get_reservations_user/1' );
-}
-
-
-createDog(datos):any{
-
-  console.log('ñññññ');
-  console.log(datos);
-  console.log('ñññññ');
-
-
-  let headers = new HttpHeaders({
-    'Content-Type': 'application/json'
-  });
-
-  let options = {
-    headers: headers
+  getVeterinarian(id):any{
+    return this.http.get(this.DEVELOPMENT_URL+'get_vet/'+id );
   }
 
-  // datos.photo = img;
+// reviews
+  getReviews(id):any{
+    return this.http.get(this.DEVELOPMENT_URL+'get_reviews/'+id);
+  }
 
-  return this.http.post(this.PRODUCTION_URL+'pets/store',JSON.parse(JSON.stringify(datos)),options).subscribe( data => console.log(data));
-}
+// productos
+   getProducts(id):any{
+    return this.http.get(this.DEVELOPMENT_URL+'get_products/'+id);
+  }
+
+  getServices(id):any{
+    return this.http.get(this.DEVELOPMENT_URL+'get_services/'+id);
+  }
+
+  getPaymentMethod():any{
+    return this.http.get(this.DEVELOPMENT_URL+'retrieve_payments/' );
+  }
+
+  getReservation():any{
+    return this.http.get(this.DEVELOPMENT_URL+'get_reservations_user/1' );
+  }
+
+
 
 uploadImage( photo ):any{
   const options: FileUploadOptions = {
@@ -113,7 +129,7 @@ getVeterinans(){
     headers: headers
   }
 
-  return this.http.get('https://api.radi.pet/near_vets/'+datos.lat+'/'+datos.lng );
+  return this.http.get(this.DEVELOPMENT_URL+'near_vets/'+datos.lat+'/'+datos.lng );
 }
 
 
@@ -140,15 +156,6 @@ return this.http.get('https://mocki.io/v1/8d54ea32-51fb-4685-a162-ea8c8afd1502')
 
   }
 
-  getTerraces(latitude,longitude):any{
-    return this.http.get(this.PRODUCTION_URL+'/api/v1/searchByLatLng?latitud='+latitude+'&longitud='+longitude);
-  }
-  getTerracesNormal():any{
-    return this.http.get(this.PRODUCTION_URL+'/api/v1/getBussinesses/');
-  }
-  getTerrace(id):any{
-    return this.http.get(this.PRODUCTION_URL+'/api/v1/getBussiness/'+id);
-  }
 
   verifiedReserve(day,bussiness_id):any{
     console.log(this.PRODUCTION_URL+'/api/v1/validateReserve?bussiness_id='+bussiness_id+'&day='+day);
@@ -158,9 +165,6 @@ return this.http.get('https://mocki.io/v1/8d54ea32-51fb-4685-a162-ea8c8afd1502')
     return this.http.get(this.PRODUCTION_URL+'/api/v1/getReserves/'+id);
   }
 
-  createReservation(bussiness_id,user_id,price,day):any{
-    return this.http.get(this.PRODUCTION_URL+'/api/v1/createReservation?bussiness_id='+bussiness_id+'&user_id='+user_id+'&price='+price+'&day='+day);
-  }
 
 
   getBlogs():any{
@@ -177,8 +181,18 @@ return this.http.get('https://mocki.io/v1/8d54ea32-51fb-4685-a162-ea8c8afd1502')
     });
   }
 
-  register(data){
-    return this.http.post(this.DEVELOPMENT_URL+'api/register',data);
+  register(data,customer_id){
+    let datos = {
+      name: data.name,
+      password: data.password,
+      email: data.email,
+      phone: data.phone,
+      customer: customer_id
+    }
+
+    // console.log(datos);
+    // return data;
+    return this.http.post(this.DEVELOPMENT_URL+'api/register',datos);
   }
 
   get_user(token){
@@ -205,9 +219,13 @@ return this.http.get('https://mocki.io/v1/8d54ea32-51fb-4685-a162-ea8c8afd1502')
   // cus_JflvtvjRFHD3op
 
   // stripe functions
-  createCostumer(token,email,name):any
+
+
+  createCostumer(data):any
   {
-    return this.http.get(this.DEVELOPMENT_URL+'createCostumer/'+token+'/'+email+'/'+name);
+ 
+  return this.http.post(this.DEVELOPMENT_URL+'createCostumer',JSON.parse(JSON.stringify(data)),this.options);
+
   }
 
 
@@ -227,10 +245,12 @@ return this.http.get('https://mocki.io/v1/8d54ea32-51fb-4685-a162-ea8c8afd1502')
 
   }
 
-  addcard(customer_id,token):any
+  addcard(customer,token):any
   {
-    return this.http.get(this.DEVELOPMENT_URL+'addCard/'+customer_id+'/'+token);
-
+    return this.http.post(this.DEVELOPMENT_URL+'addCard',JSON.parse(JSON.stringify({
+        customer: customer,
+        token: token
+      })),this.options);
   }
 
   updateDefaultCard(customerId,cardId):any
@@ -244,5 +264,13 @@ return this.http.get('https://mocki.io/v1/8d54ea32-51fb-4685-a162-ea8c8afd1502')
 
   }
 
+  createToken(data){
+    return this.http.post(this.DEVELOPMENT_URL+'createToken',JSON.parse(JSON.stringify(data)),this.options);
+
+  }
+
+  createCharge(data){
+    return this.http.post(this.DEVELOPMENT_URL+'createCharge',JSON.parse(JSON.stringify(data)),this.options);
+  }
 
 }
