@@ -1,24 +1,6 @@
 <ion-content>
 
-  <ion-card style="border-radius: 1em;">
-    <ion-card-header (click)="metodoPago()">
-      <ion-item lines="none">
-        <ion-icon slot="end" name="cash-outline" style="color:green;"></ion-icon>
-        <ion-label>Método de pago </ion-label>
-      </ion-item>
-    </ion-card-header>
-</ion-card>
 
-<ion-card style="border-radius: 1em;">
-  <ion-card-header (click)="metodoCupones()">
-
-    <ion-item lines="none">
-      <ion-icon slot="end" name="pricetag-outline" style="color:orange;"></ion-icon>
-      <ion-label>Cupones</ion-label>
-    </ion-item>
-  </ion-card-header>
-
-</ion-card>
 
 
 <ion-card style="border-radius: 1em;">
@@ -51,7 +33,25 @@
   </ion-item>
 </ion-card>
 
+<ion-card style="border-radius: 1em;">
+  <ion-card-header (click)="metodoPago()">
+    <ion-item lines="none">
+      <ion-icon slot="end" name="cash-outline" style="color:green;"></ion-icon>
+      <ion-label>Método de pago </ion-label>
+    </ion-item>
+  </ion-card-header>
+</ion-card>
 
+<ion-card style="border-radius: 1em;">
+<ion-card-header (click)="metodoCupones()">
+
+  <ion-item lines="none">
+    <ion-icon slot="end" name="pricetag-outline" style="color:orange;"></ion-icon>
+    <ion-label>Cupones</ion-label>
+  </ion-item>
+</ion-card-header>
+
+</ion-card>
 
 
 <ion-card style="border-radius: 1em;">
@@ -69,6 +69,5 @@
 </ion-content>
 
 <ion-footer >
-  <ion-button expand="full" color="tertiary" (click)="verifica_costumer()">Crear Tarjeta</ion-button>
-  <ion-button expand="full" color="tertiary" (click)="goSuccess()">Reservar</ion-button>
+  <ion-button expand="full" color="tertiary" (click)="createCharge()">Reservar</ion-button>
 </ion-footer>

@@ -18,42 +18,29 @@ export class OrderPage {
   stripe_Key = 'pk_test_51IiBSHJl56kWzuPaD4tpE247FRDmoSxUS8qxsVYDC1L9EidPqCUJuZpmpFvtDm1vcqLITJBQQxud22JQKdalUUXQ001rm7byf7';
   cardDetails;
  
-extras;
- 
-
-
+  extras;
   
 
-  constructor( 
+   constructor( 
     public modalController: ModalController,
     private navCtrl: NavController,
     private stripe:Stripe,
     public toastController: ToastController,
     public router: Router,
-    // borrar despues
-    public data: DataService
+    public api: DataService
 
 
     ) {
-
-     
-
-
       this.extras = this.router.getCurrentNavigation().extras.state;
       console.log(this.extras);
       
      }
-
-  
-
   metodoPago(){
     this.presentModal(PaymentsPage);
   }
-
   metodoCupones(){
     this.presentModal(ModalComponent);
   }
-
 
   async presentToast(mensaje) {
     const toast = await this.toastController.create({
@@ -66,8 +53,6 @@ extras;
   async presentModal(component) {
     const modal = await this.modalController.create({
       component: component,
-      cssClass: 'my-custom-class',
-      
     });
 
     modal.onDidDismiss().then( () => {
@@ -77,42 +62,23 @@ extras;
     return await modal.present();
   }
 
-  goSuccess(){
-
-
-
-    this.stripe.setPublishableKey(this.stripe_Key);
-
-    this.cardDetails = {
-      number: '4242424242424242',
-      expMonth: 4,
-      expYear: 24,
-      cvc: 424
+  createCharge(){
+    let data = {
+      amount: 1000,
+      customer: localStorage.getItem('customer_id'),
+      account_id: this.extras.veterinarian_account
     }
-
-
-    this.stripe.createCardToken(this.cardDetails)
-      .then(token => {
-        // Api con la cantidad 
-        this.presentToast(token.id);
-        console.log(token.id);
-      })
-      .catch(error => console.error(error));
-
-
-
-
-
-
-
-    // const extras: NavigationExtras = {
-    //   queryParams:{
-    //     invoice: 'simon'
-    //   }
-    // }
-    // this.navCtrl.navigateForward('/success',extras);
-
+    this.api.createCharge(data).subscribe(data =>  {
+      console.log(data);
+    });
   }
 
-
+  goSuccess(){
+    const extras: NavigationExtras = {
+      queryParams:{
+        invoice: 'simon'
+      }
+    }
+    this.navCtrl.navigateForward('/success',extras);
+  }
 }
