@@ -14,9 +14,6 @@ import { DataService } from 'src/app/services/data.service';
 
 export class CardPage{
   
-
-  paymentAmount:string = '3.33';
-  currency:string= 'USD';
   
   stripe_Key = 'pk_test_6Lh2y6pOLjooJHlRimCh1U7J00klDjsUau';
   cardDetails:any = {};
@@ -34,14 +31,16 @@ export class CardPage{
   yearLimitIonDateTime;
 
   logoimg = null;
+  mindate;
 
   constructor(
     private stripe:Stripe,
     private modalCtrl: ModalController,
     private navCtrl: NavController,
     private route: ActivatedRoute,
-    private dataService:DataService) {
-
+    private api:DataService) {
+    
+    this.mindate = moment().format('YYYY-MM-DD');
     this.yearLimitIonDateTime = moment().year()+8;
     
 
@@ -93,16 +92,6 @@ export class CardPage{
     this.card_expiration = this.month+'/'+this.year;
  }
 
- beforePage(){
-
-  // this.navCtrl.navigateBack(['/available'],extras);
-}
-
- nextPage(){
-   this.pagar();
-  
- }
-
  pagar(){
    const extras: NavigationExtras = {
           queryParams:{
@@ -131,10 +120,47 @@ export class CardPage{
   
  }
 
+
+ agregarTarjeta(){
+  //  creo token
+  
+    this.cardDetails = {
+      number: this.numero,
+      exp_month: this.month,
+      exp_year: this.year,
+      cvc: this.cvc
+    }
+
+  this.api.createToken(this.cardDetails).subscribe(
+    (data:any) => {
+
+        this.api.addcard(localStorage.getItem('customer_id'),data.id).subscribe( 
+          data => {
+            console.log(data);
+            this.exit();
+          },
+          err => {
+            console.log(err);
+          }
+        );
+
+    },
+    error => {
+      if(error.error.code === "incorrect_number"){
+        alert('Número incorrecto,verificalo.');
+      }
+      if(error.error.code === "card_declined"){
+        alert('Tarjeta declinada, intenta con otra.');
+      }
+      console.log(error);
+    }
+  );
+
+  
+ }
  
  
   payWithStripe() {
-    this.nextPage();
 
   //   this.stripe.setPublishableKey(this.stripe_Key);
 

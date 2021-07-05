@@ -75,7 +75,7 @@
               [(ngModel)]="expiration" 
               display-format="MM/YYYY" 
               (ionChange)="ParseDataTimeToCardExpiration(this.expiration)" 
-              min="2020-05-04" 
+              [min]="mindate" 
               [max]="yearLimitIonDateTime" cancelText="Cancelar" ></ion-datetime>
           <!-- <ion-input type="text" name="exp" [(ngModel)]="exp"  ></ion-input> -->
         </ion-item>
@@ -98,11 +98,11 @@
         <ion-button expand="full" fill="clear" color="danger" (click)="exit()" >Cerrar</ion-button>
       </ion-col>
       <ion-col>
-        <ion-button expand="full" color="success" (click)="payWithStripe()" 
+        <ion-button expand="full" color="success" (click)="agregarTarjeta()" 
         [disabled]="(numero == null || numero == '')   || 
                     (titular == null || titular == '') ||
                     (expiration == null || expiration == '')  ||
-                    (cvc == null || cvc == '')">Pagar</ion-button>
+                    (cvc == null || cvc == '')">Agregar tarjeta</ion-button>
       </ion-col>
     </ion-row>
   </ion-footer>
