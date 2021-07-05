@@ -85,11 +85,11 @@ export class CalendarReservationPage implements OnInit {
 
 
   goOrder(){
-    console.log(this.diaSeleccionado,this.horaSeleccionada);
     let navigationExtras: NavigationExtras = {
       state: {
         veterinarian_id: this.extras.veterinarian_id,
         veterinarian_name: this.extras.veterinarian_name,
+        veterinarian_account: this.extras.veterinarian_account,
         date: this.diaSeleccionado,
         hour: this.horaSeleccionada
       } 

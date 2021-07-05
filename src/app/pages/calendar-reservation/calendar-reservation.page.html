@@ -15,7 +15,7 @@
 <div style="margin:1.5em;">
 
   <ion-chip *ngFor="let item of horasDisponibles;index as i;" outline color="tertiary">
-    <ion-label  [color]="activarChip==i ? 'azul' : 'dark'" (click)="setIndex(i,item)"  > {{ horasDisponibles[i] | date: 'HH:mm a' }} - {{ horasDisponibles[i+1] | date: 'HH:mm a' }}</ion-label>
+    <ion-label  [color]="activarChip == i ? 'azul' : 'dark'" (click)="setIndex(i,item)"  > {{ horasDisponibles[i] | date: 'HH:mm a' }} - {{ horasDisponibles[i+1] | date: 'HH:mm a' }}</ion-label>
   </ion-chip>
 </div>
 
