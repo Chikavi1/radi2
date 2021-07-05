@@ -1,4 +1,4 @@
-import { Component, ContentChild, OnInit } from '@angular/core';
+import { Component,OnInit } from '@angular/core';
 import { DataService } from 'src/app/services/data.service';
 import { NavController, ToastController, ModalController } from '@ionic/angular';
 import { RegisterPage } from '../register/register.page';
