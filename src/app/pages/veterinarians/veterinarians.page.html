@@ -55,12 +55,12 @@
 
     <h2 style="margin: 1em 0em;color:#777;font-weight: bold;">Servicios</h2>
     <ion-slides  [options]="slideOpts">
-      <ion-slide>
+      <ion-slide *ngFor="let service of services">
         <ion-card style="border-radius: 1em;">
-          <img src="https://images.unsplash.com/photo-1532938911079-1b06ac7ceec7?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&w=889&q=80" />
+          <img [src]="service.img" />
 
           <ion-card-header style="text-align: left;">
-              <ion-card-title style="text-align: left;color:#192547;font-weight: 700;">Consulta</ion-card-title>
+              <ion-card-title style="text-align: left;color:#192547;font-weight: 700;">{{service.title}}</ion-card-title>
               <ion-card-subtitle>
                 <!-- <div style="
                   clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
@@ -68,9 +68,9 @@
                   width: 1em;
                   background-color: #eab728;">
                 </div> -->
-                <p>Servicio de consultoria,podemos pesar a su perro minus sint?</p>
+                <p>{{service.description}}</p>
                 <p style="vertical-align: middle;color:#059200;font-size:1.2em;font-weight: bold;
-              "> MXN $120</p>
+              "> MXN $ {{ service.price }}</p>
                 </ion-card-subtitle>
               </ion-card-header>
               
@@ -80,31 +80,20 @@
         </ion-card-content>
       </ion-card>
       </ion-slide>
-      <ion-slide>
-        <ion-card style="border-radius: 1em;">
-          <ion-card-header>
-              <ion-card-title style="color:#192547;font-weight: 700;">ecocardiogramas</ion-card-title>
-              <ion-card-subtitle>
-                <p style="vertical-align: middle;color:#059200;font-weight: bold;
-              ">$ 170</p>
 
-                </ion-card-subtitle>
-          </ion-card-header>
-
-        <ion-card-content>
-          <p>servicio de ecocardiogramas con los equipos mas novedosos del pais.</p>
-        </ion-card-content>
-      </ion-card>      </ion-slide>
+    
 
     </ion-slides>
 
     <h2 style="margin: 1em 0em;color:#777;font-weight: bold;">Productos</h2>
+   
+   
     <ion-slides  [options]="slideOpts">
-      <ion-slide>
+      <ion-slide *ngFor="let product of products">
         <ion-card style="border-radius: 1em;">
-          <img src="https://scontent.fgdl3-1.fna.fbcdn.net/v/t1.6435-9/s960x960/180286985_4021752177889679_4810402069085314072_n.jpg?_nc_cat=106&ccb=1-3&_nc_sid=843cd7&_nc_eui2=AeHN9nvo01agI4xQYtEMcogxlMQHM11b-yOUxAczXVv7IyOu7nDOBMo8TCIyrbBq4H1F_zy07VZBprWFRzLqRRnk&_nc_ohc=87dxmIBUyg0AX8XHr02&_nc_ht=scontent.fgdl3-1.fna&tp=7&oh=2de0ccf8c71793e13617245c805f40ee&oe=60B1D547" alt="">
+          <img [src]="product.img" alt="">
           <ion-card-header>
-              <ion-card-title style="color:#192547;font-weight: 700;">Guantes</ion-card-title>
+              <ion-card-title style="color:#192547;font-weight: 700;">{{product.title}}</ion-card-title>
               <ion-card-subtitle>
                 <!-- <div style="
                   clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
@@ -113,32 +102,18 @@
                   background-color: #eab728;">
                 </div> -->
                 <p style="vertical-align: middle;color:#059200;font-weight: bold;
-              ">$100 MXN.</p>
+              ">${{product.price}} MXN.</p>
         
 
                 </ion-card-subtitle>
           </ion-card-header>
 
         <ion-card-content>
-          <p>Excelente producto para poder qutarle el pelo extra de tu mascota.</p>
+          <p>{{product.description}}</p>
         </ion-card-content>
       </ion-card>
       </ion-slide>
-      <ion-slide>
-        <ion-card style="border-radius: 1em;">
-          <ion-card-header>
-              <ion-card-title style="color:#192547;font-weight: 700;">Pau Rojas</ion-card-title>
-              <ion-card-subtitle>
-                <p style="vertical-align: middle;color:#059200;font-weight: bold;
-              ">4.5 estrellas</p>
-
-                </ion-card-subtitle>
-          </ion-card-header>
-
-        <ion-card-content>
-          <p>Excelente servicio me gustaria comenter Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque laboriosam minus sint?</p>
-        </ion-card-content>
-      </ion-card>      </ion-slide>
+      
 
     </ion-slides>
 

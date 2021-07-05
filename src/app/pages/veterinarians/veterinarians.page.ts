@@ -9,10 +9,12 @@ import { DataService } from 'src/app/services/data.service';
   styleUrls: ['./veterinarians.page.scss'],
 })
 export class VeterinariansPage {
-veterinarianId = null;
-veterinarian = [];
-servicesVet = [];
-reviews = [];
+veterinarianId;
+veterinarian:any = [];
+servicesVet  = [];
+services     = [];
+products     = [];
+reviews      = [];
 
 
   constructor(
@@ -31,20 +33,27 @@ reviews = [];
 
     this.dataService.getReviews(this.veterinarianId).subscribe( data => {
       this.reviews = data;
-      console.log(this.reviews);
     });
 
+    this.dataService.getProducts(this.veterinarianId).subscribe( data => {
+      this.products = data;
+    });
+
+    
+    this.dataService.getServices(this.veterinarianId).subscribe( data => {
+      this.services = data;
+    });
       
    }
 
 
 
   goReservationCalendar(id,name){
-
     let navigationExtras: NavigationExtras = {
       state: {
         veterinarian_id: id,
         veterinarian_name: name,
+        veterinarian_account: this.veterinarian.account
       } 
     };
 
