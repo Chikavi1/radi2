@@ -36,13 +36,11 @@ export class PaymentsPage {
   ){
 
     this.customer_id = localStorage.getItem('customer_id');
-    this.obtenerTarjetas();
-
-
-
    }
 
-
+   ionViewWillEnter(){
+    this.obtenerTarjetas();
+   }
 
   agregarTarjeta(){
     this.presentModal(CardPage);
@@ -51,14 +49,11 @@ export class PaymentsPage {
 
   async presentModal(component) {
     const modal = await this.modalController.create({
-      component: component,
-      cssClass: 'my-custom-class',
-      
+      component: component      
     });
-
-    modal.onDidDismiss().then( () => {
-
-    });
+      modal.onDidDismiss().then( () => {
+        this.obtenerTarjetas();
+      });
 
     return await modal.present();
   }
@@ -69,10 +64,6 @@ export class PaymentsPage {
 
 
 // funcionalidad stripe
-
-
-
-  
   verifica_costumer(){
     this.stripe.setPublishableKey(this.stripe_Key);
 
@@ -82,57 +73,9 @@ export class PaymentsPage {
       expYear: 24,
       cvc: 424
     }
-
-
-
-    // si tengo costumer haz esto
     let costumer_id = localStorage.getItem('costumer_id');
-    let token = 'tok_1J2QwuJl56kWzuPasaOtFFlV';
-    let email = 'chikavi@hotmail.com';
-    let name  = 'francisco rojas';
-
-
-
-
-    if(costumer_id){
-      this.data.getCostumer(costumer_id).subscribe( data => {
-          // to do
-      });
-    }else{
-
-
-
-      //   this.stripe.createCardToken(this.cardDetails)
-      //   .then(token => {
-
-
-      //   this.data.createCostumer(token,email,name).subscribe( data => {
-      //     console.log(data);
-        
-      //   });
-
-      // })
-      // .catch(error => console.error(error));
-
-
-      this.data.createCostumer(token,email,name).subscribe( data => {
-            console.log(data);
-            localStorage.setItem('customer_id',data.id);
-          });
-
-     
-    }
-    
-
-
   }
 
-addcard(){
-  console.log('dio click');
-  this.data.addcard(this.customer_id,'tok_1J2iSiJl56kWzuPav9EjFOu5').subscribe( data => {
-    console.log(data);
-  });
-}
 
 obtenerTarjetas(){
   this.data.getCards(this.customer_id).subscribe( cards => {

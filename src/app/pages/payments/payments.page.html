@@ -17,24 +17,24 @@
 <ion-slides  [options]="slide">
 <ion-slide  *ngFor="let card of cards">
 
-  <ion-card style="width: 100;height: 17em;background-color: #052345;border-radius: 1em;">
+  <ion-card style="width: 100;height: 13em;background-color: #052345;border-radius: 1em;">
     <ion-card-header>
       <ion-card-subtitle  (click)="deleteCard(card.customer,card.id)" style="text-align: right;color:white;">{{ card.brand }}</ion-card-subtitle>
       <ion-card-title>
-        <p style="color:white;text-align:center;font-size: 1.7em;">
+        <p style="color:white;text-align:center;font-size: 1.5em;">
           ****  ****  ****  {{ card.last4 }}
         </p>
       </ion-card-title>
     </ion-card-header>
     
     <ion-card-content>
-      <p style="text-align: left;color:white;" (click)="deleteCard(card.customer,card.id)">Eliminar</p>
-      <p style="text-align: right;color:white;" (click)="updateDefaultCard(card.customer,card.id)">
+      <!-- <p style="text-align: left;color:white;" (click)="deleteCard(card.customer,card.id)">Eliminar</p> -->
+      <p style="text-align: left;color:white;" (click)="updateDefaultCard(card.customer,card.id)">
         {{ card.exp_month }}/{{ card.exp_year }} 
       </p>
-      <p style="text-align: right;color:white;" (click)="updateDefaultCard(card.customer,card.id)">
+      <!-- <p style="text-align: right;color:white;" (click)="updateDefaultCard(card.customer,card.id)">
          Default
-        </p>
+        </p> -->
     </ion-card-content>
     
   </ion-card>
