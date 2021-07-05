@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { ModalController, ToastController } from '@ionic/angular';
 import { FormBuilder, Validators } from "@angular/forms";
 import { DataService } from 'src/app/services/data.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -15,6 +16,7 @@ export class RegisterPage {
     private toastController: ToastController,
     private modalCtrl: ModalController,
     public formBuilder: FormBuilder,
+    private router: Router,
     private data:DataService)
     {
 
@@ -84,12 +86,26 @@ export class RegisterPage {
     this.showPassword = !this.showPassword;
   }
 
-  public submit() {
-    this.data.register(this.registrationForm.value).subscribe( (data) => {
-      let mensaje:any = data; 
-      this.presentToast(""+mensaje,"danger");
+  public submit() 
+  {
 
-      localStorage.setItem('user_id','1');
+    let customer_id;
+
+    this.data.createCostumer({  
+      name: this.registrationForm.value.name, 
+      email:this.registrationForm.value.email,
+      phone: this.registrationForm.value.phone
+        }).
+      subscribe( data => {
+        customer_id = data.id;
+        localStorage.setItem('customer_id',data.id);
+      });
+
+    this.data.register(this.registrationForm.value,customer_id).subscribe( (data:any) => {
+      this.presentToast(data.mensaje,"success");
+      localStorage.setItem('user_id',data.id);
+      this.router.navigateByUrl('/');
+      this.exit();
  
 
     },error => {
@@ -98,6 +114,8 @@ export class RegisterPage {
       this.presentToast(""+mensaje,"danger");
 
     })
+
+    
   
   }
 
