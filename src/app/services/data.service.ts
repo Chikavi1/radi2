@@ -34,7 +34,7 @@ updateProduct(datos):any{
 // PETS
 
 getPets( id ):any{
-  return this.http.get(this.PRODUCTION_URL+'pets/user/'+id );
+  return this.http.get(this.DEVELOPMENT_URL+'pets/user/'+id );
 }
 
 
@@ -45,7 +45,7 @@ createDog(datos):any{
 
   // datos.photo = img;
 
-  return this.http.post(this.PRODUCTION_URL+'pets/store',JSON.parse(JSON.stringify(datos)),this.options).subscribe( data => console.log(data));
+  return this.http.post(this.DEVELOPMENT_URL+'pets/store',JSON.parse(JSON.stringify(datos)),this.options).subscribe( data => console.log(data));
 }
 
 getPet(id):any{
@@ -106,7 +106,7 @@ uploadImage( photo ):any{
 
   const fileTransfer: FileTransferObject = this.fileTransfer.create();
 
-  fileTransfer.upload(photo, this.PRODUCTION_URL+'upload_img',options ).then( data => {
+  fileTransfer.upload(photo, this.DEVELOPMENT_URL+'upload_img',options ).then( data => {
 
     console.log('se logro');
    
@@ -158,11 +158,11 @@ return this.http.get('https://mocki.io/v1/8d54ea32-51fb-4685-a162-ea8c8afd1502')
 
 
   verifiedReserve(day,bussiness_id):any{
-    console.log(this.PRODUCTION_URL+'/api/v1/validateReserve?bussiness_id='+bussiness_id+'&day='+day);
-    return this.http.get(this.PRODUCTION_URL+'/api/v1/validateReserve?bussiness_id='+bussiness_id+'&day='+day);
+    console.log(this.DEVELOPMENT_URL+'/api/v1/validateReserve?bussiness_id='+bussiness_id+'&day='+day);
+    return this.http.get(this.DEVELOPMENT_URL+'/api/v1/validateReserve?bussiness_id='+bussiness_id+'&day='+day);
   }
   getReserves(id):any{
-    return this.http.get(this.PRODUCTION_URL+'/api/v1/getReserves/'+id);
+    return this.http.get(this.DEVELOPMENT_URL+'/api/v1/getReserves/'+id);
   }
 
 
@@ -202,7 +202,7 @@ return this.http.get('https://mocki.io/v1/8d54ea32-51fb-4685-a162-ea8c8afd1502')
         .set('Authorization',  `Bearer ${token}`)
     }
 
-    return this.http.get(this.PRODUCTION_URL+'/api/auth/user',header);
+    return this.http.get(this.DEVELOPMENT_URL+'/api/auth/user',header);
   }
 
   logout(token):any{
@@ -211,7 +211,7 @@ return this.http.get('https://mocki.io/v1/8d54ea32-51fb-4685-a162-ea8c8afd1502')
         .set('Content-Type','application/json')
         .set('Authorization',  `Bearer ${token}`)
     }
-    return this.http.get(this.PRODUCTION_URL+'/api/auth/logout',header);
+    return this.http.get(this.DEVELOPMENT_URL+'/api/auth/logout',header);
   }
 
 
