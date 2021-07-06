@@ -81,4 +81,9 @@ export class OrderPage {
     }
     this.navCtrl.navigateForward('/success',extras);
   }
+  beforePage(){
+    this.navCtrl.back();
+  }
+
+
 }

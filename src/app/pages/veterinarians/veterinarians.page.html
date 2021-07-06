@@ -1,5 +1,10 @@
 
 <ion-content>
+  <ion-fab  vertical="top" horizontal="start"  slot="fixed" (click)="beforePage()">
+    <ion-fab-button mode="ios" size="small" translucent    color="motel"  style="  outline: none !important;    ">
+      <ion-icon name="arrow-back-outline" style="color:#f8d100;"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
   <img [src]="veterinarian.profile" style="min-width: 100%;" alt="">
   <div style="margin: 0em 1.6em;">
     <ion-row style="margin-top: -2em;">

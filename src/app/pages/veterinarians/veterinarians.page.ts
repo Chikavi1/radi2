@@ -65,6 +65,8 @@ reviews      = [];
 
 
   
-
+  beforePage(){
+    this.navCtrl.back();
+  }
 
 }

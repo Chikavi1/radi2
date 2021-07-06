@@ -57,7 +57,7 @@
 
     <ion-slide (click)="goToPage('/show/'+mascota.id)"  *ngFor="let mascota of mascotas">
       <ion-card style="width:250px;height:250px;border-radius:1em; background-color: rgba(0,0,0,0.8);filter:brightness(0.8);">
-        <img style="width:250px;height:250px;border-radius:1em;" src="https://images.unsplash.com/photo-1571066470962-f10fcf2fdf9e?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTB8fGRvZ3xlbnwwfDJ8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60">
+        <img style="width:250px;height:250px;border-radius:1em;" [src]="mascota.photo">
         <p style="color:#17202F;margin-top: -2em;font-size: 1.5em;margin-left: .5em;font-weight: bold;">{{mascota.name}}</p>
       </ion-card>
     </ion-slide>

@@ -13,6 +13,7 @@ export class MenuPage {
 
   mascotas = [];
   mostrar = false;
+  user_id = localStorage.getItem('user_id');
   constructor(
     public navCtrl:NavController,
     private api: DataService,
@@ -25,7 +26,7 @@ export class MenuPage {
       this.mostrar = true;
      }, 1200);
 
-    this.api.getPets(1).subscribe( datos => {
+    this.api.getPets(this.user_id).subscribe( datos => {
       console.log(datos);
       this.mascotas = datos;
     });

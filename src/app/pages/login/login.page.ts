@@ -86,7 +86,9 @@ export class LoginPage implements OnInit {
       
       if(data.token){
         var decoded:any = jwt_decode(data.token);
+        console.log(decoded);
           localStorage.setItem('user_id',decoded.id);
+          localStorage.setItem('customer_id',decoded.customer)
           this.goToPage('/');
         // this.goToProfile();
 

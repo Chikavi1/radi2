@@ -24,6 +24,10 @@ export class CreatePetPage {
   ports: Port[];
   port: Port;
   pais ;
+
+  user_id = localStorage.getItem('user_id');
+
+  
   public edited = false;
 
 
@@ -123,6 +127,7 @@ export class CreatePetPage {
     saveTodos() {
 
       let mascota = {
+        "id_user":       this.user_id,
         "name":         this.name,
         "description":  this.description,
         "size":         this.size,
@@ -135,7 +140,7 @@ export class CreatePetPage {
 
       let result = this.api.uploadImage( mascota.photo );
       console.log(result);
-      mascota.photo = "pruebadequeesletmallo";
+      mascota.photo = "https://i.ibb.co/2qztVDK/Doctor-Flatline.png";
       console.log(mascota);
       this.api.createDog(mascota);
 

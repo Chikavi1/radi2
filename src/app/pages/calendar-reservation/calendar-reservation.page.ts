@@ -98,6 +98,9 @@ export class CalendarReservationPage implements OnInit {
     this.navCtrl.navigateForward(`/order`,navigationExtras);
   }
 
+  beforePage(){
+    this.navCtrl.back();
+  }
 
 
 }
