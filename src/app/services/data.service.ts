@@ -119,8 +119,8 @@ uploadImage( photo ):any{
 
 getVeterinans(){
   let datos = {
-    lat: 20.620603,
-    lng: -103.305615
+    lat: 20.6486206087280,
+    lng: -103.35147949437090
   }
   let headers = new HttpHeaders({
     'Content-Type': 'application/json'
@@ -129,7 +129,7 @@ getVeterinans(){
     headers: headers
   }
 
-  return this.http.get(this.DEVELOPMENT_URL+'near_vets/'+datos.lat+'/'+datos.lng );
+  return this.http.get(this.DEVELOPMENT_URL + 'near_vets_score/'+datos.lat+'/'+datos.lng );
 }
 
 
