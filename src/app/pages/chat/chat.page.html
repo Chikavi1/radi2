@@ -1,24 +1,44 @@
 <ion-content >
-  <ion-grid >
-
-    <ion-row #scrollBottom *ngFor="let message of messages" [ngClass]="message.role == 2 ? 'right' : 'left'">
-      <ion-col  >
-        <p>{{ message.text }}</p>
-        <span>{{ message.date.toMillis()  | date:' h:mm: a'}}</span>
+  <ion-fab  vertical="top" horizontal="start"  slot="fixed" (click)="beforePage()">
+    <ion-fab-button mode="ios" size="small" translucent    color="motel"  style="  outline: none !important;    ">
+      <ion-icon name="arrow-back-outline" style="color:#f8d100;"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+  <div style="background-color: #dfe8e9;width: 100%;height: 25%;">
+    <ion-row style="padding:2em;">
+      <ion-col size="11">
+        <p style="font-weight: 300;text-align: center;margin-bottom:2em;font-size: 1.5em;">la veterinaria de Mariely</p>
+      </ion-col>
+      <ion-col size="1">        
+        <ion-icon  style="color:rgb(196, 112, 17);zoom:1.8;text-align:right" name="ellipsis-horizontal-outline"></ion-icon>
       </ion-col>
     </ion-row>
-  </ion-grid>
+  </div>
+
+  <div style="background-color: white;height:85%;margin-top:-15%;z-index:1;border-radius: 0em 2em 0em 0em;">
+    
+    <ion-grid >
+      
+      <ion-row #scrollBottom *ngFor="let message of messages" [ngClass]="message.role == 2 ? 'right' : 'left'">
+        <ion-col  >
+          <p>{{ message.text }}</p>
+          <span>{{ message.date.toMillis()  | date:' h:mm: a'}}</span>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
 </ion-content>
 
 
-<ion-footer id="p">
+<ion-footer id="p" style="background-color: white;"  >
   <ion-row>
-    <ion-col size="9">
-      <ion-textarea [(ngModel)]="text"   placeholder="Escribe tu mensaje aqui..."></ion-textarea>
+    <ion-col size="10">
+      <ion-textarea style="margin:.5em;" [(ngModel)]="text"  rows="1" autoGrow="true"   placeholder="Escribe un mensaje"></ion-textarea>
 
     </ion-col>
-    <ion-col size="3">
-      <ion-button [disabled]="!text " (click)="enviar()">Enviar</ion-button>
+    <ion-col size="2">
+      <ion-button style="border-radius: 50% !important;" [disabled]="!text " (click)="enviar()">
+        <ion-icon name="send-outline"></ion-icon></ion-button>
 
     </ion-col>
 
