@@ -62,7 +62,7 @@
     <ion-slides  [options]="slideOpts">
       <ion-slide *ngFor="let service of services">
         <ion-card style="border-radius: 1em;">
-          <img [src]="service.img" />
+          <img [src]="service.img" loading="lazy"/>
 
           <ion-card-header style="text-align: left;">
               <ion-card-title style="text-align: left;color:#192547;font-weight: 700;">{{service.title}}</ion-card-title>
@@ -96,7 +96,7 @@
     <ion-slides  [options]="slideOpts">
       <ion-slide *ngFor="let product of products">
         <ion-card style="border-radius: 1em;">
-          <img [src]="product.img" alt="">
+          <img [src]="product.img" alt="" loading="lazy">
           <ion-card-header>
               <ion-card-title style="color:#192547;font-weight: 700;">{{product.title}}</ion-card-title>
               <ion-card-subtitle>
@@ -167,7 +167,7 @@
     <ion-slides class="thumbnail margin"  [options]="slide">
       <ion-slide class="slider-1 "  (click)="goToPage('/veterinarians/'+1)" *ngFor="let terrace of [1,1,1,1,1,1,1,1,1,1,1,1,1]">
        <div style="text-align: left;">
-          <img class="border-radius-img" src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nnx8ZG9jdG9yfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" style="min-height: 14em;">
+          <img class="border-radius-img" loading="lazy" src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nnx8ZG9jdG9yfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" style="min-height: 14em;">
           <p style="margin-left: 1em;font-weight: bold;">Veterinaria lolis</p>
           <p class="subtitle-card" style="margin-left: 1em;">Guadalajara, Jal</p>
           
