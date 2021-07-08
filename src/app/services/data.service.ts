@@ -273,4 +273,8 @@ return this.http.get('https://mocki.io/v1/8d54ea32-51fb-4685-a162-ea8c8afd1502')
     return this.http.post(this.DEVELOPMENT_URL+'createCharge',JSON.parse(JSON.stringify(data)),this.options);
   }
 
+  createReservation(data){
+    return this.http.post(this.DEVELOPMENT_URL+'create_reservation',JSON.parse(JSON.stringify(data)),this.options);
+  }
+
 }
