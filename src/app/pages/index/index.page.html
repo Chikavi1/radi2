@@ -61,10 +61,21 @@
 <div *ngIf="mostrar">
 
 
+<div style="margin-left:1em;margin-bottom: 3em;margin-top:2em;">
+  <h1 style="font-size: 2.2em;margin-bottom: -.1em;color:#17202F">Radi</h1>
+  <span (click)="abrirUbicacion()">{{ city }}<span style="color:grey"></span></span>
+</div>
 
-
-  <h1 style="padding:1em;" (click)="abrirUbicacion()">{{ city }}<span style="color:grey"></span></h1>
-
+  <ion-card style="height:11em;border-radius:1em;padding:1em; background:#f7ebff;">
+    <ion-row>
+      <ion-col>
+        <h3 style="color: #47454a;">Inscribe a tu mascota</h3>
+      </ion-col>
+      <ion-col >
+        <img style="margin-bottom: -9em;" src="https://i.ibb.co/3ptnRTm/pixlr-bg-result-2.png" alt="">  
+      </ion-col>
+    </ion-row>
+  </ion-card>
   <h3 style="padding:1em">Veterinarios cerca de ti</h3>
 
 

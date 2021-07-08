@@ -7,7 +7,7 @@
 
 
 
-<ion-card style="border-radius: 1em;">
+<ion-card style="border-radius: 1em;margin-top: 5em;">
   <ion-card-header>
 
     <ion-item lines="none">
@@ -23,18 +23,20 @@
        
     </ion-item>
   </ion-card-header>
-  <ion-item>
-    <ion-label>Servicio</ion-label>
-    <ion-note slot="end" color="success">MX240.00</ion-note>
-  </ion-item>
-  <ion-item>
-    <ion-label>Comisión por servicio</ion-label>
-    <ion-note slot="end" color="success">MX10.00</ion-note>
-  </ion-item>
-  <ion-item lines="none">
-    <ion-label>Total </ion-label>
-    <ion-note slot="end" color="success">MX250.00</ion-note>
-  </ion-item>
+  <div style="margin:1.3em 0em;"> 
+    <ion-item >
+      <ion-label>Servicio</ion-label>
+      <ion-note slot="end" color="success" style="font-size: 1.1em;">$100.00 MXN</ion-note>
+    </ion-item>
+    <ion-item>
+      <ion-label>Comisión por servicio</ion-label>
+      <ion-note slot="end" color="success" style="font-size: 1.1em;">$10.00 MXN</ion-note>
+    </ion-item>
+    <ion-item lines="none">
+      <ion-label>Total </ion-label>
+      <ion-note slot="end" color="success" style="font-size: 1.1em;">$110.00 MXN</ion-note>
+    </ion-item>
+  </div>
 </ion-card>
 
 <ion-card style="border-radius: 1em;">
@@ -64,7 +66,7 @@
       <h2>Total</h2>
     </ion-col>
     <ion-col>
-      <h1>MX $250.00</h1>
+      <h1 style="text-align: right;color:#5dbc7a">$110.00 MXN</h1>
     </ion-col>
   </ion-row>
 </ion-card>

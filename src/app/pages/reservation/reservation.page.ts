@@ -189,6 +189,10 @@ export class ReservationPage{
     }
   }
 
+  beforePage(){
+    this.navCtrl.back();
+  }
+
 
 
   async presentModal(component) {

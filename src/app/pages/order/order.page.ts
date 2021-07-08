@@ -68,8 +68,33 @@ export class OrderPage {
       customer: localStorage.getItem('customer_id'),
       account_id: this.extras.veterinarian_account
     }
-    this.api.createCharge(data).subscribe(data =>  {
-      console.log(data);
+
+    
+    
+    this.api.createCharge(data).subscribe((data:any)=>  {
+        console.log(data);
+
+      if(data.status === "succeeded"){
+          let reservation_data = {
+              id_vet      : 1,
+              time        : this.extras.hour,
+              id_user     : 1,
+              name        : "chikavi's",
+              id_pet      : 1,
+              note        : "nota personal",
+              payment     : "ijnasda",
+              duration    : 60,
+              id_service  : 1,
+              code        : data.created,
+              price       : data.amount
+            }
+
+        this.api.createReservation(reservation_data).subscribe( datares =>{
+          console.log(datares);
+        });
+      }
+     
+      
     });
   }
 

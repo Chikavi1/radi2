@@ -60,6 +60,11 @@
  -->
 
  <ion-content [fullscreen]="true">
+  <ion-fab  vertical="top" horizontal="start"  slot="fixed" (click)="beforePage()">
+    <ion-fab-button mode="ios" size="small" translucent    color="motel"  style="  outline: none !important;    ">
+      <ion-icon name="arrow-back-outline" style="color:#f8d100;"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
   <h2 style="font-size: 1.8em;margin: 1em;color:#192547; font-weight: bold;margin:2em;">Reservación</h2>
   <ion-slides pager="true" class="thumbnail margin"  [options]="slideOpts" style="margin-bottom: 3em;">
     <ion-slide >
@@ -185,12 +190,29 @@
   </ion-slides>
 
   <ion-card >
-    <ion-card-header>
-      <ion-card-subtitle>veterinaria</ion-card-subtitle>
-      <ion-card-title>Mariely</ion-card-title>
-      <p (click)="mandarMensaje()">
-        mandar mensaje
-      </p>
+    
+      <ion-card-header>
+
+    <ion-fab  vertical="top" horizontal="start"  slot="fixed" (click)="beforePage()">
+      <ion-fab-button mode="ios" size="small" translucent    color="motel"  style="  outline: none !important;    ">
+        <ion-icon name="arrow-back-outline" style="color:#f8d100;"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
+<ion-row>
+  <ion-col size="10">
+    <ion-card-subtitle>veterinaria</ion-card-subtitle>
+    <ion-card-title>Mariely</ion-card-title>
+  </ion-col>
+  <ion-col size="1">       
+       <ion-icon (click)="mandarMensaje()" style="color:rgb(30, 148, 70);zoom:1.8;text-align:right" name="chatbubbles-outline"></ion-icon>
+    </ion-col>
+    <ion-col size="1">        
+      <ion-icon  style="color:rgb(196, 112, 17);zoom:1.8;text-align:right" name="reader-outline"></ion-icon>
+  </ion-col>
+
+</ion-row>
+     
+          <!-- <ion-icon (click)="mandarMensaje()" style="color:rgb(30, 148, 70);zoom:1.8;text-align:right" name="chatbubbles-outline"></ion-icon> -->
     </ion-card-header>
     
     <ion-card-content>
