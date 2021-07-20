@@ -60,8 +60,8 @@ getpetsnear(lat,lng,status):any{
 
 // search
 
-search( texto: string ):any {
-  return this.http.get(this.DEVELOPMENT_URL+'search_things/'+texto );
+search( texto: string, offset: number = 0 ):any {
+  return this.http.get(this.DEVELOPMENT_URL+'search_things/'+texto+'/'+offset );
 }
 
 
