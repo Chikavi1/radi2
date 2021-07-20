@@ -45,7 +45,7 @@ export class AppComponent {
         if(localStorage.getItem('user_id')){
           this.router.navigateByUrl('/');
         }else{
-          this.router.navigateByUrl('/login');
+          this.router.navigateByUrl('/');
         }
       }else{
         this.router.navigateByUrl('/intro');

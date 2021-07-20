@@ -1,11 +1,11 @@
-  <ion-fab vertical="top" horizontal="start"  slot="fixed" (click)="beforePage()">
-    <ion-fab-button color="motel" Borde="false">
-      <ion-icon name="chevron-back-outline" style="color:#f8d100;"></ion-icon>
-    </ion-fab-button>
-  </ion-fab>
-
 
 <ion-content [fullscreen]="true">
+  <ion-fab  vertical="top" horizontal="start"  slot="fixed" (click)="beforePage()">
+    <ion-fab-button mode="ios" size="small" translucent    color="motel"  style="  outline: none !important;    ">
+      <ion-icon name="arrow-back-outline" style="color:#f8d100;"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+  
   <h1 style="padding: 2em;"><span style="color:grey;"> Registro de </span><span style="font-weight: bold;color:#17202F;" >Adopcion</span></h1>
    <mat-vertical-stepper [linear]="isLinear" #stepper>
      <mat-step [stepControl]="firstFormGroup">
@@ -41,7 +41,7 @@
      </mat-step>
      <mat-step [stepControl]="thirdFormGroup">
        <form [formGroup]="thirdFormGroup">
-         <ng-template matStepLabel>Ingresa tu correo</ng-template>
+         <ng-template matStepLabel>Acepta Terminos de la adopción.</ng-template>
          <mat-form-field>
            <mat-label>Correo electronico</mat-label>
            <input matInput formControlName="thirdCtrl" placeholder="Ingresa tu correo electronico"
@@ -54,8 +54,8 @@
        </form>
      </mat-step>
      <mat-step>
-       <ng-template matStepLabel>Terminado</ng-template>
-       <p>Terminamos con la encuesta</p>
+       <ng-template matStepLabel>Listo!</ng-template>
+       <p>Se envio tu solicitud de adopcion, te mandaramos un correo con el formato de adopción. </p>
        <div>
          <button mat-button (click)="stepper.reset()">Reiniciar</button>
          <button mat-button matStepperPrevious>Regresar</button>

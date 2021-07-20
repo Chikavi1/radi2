@@ -1,64 +1,3 @@
-<!-- <ion-header class="ion-no-border">
-  <ion-toolbar >
-      <ion-title class="ion-text-center" color="tertiary" >
-        Mis Reservas
-      </ion-title>
-      <ion-icon (click)="openModal()" slot="end" name="person-circle-outline" style="zoom:2.0;margin: .5em;"></ion-icon>
-      <ion-buttons slot="start" style="margin: .5em 1.5em;" >
-        <ion-buttons slot="start">
-        </ion-buttons>
-    </ion-buttons>
-  </ion-toolbar>
-  
-</ion-header>
-
-<ion-content [fullscreen]="true">
-  <div *ngIf="isAuth">
-
-    <div *ngIf="!reservations?.length > 0">
-      <img src="../assets/no-data.svg" style="width: 60%;padding: 2em;margin-left: 4em; margin-top: 1em;" alt="">
-      <p class="ion-text-center" >¡Hola {{ name }}, Aun no tienes Reservaciones!</p>
-    </div>
-
-    <p *ngIf="reservations?.length > 1" style="padding: 0em 2em;">Desliza a la derecha para ver tus otras reservaciones.</p>
-
-    <ion-slides  [options]="slideOpts"  *ngIf="reservations?.length > 0">
-      <ion-slide class="slider-1 "   *ngFor="let reservation of reservations">
-        <ion-card  style="border-radius: 1em;"> 
-          <ion-card-header>
-                <ngx-qrcode   style="zoom:2;" class="center" [value]="reservation.invoice"></ngx-qrcode>
-                <h2>{{ reservation.invoice }}</h2>
-                <h3 style="color:green;font-weight: bold;">$ {{ reservation.price }} MXN.</h3>
-                <p>{{ reservation.day }}</p>
-                <p>{{ today }}</p>
-  
-                <ion-row>
-                  <ion-col>
-                    <ion-button shape="round" (click)="openReview()">Calificar</ion-button>
-                  </ion-col>
-                  <ion-col>
-                    <ion-button shape="round" fill="outline" (click)="showTerrace(reservation.bussiness_id)">Terraza</ion-button>
-                  </ion-col>
-                </ion-row>
-          </ion-card-header>
-        </ion-card>
-          
-      </ion-slide>
-    </ion-slides> 
-
-  </div>
-  <div *ngIf="!isAuth"  style="padding: 1em;">
-      <img src="../assets/dog_profile.svg" style="width: 80%;padding: 2em;margin-left: 2em; margin-top: 1em;" alt="">
-
-    <h2>Necesitas conectarte a tu cuenta</h2>
-    <p>Haz click en el icono <ion-icon  name="person-circle-outline" style="zoom:2.0;"></ion-icon> para poder ingresar a tu cuenta.</p>
-  </div>
-
-
-</ion-content>
-
- -->
-
  <ion-content [fullscreen]="true">
   <ion-fab  vertical="top" horizontal="start"  slot="fixed" (click)="beforePage()">
     <ion-fab-button mode="ios" size="small" translucent    color="motel"  style="  outline: none !important;    ">
@@ -179,20 +118,12 @@
     
           </ion-col>
         </ion-row>
-         
-      
-        <!-- <p>{{ card_brand }}</p> -->
-       
-        
       </ion-card>
     </ion-slide>
 
   </ion-slides>
-
   <ion-card >
-    
       <ion-card-header>
-
     <ion-fab  vertical="top" horizontal="start"  slot="fixed" (click)="beforePage()">
       <ion-fab-button mode="ios" size="small" translucent    color="motel"  style="  outline: none !important;    ">
         <ion-icon name="arrow-back-outline" style="color:#f8d100;"></ion-icon>
@@ -209,74 +140,24 @@
     <ion-col size="1">        
       <ion-icon  style="color:rgb(196, 112, 17);zoom:1.8;text-align:right" name="reader-outline"></ion-icon>
   </ion-col>
-
 </ion-row>
-     
-          <!-- <ion-icon (click)="mandarMensaje()" style="color:rgb(30, 148, 70);zoom:1.8;text-align:right" name="chatbubbles-outline"></ion-icon> -->
     </ion-card-header>
-    
     <ion-card-content>
-      Keep close to Nature's heart... and break clear away, once in awhile,
-      and climb a mountain or spend a week in the woods. Wash your spirit clean.
+      4.5 estrellas
     </ion-card-content>
   </ion-card>
-
-
   <ion-card style="background:#4ba8aa">
     <ion-card-header>
       <ion-card-title style="color:white;">Recomendaciones</ion-card-title>
     </ion-card-header>
     
     <ion-card-content style="color:white;">
-      Keep close to Nature's heart... and break clear away, once in awhile,
-      and climb a mountain or spend a week in the woods. Wash your spirit clean.
+     Por covid te recomendamos lo siguiente
     </ion-card-content>
   </ion-card>
-
-<!-- 
-
-  <h2 style="padding: 1.6em;color:#17202F;font-weight: 300;">Información personal</h2>
-
-  <ion-row>
-    <ion-col style="margin:.7em">
-      <img width="150" style="border-radius: 0.7em;" src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8bWVufGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60">
-    </ion-col>
-    <ion-col>
-      <p style="font-weight: bold;font-size: 1.2em;">Veterinaria Mariely</p>
-      <p>San pedro tlaquepaque</p>
-      <p>33-27-27-69-23</p>
-    </ion-col>
-
-  </ion-row>
-
-  <p style="font-size: 1.3em;color:#7c7c7c;font-weight: 300;text-align: center;" (click)="openReview()">Calificar</p>
-
-    <ion-item-divider  mode="md" style="margin: .5em;">
-
-    </ion-item-divider>
-
-
-  <h2 style="padding: 1.6em;">Información de la mascota</h2>
-
-
-  <ion-row>
-    <ion-col style="margin:.7em">
-    </ion-col>
-    <ion-col>
-      <p style="font-weight: bold;font-size: 1.2em;">Radi</p>
-      <p>3 años</p>
-      <p>Macho</p>
-      <p>Criollo</p>
-      <p>3 vacunas</p>
-      <p></p>
-    </ion-col>
-
-  </ion-row> -->
-
   <ion-row>
   <ion-col size="12">
     <ion-button  style="border-radius: 1em !important;" color="dark" expand="full" (click)="goToPage('/perfil-perro')" >Ver Perfil</ion-button>
   </ion-col>
-
   </ion-row>
  </ion-content>

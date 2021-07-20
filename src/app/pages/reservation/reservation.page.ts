@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef,ViewChild } from '@angular/core';
 import { DataService } from 'src/app/services/data.service';
 import { ModalController, NavController } from '@ionic/angular';
 import { ProfilePage } from '../profile/profile.page';
@@ -103,8 +103,9 @@ export class ReservationPage{
   let PointB_lat = 20.651921;
   let PointB_lng =  -103.336855;
 
-
-
+  
+  
+    // this.mapa;
     this.mapa = Leaflet.map('mapId').setView([lat, lng], 11);
     var vetIcon = L.icon(
       {
@@ -150,7 +151,7 @@ export class ReservationPage{
       //  routeWhileDragging: true
     }).addTo(this.mapa);
 
-
+    this.mapa.dragging.disable()
 
     // this.map = Leaflet.map('mapId').setView([20.620626, -103.305506], 17);
     // Leaflet.tileLayer('https://mt0.google.com/vt/lyrs=m&hl=en&x={x}&y={y}&z={z}&s=Ga', {

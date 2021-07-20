@@ -2,10 +2,9 @@ import { Component } from '@angular/core';
 import { NavigationExtras, Router } from '@angular/router';
 import { ModalController, NavController, ToastController } from '@ionic/angular';
 import { ModalComponent } from 'src/app/modal/modal.component';
-import { Stripe } from '@ionic-native/stripe/ngx';
 import { DataService } from 'src/app/services/data.service';
-import { CardPage } from '../card/card.page';
 import { PaymentsPage } from '../payments/payments.page';
+import { SelectPetPage } from '../select-pet/select-pet.page';
 
 @Component({
   selector: 'app-order',
@@ -15,25 +14,21 @@ import { PaymentsPage } from '../payments/payments.page';
 
 
 export class OrderPage {
-  stripe_Key = 'pk_test_51IiBSHJl56kWzuPaD4tpE247FRDmoSxUS8qxsVYDC1L9EidPqCUJuZpmpFvtDm1vcqLITJBQQxud22JQKdalUUXQ001rm7byf7';
-  cardDetails;
- 
   extras;
-  
-
+  user_id  = localStorage.getItem('user_id');
+  pet_id   = localStorage.getItem('pet_id');
+  note     = 'ninguna nota por el momento.'
+  price;
    constructor( 
     public modalController: ModalController,
     private navCtrl: NavController,
-    private stripe:Stripe,
     public toastController: ToastController,
     public router: Router,
-    public api: DataService
-
-
-    ) {
+    public api: DataService) {
+      
       this.extras = this.router.getCurrentNavigation().extras.state;
       console.log(this.extras);
-      
+      this.price = this.extras.price;
      }
   metodoPago(){
     this.presentModal(PaymentsPage);
@@ -52,6 +47,7 @@ export class OrderPage {
 
   async presentModal(component) {
     const modal = await this.modalController.create({
+      // cssClass: 'small-modal',
       component: component,
     });
 
@@ -62,40 +58,58 @@ export class OrderPage {
     return await modal.present();
   }
 
+
+  async presentModalSmall(component) {
+    const modal = await this.modalController.create({
+      cssClass: 'small-modal',
+      component: component,
+    });
+
+    modal.onDidDismiss().then( () => {
+
+    });
+
+    return await modal.present();
+  }
+
+
+
   createCharge(){
-    let data = {
-      amount: 1000,
-      customer: localStorage.getItem('customer_id'),
-      account_id: this.extras.veterinarian_account
+    if( parseInt(localStorage.getItem('pet_count')) > 1){
+      this.presentModalSmall(SelectPetPage);
     }
 
-    
-    
-    this.api.createCharge(data).subscribe((data:any)=>  {
-        console.log(data);
 
-      if(data.status === "succeeded"){
-          let reservation_data = {
-              id_vet      : 1,
-              time        : this.extras.hour,
-              id_user     : 1,
-              name        : "chikavi's",
-              id_pet      : 1,
-              note        : "nota personal",
-              payment     : "ijnasda",
-              duration    : 60,
-              id_service  : 1,
-              code        : data.created,
-              price       : data.amount
-            }
+    let reservation_data = {
+      customer    : localStorage.getItem('customer_id'),
+      account     : this.extras.veterinarian_account,
+      price       : this.extras.price,
+      id_vet      : this.extras.veterinarian_id,
+      time        : this.extras.hour,
+      id_user     : 1,
+      name        : 'Luis Rojas',
+      id_pet      : 1,
+      note        : this.note,
+      payment     : "ijnasda",
+      duration    : 60,
+      id_service  : this.extras.service_id,
+      code        : '1',
+    }
 
-        this.api.createReservation(reservation_data).subscribe( datares =>{
+
+    // let data = {
+    //   amount: 1000,
+    //   customer: localStorage.getItem('customer_id'),
+    //   account_id: this.extras.veterinarian_account
+    // }
+
+        this.api.createReservation(reservation_data).subscribe( datares => { 
           console.log(datares);
         });
-      }
+      
      
       
-    });
+    // });
   }
 
   goSuccess(){
@@ -106,6 +120,8 @@ export class OrderPage {
     }
     this.navCtrl.navigateForward('/success',extras);
   }
+
+
   beforePage(){
     this.navCtrl.back();
   }

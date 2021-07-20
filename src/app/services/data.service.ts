@@ -54,9 +54,24 @@ getPet(id):any{
 
 getpetsnear(lat,lng,status):any{
   return this.http.get(this.DEVELOPMENT_URL+'near_pets/'+lat+'/'+lng+'/'+status );
-
 }
 
+
+// organizations
+getOrganization(id){
+  return this.http.get(this.DEVELOPMENT_URL+'get_organization/'+id);
+}
+getPetsbyOrganization(id){
+  return this.http.get(this.DEVELOPMENT_URL+'pets/user/'+id);
+}
+getSimilarOrganizations(id){
+  return this.http.get(this.DEVELOPMENT_URL+'get_organization/'+id);
+}
+
+getOrganizationsnear(lat,lng):any{
+  return this.http.get(this.DEVELOPMENT_URL+'near_organizations/'+lat+'/'+lng);
+
+}
 
 // search
 
@@ -277,4 +292,18 @@ return this.http.get('https://mocki.io/v1/8d54ea32-51fb-4685-a162-ea8c8afd1502')
     return this.http.post(this.DEVELOPMENT_URL+'create_reservation',JSON.parse(JSON.stringify(data)),this.options);
   }
 
+  search_service(service){
+    return this.http.get(this.DEVELOPMENT_URL+'search_vets_services/'+service);
+  }
+
+
+  getRequestAdoptions(id){
+    return this.http.get(this.DEVELOPMENT_URL+'adoptions_user/'+id);
+
+  }
+
+  getResponseAdoptions(id){
+    return this.http.get(this.DEVELOPMENT_URL+'get_response/'+id);
+
+  }
 }

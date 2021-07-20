@@ -9,11 +9,13 @@ import { OrganizationPageRoutingModule } from './organization-routing.module';
 import { OrganizationPage } from './organization.page';
 
 @NgModule({
+  entryComponents: [
+  ],
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    OrganizationPageRoutingModule
+    OrganizationPageRoutingModule,
   ],
   declarations: [OrganizationPage]
 })

@@ -1,13 +1,18 @@
 
 <ion-content>
-  <img src="https://scontent.fgdl10-1.fna.fbcdn.net/v/t1.6435-9/118114949_3230889310326165_2393965044989808666_n.jpg?_nc_cat=103&ccb=1-3&_nc_sid=e3f864&_nc_eui2=AeFBZrrUPHd0-58JPobS-ng9qfJNaXd1zOWp8k1pd3XM5ackNJvH_LwBLucQJhEjt8sDxjTtZ4MylciQdBBHH81q&_nc_ohc=KYsvfrkiY7EAX_Ch67t&_nc_ht=scontent.fgdl10-1.fna&oh=2f686f6ac4bfe5ce3ac3148832808fc6&oe=60CA42ED" alt="">
+  <ion-fab  vertical="top" horizontal="start"  slot="fixed" (click)="beforePage()">
+    <ion-fab-button mode="ios" size="small" translucent    color="motel"  style="  outline: none !important;    ">
+      <ion-icon name="arrow-back-outline" style="color:#f8d100;"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+  <img [src]="organization.cover" alt="">
     <ion-grid>
     <ion-row>
       <ion-col size="3"></ion-col>
       <ion-col size="6" class="poster-detalle-sobre">
         
         <ion-card class="poster" style="border-radius: 1em;">
-          <img src="https://scontent.fgdl10-1.fna.fbcdn.net/v/t1.18169-9/549591_452164474865343_127610589_n.jpg?_nc_cat=100&ccb=1-3&_nc_sid=174925&_nc_eui2=AeGRYtM6cvIdAdWxUHdllmCTFYk_cRs5eysViT9xGzl7K4nAJnsfF3lMTkjzQVB30BiEDaZ55KUbaSmEXi-dlD-P&_nc_ohc=0AH0x04K2W8AX-LMgRI&_nc_ht=scontent.fgdl10-1.fna&oh=0c02d30292c7c5b01bebd2bd8b9dd23b&oe=60C8FEB0" 
+          <img [src]="organization.photo" 
           class="poster">
         </ion-card>
         
@@ -18,7 +23,7 @@
   <div style="margin: 0em 1em;">
     <ion-row>
       <ion-col size="10"> 
-          <h2>Oceanican</h2>
+          <h2>{{ organization.name }}</h2>
       </ion-col>
       <ion-col size="2" style="margin-top: 1em;" >
         <div style="height: 1.5em !important;width: 1.5em;">
@@ -70,20 +75,22 @@
     </ion-row>
     
 
-    <p style="font-size:1.2em;font-weight: 400;">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aspernatur quaerat quae magnam ratione dolore, impedit, a sequi asperiores rerum, labore facere accusantium? Voluptatum hic consectetur illum maxime modi sint? Cum, perspiciatis dolor reiciendis unde quidem quos rerum aliquam culpa! Vitae!</p>
+    <p style="font-size:1.2em;font-weight: 400;">
+    {{ organization.description}}
+    </p>
 <ion-button color="primary">Ver más</ion-button>
 
 
 <ion-item-divider mode="md" >
 </ion-item-divider>
 
-    <p style="font-size: 1.3em;font-weight: 600;">Mascotas</p>
-    <ion-slides class="thumbnail margin"  [options]="slide">
-      <ion-slide class="slider-1 "  (click)="showVeterinarian()" *ngFor="let terrace of [1,1,1,1,1,1]">
+    <p style="font-size: 1.3em;font-weight: 600;">Mascotas ({{ totalPets }})</p>
+    <ion-slides  [options]="slide">
+      <ion-slide class="slider-1 "  (click)="goToPage('/show/'+pet.id)" *ngFor="let pet of pets">
        <div style="text-align: left;">
-          <img class="border-radius-img" src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nnx8ZG9jdG9yfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" style="min-height: 14em;">
-          <p style="margin-left: 1em;font-weight: bold;">Veterinaria lolis</p>
-          <p class="subtitle-card" style="margin-left: 1em;">Guadalajara, Jal</p>
+          <img class="thumbnail" [src]="pet.photo" style="min-height: 14em;">
+          <p style="margin-left: 1em;font-weight: bold;">{{ pet.name }}</p>
+          <p class="subtitle-card" style="margin-left: 1em;">{{pet.breed}}</p>
           
         </div>
       </ion-slide>
@@ -94,7 +101,8 @@
 
     <p style="font-size: 1.3em;font-weight: 600;">Ubicación</p>
 
-    <ion-card style="border-radius: 1em;" >
+    <ion-card style="border-radius: 1em;"  >
+      <div id="mapId" style="width: 100%; height: 12em;"></div>
       <ion-card-header>
         <ion-card-subtitle style="color:white;font-size: 1.2em;font-weight: 400;">Guia rápida</ion-card-subtitle>
         <ion-card-title>San mateo evangelista 4167-1,lomas de san miguel,tlaquepaque,Jalisco.</ion-card-title>
@@ -105,10 +113,10 @@
     </ion-item-divider>
 
     <p style="font-size: 1.3em;font-weight: 600;">Organizaciones similares</p>
-    <ion-slides class="thumbnail margin"  [options]="slide">
+    <ion-slides  [options]="slide">
       <ion-slide class="slider-1 "  (click)="showVeterinarian()" *ngFor="let terrace of [1,1,1,1,1,1]">
        <div style="text-align: left;">
-          <img class="border-radius-img" src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nnx8ZG9jdG9yfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" style="min-height: 14em;">
+          <img class="thumbnail" src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nnx8ZG9jdG9yfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" style="min-height: 14em;">
           <p style="margin-left: 1em;font-weight: bold;">Veterinaria lolis</p>
           <p class="subtitle-card" style="margin-left: 1em;">Guadalajara, Jal</p>
           

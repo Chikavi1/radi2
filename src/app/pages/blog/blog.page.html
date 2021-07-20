@@ -69,10 +69,25 @@
   </ion-segment>
    
 <div *ngIf="segmentModel === 'adopciones'">
-  <ion-card style="background:#53e1bf;" >
+
+
+  <ion-card style="height:11em;border-radius:1em;padding:1em; background:#e07d31eb;" (click)="goToPage('/adopciones')">
+    <ion-row>
+      <ion-col>
+        <h3 style="color: #f7f2ff;">Revisa los estatus de tus adopciones.</h3>
+      </ion-col>
+      <ion-col >
+        <img style="margin-bottom: -9em;" src="https://i.ibb.co/n3RNC3Q/pixlr-bg-result-4.png" alt="">  
+      </ion-col>
+    </ion-row>
+  </ion-card>
+
+
+
+  <ion-card style="background:#A2C5AC;" >
     <ion-card-header>
-      <ion-card-subtitle style="color:white;font-size: 1.2em;font-weight: 400;">Guia rápida</ion-card-subtitle>
-      <ion-card-title>Adopciones</ion-card-title>
+      <!-- <ion-card-subtitle style="color:white;font-size: 1.2em;font-weight: 400;">Guia rápida</ion-card-subtitle> -->
+      <ion-card-title style="color:white;">Adopciones</ion-card-title>
     </ion-card-header>
     
     <ion-card-content style="color:white;font-size: 1.2em;font-weight: 400;">
@@ -112,10 +127,10 @@
 </div>
 
 <div *ngIf="segmentModel === 'perdidos'">
-  <ion-card style="background: #f6d3af;" >
+  <ion-card style="background: #F6839C;" >
     <ion-card-header>
-      <ion-card-subtitle style="color:white;font-size: 1.2em;font-weight: 400;">Guia rápida</ion-card-subtitle>
-      <ion-card-title>Perdidos</ion-card-title>
+      <!-- <ion-card-subtitle style="color:white;font-size: 1.2em;font-weight: 400;">Guia rápida</ion-card-subtitle> -->
+      <ion-card-title style="color:white;">Perdidos</ion-card-title>
     </ion-card-header>
   
     <ion-card-content style="color:white;font-size: 1.2em;font-weight: 400;">
@@ -139,10 +154,10 @@
 </div>
 
 <div *ngIf="segmentModel === 'organizaciones'">
-  <ion-card style="background:#ddc6e7;" >
+  <ion-card style="background:#03312E;" >
     <ion-card-header>
-      <ion-card-subtitle style="color:white;font-size: 1.2em;font-weight: 400;">Guia rápida</ion-card-subtitle>
-      <ion-card-title>Organizaciones</ion-card-title>
+      <!-- <ion-card-subtitle style="color:white;font-size: 1.2em;font-weight: 400;">Guia rápida</ion-card-subtitle> -->
+      <ion-card-title  style="color:white;">Organizaciones</ion-card-title>
     </ion-card-header>
   
     <ion-card-content style="color:white;font-size: 1.2em;font-weight: 400;">
@@ -153,13 +168,13 @@
 
   <h3 style="padding:1em">Organizaciones</h3>
 
-  <ion-item lines="none" (click)="goToPage('/organization/'+1)" style="margin:0.7em;border-radius: 1em !important;" *ngFor="let terrace of [1,1,1,1]" >
+  <ion-item lines="none" (click)="goToPage('/organization/'+1)" style="margin:0.7em;border-radius: 1em !important;" *ngFor="let organizacion of organizations" >
     <ion-thumbnail slot="start">
-      <img style="width: 14em;border-radius: 1em !important;"  src="https://images.unsplash.com/photo-1571066470962-f10fcf2fdf9e?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTB8fGRvZ3xlbnwwfDJ8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60">
+      <img style="width: 14em;border-radius: 1em !important;"  [src]="organizacion.photo">
     </ion-thumbnail>
     <ion-label> 
-      <h3>Radi</h3>
-      <p>Edad 2 años</p>
+      <h3>{{ organizacion.name }}</h3>
+      <p>{{ organizacion.cellphone }}</p>
     </ion-label>
   </ion-item>
 

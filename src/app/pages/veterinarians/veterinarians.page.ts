@@ -25,7 +25,6 @@ reviews      = [];
 
     this.dataService.getVeterinarian(this.veterinarianId).subscribe( data => {
       this.veterinarian = data;
-      console.log(data);
       var servicios = data.services;
       if(servicios){
         this.servicesVet = servicios.split(',');
@@ -49,17 +48,17 @@ reviews      = [];
 
 
 
-  goReservationCalendar(id,name){
+  goReservationCalendar(id,price){
+
     let navigationExtras: NavigationExtras = {
       state: {
-        veterinarian_id: id,
-        veterinarian_name: name,
-        veterinarian_account: this.veterinarian.account
+        veterinarian_id: this.veterinarianId,
+        service_id: id,
+        veterinarian_name: this.veterinarian.name,
+        veterinarian_account: this.veterinarian.account,
+        price: price
       } 
     };
-
-
-
 
     this.navCtrl.navigateForward(`/calendar-reservation`,navigationExtras);
   }

@@ -14,6 +14,8 @@ import { CardPage } from '../card/card.page';
 import { CardPageModule } from '../card/card.module';
 import { PaymentsPage } from '../payments/payments.page';
 import { PaymentsPageModule } from '../payments/payments.module';
+import { SelectPetPageModule } from '../select-pet/select-pet.module';
+import { SelectPetPage } from '../select-pet/select-pet.page';
 
 
 registerLocaleData(localeEsAr, 'es-Ar');
@@ -25,13 +27,15 @@ registerLocaleData(localeEsAr, 'es-Ar');
     IonicModule,
     OrderPageRoutingModule,
     CardPageModule,
-    PaymentsPageModule
+    PaymentsPageModule,
+    SelectPetPageModule
   ],
   declarations: [OrderPage,ModalComponent],
   entryComponents: [
     ModalComponent,
     CardPage,
-    PaymentsPage
+    PaymentsPage,
+    SelectPetPage
   ],
 })
 export class OrderPageModule {}

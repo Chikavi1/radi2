@@ -30,8 +30,11 @@ export class AdopcionPage implements OnInit {
     });
   }
 
-beforePage(){
-    this.navCtrl.navigateBack('/tabs/tab1');
+  beforePage(){
+    this.navCtrl.back();
   }
 
+  finalizar(){
+    this.navCtrl.back();
+  }
 }

@@ -32,6 +32,12 @@
 @import '~ngx-bar-rating/themes/br-stars-theme';
 @import "~leaflet/dist/leaflet.css";
 
+[_nghost-ixk-c9] button.days-btn[_ngcontent-ixk-c9] p[_ngcontent-ixk-c9]{
+  color:white !important;
+  }
+  
+
+
 .leaflet-routing-alternatives-container{
   display: none !important;
 }
@@ -151,4 +157,15 @@ ion-toggle {
 }
 .boton_vacuna{
   background-color: #6f82d6;
+}
+
+
+.small-modal{
+  .modal-wrapper {
+      position: absolute;
+      bottom: 0;
+      min-height: initial;
+      top: initial;
+      height: 55%;
+  }
 }

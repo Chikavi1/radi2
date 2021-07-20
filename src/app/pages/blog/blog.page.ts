@@ -26,6 +26,8 @@ export class BlogPage implements OnInit {
   mostrar = false;
   organizations:any = [];
 
+  lat = 20.620623;
+  lng = -103.305768;
 
   constructor(private dataService: DataService,
             private navCtrl: NavController
@@ -33,13 +35,17 @@ export class BlogPage implements OnInit {
     
       setTimeout(() => {
         this.mostrar = true;
-       }, 3200);
+       }, 1200);
 
 
-       dataService.getpetsnear(20.620623,-103.305768,2).subscribe( data => {
+       dataService.getpetsnear(this.lat,this.lng,2).subscribe( data => {
         this.petsNear = data;
-        console.log(data);
-       });
+      });
+
+
+      dataService.getOrganizationsnear(this.lat,this.lng).subscribe( data => {
+        this.organizations = data;
+      });
 
   }
 
@@ -50,6 +56,7 @@ export class BlogPage implements OnInit {
   ngOnInit() {
   }
 
+  
 
   segmentChanged(event){
     

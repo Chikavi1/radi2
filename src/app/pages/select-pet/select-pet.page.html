@@ -1,0 +1,54 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar >
+      <ion-title class="ion-text-center" color="tertiary" >
+        Selecciona tu mascota
+      </ion-title>
+      <ion-icon slot="end" name="close-outline" (click)="exit()" style="zoom:2.0;margin: .5em;"></ion-icon>
+      <ion-buttons slot="start" style="margin: .5em 1.5em;" >
+        <ion-buttons slot="start">
+        </ion-buttons>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+
+  <ion-slides class="thumbnail margin"  [options]="slide">
+    <ion-slide class="slider-1">
+      <ion-card  style="width: 100%; border-radius: 1em;background-color: #f6f6f6;">
+        <div class="bg-fo">
+        </div>
+        <div class="content"> 
+          <img style="width: 10em;height: 10em;border-radius: 1em;margin-top: -5em;" src="https://i.ibb.co/THtC9CK/Whats-App-Image-2021-07-08-at-2-31-12-PM.jpg" alt="">
+          <h2 style="text-align: center;">Babas</h2>
+        </div>
+      </ion-card>
+    </ion-slide>
+
+    <ion-slide class="slider-1">
+      <ion-card  style="width: 100%; border-radius: 1em;background-color: #f6f6f6;">
+        <div class="bg-fo">
+        </div>
+        <div class="content"> 
+          <img style="width: 10em;height: 10em;border-radius: 1em;margin-top: -5em;" src="https://i.ibb.co/dGCSsF4/Whats-App-Image-2021-07-08-at-2-32-35-PM.jpg" alt="">
+          <h2 style="text-align: center;">Fiona</h2>
+        </div>
+      </ion-card>
+    </ion-slide>
+
+    <ion-slide class="slider-1">
+      <ion-card  style="width: 100%; border-radius: 1em;background-color: #f6f6f6;">
+        <div class="bg-fo">
+        </div>
+        <div class="content"> 
+          <img style="width: 10em;height: 10em;border-radius: 1em;margin-top: -5em;" src="https://i.ibb.co/xLVZRHS/Whats-App-Image-2021-07-08-at-2-29-56-PM.jpg" alt="">
+          <h2 style="text-align: center;">Benito</h2>
+        </div>
+      </ion-card>
+    </ion-slide>
+  </ion-slides> 
+
+
+  
+</ion-content>

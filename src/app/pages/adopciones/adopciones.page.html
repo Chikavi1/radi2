@@ -1,0 +1,33 @@
+<ion-content>
+  <ion-fab  vertical="top" horizontal="start"  slot="fixed" (click)="beforePage()">
+    <ion-fab-button mode="ios" size="small" translucent    color="motel"  style="  outline: none !important;    ">
+      <ion-icon name="arrow-back-outline" style="color:#f8d100;"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+  <h2 style="text-align: center;margin-top: 3em;">Solicitudes de adopción</h2>
+  <ion-card *ngFor="let request of requests" style="border-radius: 1em;" (click)="goToPage('adopcion-status',request.status)">
+    <ion-row>
+      <ion-col size="9">
+        <h2>Radi</h2>
+        <p>12 de junio de 2020</p> 
+      </ion-col>
+      <ion-col size="3">
+        <div *ngIf="request.status == 1" style="background:#fbecd2;color:#f5c97d;text-align: center;border-radius: .5em;  vertical-align: middle;
+        ">
+          Pendiente
+        </div>
+        <div *ngIf="request.status == 0" style="background:#fcdada;color:#f47474;text-align: center;border-radius: .5em;  vertical-align: middle;
+        ">
+          Cancelada
+        </div>
+
+        <div *ngIf="request.status == 2" style="background:#ccf0e3;color:#34c38f;text-align: center;border-radius: .5em;  vertical-align: middle;
+        ">
+          Exitosa
+        </div>
+      </ion-col>
+    </ion-row>
+
+ 
+  </ion-card>
+</ion-content>

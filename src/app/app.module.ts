@@ -33,6 +33,7 @@ import { LoginPage } from './pages/login/login.page';
 import { LoginPageModule } from './pages/login/login.module';
 import { ForgotPassPage } from './pages/forgot-pass/forgot-pass.page';
 import { ForgotPassPageModule } from './pages/forgot-pass/forgot-pass.module';
+import { LocalNotifications } from '@ionic-native/local-notifications/ngx';
 
 @NgModule({
   declarations: [AppComponent],
@@ -70,6 +71,7 @@ import { ForgotPassPageModule } from './pages/forgot-pass/forgot-pass.module';
     FileTransfer,
     NativeGeocoder,
     GooglePlus,
+    LocalNotifications,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]

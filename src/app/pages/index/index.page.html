@@ -59,14 +59,12 @@
 </div>
 
 <div *ngIf="mostrar">
-
-
 <div style="margin-left:1em;margin-bottom: 3em;margin-top:2em;">
   <h1 style="font-size: 2.2em;margin-bottom: -.1em;color:#17202F">Radi</h1>
   <span (click)="abrirUbicacion()">{{ city }}<span style="color:grey"></span></span>
 </div>
 
-  <ion-card style="height:11em;border-radius:1em;padding:1em; background:#f7ebff;">
+  <ion-card style="height:11em;border-radius:1em;padding:1em; background:#f7ebff;" (click)="notifications()">
     <ion-row>
       <ion-col>
         <h3 style="color: #47454a;">Inscribe a tu mascota</h3>
@@ -95,21 +93,21 @@
 
   <ion-slides style="margin:1em;" [options]="slideMini">
 
-    <ion-slide (click)="openServiceModal()">
-      <ion-chip outline color="primary">
+    <ion-slide >
+      <ion-chip outline color="primary" (click)="openServiceModal('consultas')">
         <ion-label>Consultas</ion-label>
       </ion-chip>
     </ion-slide>
     
-    <ion-slide>
-      <ion-chip outline color="primary">
+    <ion-slide >
+      <ion-chip outline color="primary" (click)="openServiceModal('estilista')">
         <ion-label>Estilistas</ion-label>
       </ion-chip>
      
     </ion-slide>
 
       <ion-slide>
-        <ion-chip outline color="primary">
+        <ion-chip outline color="primary" (click)="openServiceModal('hotel')">
           <ion-label>Hoteles</ion-label>
         </ion-chip>
 
@@ -118,7 +116,7 @@
   
 
   <ion-slide>
-    <ion-chip outline color="primary">
+    <ion-chip outline color="primary" (click)="openServiceModal('tratamientos')">
       <ion-label>Tratamientos</ion-label>
     </ion-chip>
   

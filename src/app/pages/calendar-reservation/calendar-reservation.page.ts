@@ -44,7 +44,9 @@ export class CalendarReservationPage implements OnInit {
       _daysConfig.push({
         date: new Date(2021, 4, i + 1),
         subTitle: `$${i + 1}`,
-        disable: ( i == 25 )?true:false
+        disable: ( i == 25 )?true:false,
+        cssClass: 'my-cal'
+
       })
     }
 
@@ -91,7 +93,9 @@ export class CalendarReservationPage implements OnInit {
         veterinarian_name: this.extras.veterinarian_name,
         veterinarian_account: this.extras.veterinarian_account,
         date: this.diaSeleccionado,
-        hour: this.horaSeleccionada
+        hour: this.horaSeleccionada,
+        service_id: this.extras.service_id,
+        price: this.extras.price
       } 
     };
 

@@ -1,0 +1,73 @@
+<ion-content>
+    <ion-fab  vertical="top" horizontal="start"  slot="fixed" (click)="beforePage()">
+        <ion-fab-button mode="ios" size="small" translucent    color="motel"  style="  outline: none !important;    ">
+          <ion-icon name="arrow-back-outline" style="color:#f8d100;"></ion-icon>
+        </ion-fab-button>
+      </ion-fab>
+    <ion-card style="padding: 1em;border-radius: 1em;">
+        <div *ngIf="status == 1">
+            <img src="https://i.ibb.co/f27t0sX/pixlr-bg-result-5.png" alt="">
+            <h2 style="color:rgb(24, 103, 241);text-align: center;">Tu solicitud esta pendiente.</h2>
+        </div>
+
+        <div *ngIf="status == 2">
+            <img src="https://i.ibb.co/YyG2vJK/pixlr-bg-result-6.png" alt="">
+            <h2 style="color:rgb(24, 103, 241);text-align: center;">Felicidades, haz adoptado a Radi.</h2>
+        </div>
+
+        <div *ngIf="status == 0">
+            <img src="https://i.ibb.co/zhB4Rsb/pixlr-bg-result-7.png" alt="">
+            <h2 style="color:rgb(24, 103, 241);text-align: center;">Se ha rechazado su solicitud.</h2>
+            <h2 style="color:rgb(24, 103, 241);text-align: center;">Ha sido adoptado por otra persona, te agradecemos tu interes </h2>
+        </div>
+
+
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <div id="content">
+                                <ul class="timeline">
+                                    <!-- <li class="event" data-date="2:30 - 4:00pm">
+                                        <h3>Adopcion exitosa.</h3>
+                                        <p>se ha terminado la reviso,ha obtenido una respuesta positiva por parte del equipo de adopciones.</p>
+                                    </li>
+                                    <li class="event" data-date="2:30 - 4:00pm">
+                                        <h3>Contacto exitoso.</h3>
+                                        <p>se ha corroborado tus datos, se hara una cita.</p>
+                                    </li>
+                                    <li class="event" data-date="2:30 - 4:00pm">
+                                        <h3>Primer intento de llamada</h3>
+                                        <p>Se ha marcado al número propocionado y no tuvimos respuesta, se hara otro intento mañana.</p>
+                                    </li>
+                                    <li class="event" data-date="2:30 - 4:00pm">
+                                        <h3>Revisión de datos</h3>
+                                        <p>Se estan revisando los datos, pronto recibiras una llamada.</p>
+                                    </li> -->
+                                    <div *ngFor="let dato of datos">
+
+                                        <li class="event"  >
+                                            <span style="color:#d1d1d1;font-weight: 300;">{{ dato.date |  date:'MM/dd/yyyy hh:mm'  }}</span>
+                                            <h3>{{ dato.title }}</h3>
+                                            <p>{{ dato.message }}</p>
+                                        </li>
+                                    </div>
+
+                                    <li class="event" data-date="10/07/2021 | 12:30 - 1:00pm">
+                                        <h3>Haz enviado una solicitud</h3>
+                                        <p>Hemos recibido tu solicitud, en un plazo máximo de 15 días tendrás una respuesta por parte de nuestro equipo.</p>
+                                    </li>
+                                    
+                                  
+                                    
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+         
+        </ion-card>
+</ion-content>

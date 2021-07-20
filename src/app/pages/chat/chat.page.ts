@@ -2,7 +2,7 @@ import { Component,  OnInit, ViewChild } from '@angular/core';
 
 import { ChatService } from '../../services/chat.service';
 
-import { IonContent } from '@ionic/angular';
+import { IonContent, NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-chat',
@@ -16,7 +16,7 @@ export class ChatPage implements OnInit {
   messages: any;
   text:string = null;
   id = '1234'
-  constructor(private crudService: ChatService) {
+  constructor(private crudService: ChatService,private navCtrl:NavController) {
 
   }
   ScrollToBottom(){
@@ -79,7 +79,9 @@ export class ChatPage implements OnInit {
   }
 
 
-
+  beforePage(){
+    this.navCtrl.back();
+  }
 
 
 }

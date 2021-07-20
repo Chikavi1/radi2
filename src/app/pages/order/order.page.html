@@ -5,12 +5,25 @@
     </ion-fab-button>
   </ion-fab>
 
+<h2>mismoa puta pagina</h2>
+<img style="width: 7em;border-radius: 1em !important;"  src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nnx8ZG9jdG9yfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60">
+  <ion-thumbnail slot="start">
+  </ion-thumbnail>
 
+  <ion-item lines="none" (click)="goToPage('/veterinarians/'+veterinaria.id)" style="margin:0.7em;border-radius: 1em !important;" *ngFor="let veterinaria of veterinarians">
+    <ion-label> 
+      <h2 style="font-size:1.2em; font-weight:300;">{{ extras.veterinarian_name}}</h2>
+      <h3>Consulta</h3>
+      <p style="font-size: 1.1em;"> {{extras.date |  date:'fullDate':'es' }} <br>{{extras.hour}}</p>
+    </ion-label>
+  </ion-item>
 
 <ion-card style="border-radius: 1em;margin-top: 5em;">
   <ion-card-header>
 
-    <ion-item lines="none">
+
+    
+    <!-- <ion-item lines="none">
       <ion-thumbnail slot="start">
           <img style="border-radius: .5em;" src="https://images.unsplash.com/photo-1592198600249-ba40a4d08cde?ixid=MnwxaMjA3fDB8MHxzZWFyY2h8MXx8c2VydmljZXN8ZW58MHwxfDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60">
       </ion-thumbnail>
@@ -21,21 +34,27 @@
             <h3>Consulta</h3>
           </ion-label> 
        
-    </ion-item>
+    </ion-item> -->
   </ion-card-header>
   <div style="margin:1.3em 0em;"> 
     <ion-item >
       <ion-label>Servicio</ion-label>
-      <ion-note slot="end" color="success" style="font-size: 1.1em;">$100.00 MXN</ion-note>
+      <ion-note slot="end" color="success" style="font-size: 1.1em;color:#3e3e70;">$ {{ price}} MXN</ion-note>
     </ion-item>
     <ion-item>
       <ion-label>Comisión por servicio</ion-label>
-      <ion-note slot="end" color="success" style="font-size: 1.1em;">$10.00 MXN</ion-note>
+      <ion-note slot="end" color="success" style="font-size: 1.1em;color:#3e3e70;">$ {{ price+10 }} MXN</ion-note>
     </ion-item>
-    <ion-item lines="none">
-      <ion-label>Total </ion-label>
-      <ion-note slot="end" color="success" style="font-size: 1.1em;">$110.00 MXN</ion-note>
-    </ion-item>
+
+    <ion-row style="margin:1em;">
+      <ion-col>
+        <h2>Total</h2>
+      </ion-col>
+      <ion-col>
+        <h1 style="text-align: right;color:#3e3e70">$ {{ price+10 }} MXN</h1>
+      </ion-col>
+    </ion-row>
+
   </div>
 </ion-card>
 
@@ -60,20 +79,11 @@
 </ion-card>
 
 
-<ion-card style="border-radius: 1em;">
-  <ion-row style="margin:1em;">
-    <ion-col>
-      <h2>Total</h2>
-    </ion-col>
-    <ion-col>
-      <h1 style="text-align: right;color:#5dbc7a">$110.00 MXN</h1>
-    </ion-col>
-  </ion-row>
-</ion-card>
+
 
 
 </ion-content>
 
 <ion-footer >
-  <ion-button expand="full" color="tertiary" (click)="createCharge()">Reservar</ion-button>
+  <ion-button mode="ios" expand="full" color="tertiary" (click)="createCharge()">Reservar</ion-button>
 </ion-footer>

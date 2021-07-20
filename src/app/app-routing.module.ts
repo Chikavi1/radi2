@@ -129,12 +129,29 @@ const routes: Routes = [
   },
   {
     path: 'organization/:id',
-    loadChildren: () => import('./organization/organization.module').then( m => m.OrganizationPageModule)
+    loadChildren: () => import('./pages/organization/organization.module').then( m => m.OrganizationPageModule)
   },
   {
     path: 'forgot-pass',
     loadChildren: () => import('./pages/forgot-pass/forgot-pass.module').then( m => m.ForgotPassPageModule)
   },
+  {
+    path: 'select-pet',
+    loadChildren: () => import('./pages/select-pet/select-pet.module').then( m => m.SelectPetPageModule)
+  },
+  {
+    path: 'pages',
+    loadChildren: () => import('./pages/pages/pages.module').then( m => m.PagesPageModule)
+  },
+  {
+    path: 'adopciones',
+    loadChildren: () => import('./pages/adopciones/adopciones.module').then( m => m.AdopcionesPageModule)
+  },
+  {
+    path: 'adopcion-status',
+    loadChildren: () => import('./pages/adopcion-status/adopcion-status.module').then( m => m.AdopcionStatusPageModule)
+  },
+
 
 
 

@@ -1,7 +1,7 @@
 <ion-header class="ion-no-border">
   <ion-toolbar >
       <ion-title class="ion-text-center" color="tertiary" >
-        <h2>Consultas</h2>
+        <h2>{{ service }}</h2>
       </ion-title>
       <ion-icon slot="end" name="close-outline" (click)="exit()" style="zoom:2.0;margin: .5em;"></ion-icon>
       <ion-buttons slot="start" style="margin: .5em 1.5em;" >
@@ -13,15 +13,14 @@
 
 <ion-content >
   <div style="padding: 1em;">
-    <ion-item-divider mode="md" sticky="true" *ngFor="let item of [1,1,1,1,1,1]">
-  
+    <ion-item-divider mode="md" sticky="true" *ngFor="let vet of vets">
       <ion-item lines="none" style="border-radius: 1em !important;">
         <ion-thumbnail slot="start">
-          <img style="width: 14em;"  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6Fw4LXP2Bj39x0c9-EWHRilLrBF9LGH0Www&usqp=CAU" style="border-radius: 1em !important;">
+          <img style="width: 14em;"  [src]="vets.profile" style="border-radius: 1em !important;">
         </ion-thumbnail>
         <ion-label> 
-          <h3 style="font-weight: bold;">Chikavi</h3>
-          <p>Veterinaria</p>
+          <h3 style="font-weight: bold;">{{ vet.name }}</h3>
+          <p>{{ vets.services }}</p>
         </ion-label>
       </ion-item>
     </ion-item-divider>
