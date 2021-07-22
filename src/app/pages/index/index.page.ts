@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { NavController, AlertController, ModalController } from '@ionic/angular';
 import { DataService } from '../../services/data.service';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
@@ -9,7 +9,7 @@ import { NativeGeocoder, NativeGeocoderResult, NativeGeocoderOptions } from '@io
 import { ToastController } from '@ionic/angular';
 import { ServiceModalPage } from '../service-modal/service-modal.page';
 import { Network } from '@ionic-native/network/ngx';
-
+import { IonInfiniteScroll } from '@ionic/angular';
 
 @Component({
   selector: 'app-index',
@@ -18,6 +18,7 @@ import { Network } from '@ionic-native/network/ngx';
 })
 export class IndexPage implements OnInit {
 
+  @ViewChild(IonInfiniteScroll, {static: false}) infiniteScroll: IonInfiniteScroll;
 
   veterinarians: any;
   mostrar = false;
@@ -108,6 +109,21 @@ export class IndexPage implements OnInit {
       console.log(data);
     });
 
+  }
+
+  // SCROLL INFINITO
+  loadData(e) {
+    console.log('se activo el infinito')
+    this.api.getVeterinans().subscribe((data) => {
+      this.veterinarians = this.veterinarians.concat(data);
+      console.log(data);
+    });
+    this.toggleInfiniteScroll();
+  }
+
+  // ACTIVAR O DESACTIVAR SCROLL INFINITO
+  toggleInfiniteScroll() {
+    this.infiniteScroll.disabled = !this.infiniteScroll.disabled;
   }
 
 

@@ -1,18 +1,19 @@
-
-
-<ion-content [fullscreen]="true" class="body" >
+<ion-content [fullscreen]="true" class="body">
   <ion-refresher slot="fixed" pullFactor="0.5" pullMin="100" pullMax="200" (ionRefresh)="doRefresh($event)">
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
 
   <div *ngIf="!mostrar">
-    <ion-skeleton-text animated style="width: 50%;height: 1.5em;margin-left: 1.5em;margin-top: 2em;"></ion-skeleton-text>
-    
-    <ion-skeleton-text animated style="width: 60%;margin-left: 1.5em;margin-top: 1em;margin-bottom: 1em;"></ion-skeleton-text>
+    <ion-skeleton-text animated style="width: 50%;height: 1.5em;margin-left: 1.5em;margin-top: 2em;">
+    </ion-skeleton-text>
 
-  
+    <ion-skeleton-text animated style="width: 60%;margin-left: 1.5em;margin-top: 1em;margin-bottom: 1em;">
+    </ion-skeleton-text>
+
+
     <ion-row>
-      <ion-skeleton-text animated style="border-radius:1em;width: 80%;height:15em;margin-left: 1.5em;margin-top: 1em;"></ion-skeleton-text>
+      <ion-skeleton-text animated style="border-radius:1em;width: 80%;height:15em;margin-left: 1.5em;margin-top: 1em;">
+      </ion-skeleton-text>
       <ion-skeleton-text animated style="width: 5%;margin-left: 1.5em;margin-top: 1em;"></ion-skeleton-text>
     </ion-row>
     <ion-skeleton-text animated style="width: 45%;margin-left: 2em;margin-top: 1em;"></ion-skeleton-text>
@@ -21,92 +22,106 @@
     <ion-skeleton-text animated style="width: 35%;height:1em;margin-left: 2em;margin-top: 2em;"></ion-skeleton-text>
 
     <ion-row>
-      <ion-skeleton-text animated style="width: 20%;border-radius:3em;height:1.5em;margin-left: 2em;margin-top: 2em;"></ion-skeleton-text>
-      <ion-skeleton-text animated style="width: 20%;border-radius:3em;height:1.5em;margin-left: 2em;margin-top: 2em;"></ion-skeleton-text>
-      <ion-skeleton-text animated style="width: 20%;border-radius:3em;height:1.5em;margin-left: 2em;margin-top: 2em;"></ion-skeleton-text>
-      <ion-skeleton-text animated style="width: 5%;border-radius:3em;height:1.5em;margin-left: 2em;margin-top: 2em;"></ion-skeleton-text>
+      <ion-skeleton-text animated style="width: 20%;border-radius:3em;height:1.5em;margin-left: 2em;margin-top: 2em;">
+      </ion-skeleton-text>
+      <ion-skeleton-text animated style="width: 20%;border-radius:3em;height:1.5em;margin-left: 2em;margin-top: 2em;">
+      </ion-skeleton-text>
+      <ion-skeleton-text animated style="width: 20%;border-radius:3em;height:1.5em;margin-left: 2em;margin-top: 2em;">
+      </ion-skeleton-text>
+      <ion-skeleton-text animated style="width: 5%;border-radius:3em;height:1.5em;margin-left: 2em;margin-top: 2em;">
+      </ion-skeleton-text>
     </ion-row>
 
 
     <ion-skeleton-text animated style="width: 65%;height:1em;margin-left: 2em;margin-top: 3em;"></ion-skeleton-text>
 
-  <ion-row>
-    <ion-col>
-      <ion-skeleton-text animated style="width: 80%;height:8em !important; border-radius:1em;margin-left: 2em;margin-top: 2em;"></ion-skeleton-text>
-    </ion-col>
-    <ion-col>
-      <ion-row>
-        <ion-skeleton-text animated style="width: 90%;border-radius:3em;height:.8em;margin-top:2.5em;"></ion-skeleton-text>
-      </ion-row>
-      <ion-skeleton-text animated style="width: 40%;border-radius:3em;height:.5em;"></ion-skeleton-text>
-      <ion-skeleton-text animated style="width: 20%;border-radius:3em;height:.4em;margin-top:.5em;"></ion-skeleton-text>
-    </ion-col>
-  </ion-row>
-
-  <ion-row>
-    <ion-col>
-      <ion-skeleton-text animated style="width: 80%;height:8em !important; border-radius:1em;margin-left: 2em;margin-top: 2em;"></ion-skeleton-text>
-    </ion-col>
-    <ion-col>
-      <ion-row>
-        <ion-skeleton-text animated style="width: 90%;border-radius:3em;height:.8em;margin-top:2.5em;"></ion-skeleton-text>
-      </ion-row>
-      <ion-skeleton-text animated style="width: 40%;border-radius:3em;height:.5em;"></ion-skeleton-text>
-      <ion-skeleton-text animated style="width: 20%;border-radius:3em;height:.4em;margin-top:.5em;"></ion-skeleton-text>
-    </ion-col>
-  </ion-row>
-
-</div>
-
-<div *ngIf="mostrar">
-
-
-<div style="margin-left:1em;margin-bottom: 3em;margin-top:2em;">
-  <h1 style="font-size: 2.2em;margin-bottom: -.1em;color:#17202F">Radi</h1>
-  <span (click)="abrirUbicacion()">{{ city }}<span style="color:grey"></span></span>
-</div>
-
-  <ion-card style="height:11em;border-radius:1em;padding:1em; background:#f7ebff;">
     <ion-row>
       <ion-col>
-        <h3 style="color: #47454a;">Inscribe a tu mascota</h3>
+        <ion-skeleton-text animated
+          style="width: 80%;height:8em !important; border-radius:1em;margin-left: 2em;margin-top: 2em;">
+        </ion-skeleton-text>
       </ion-col>
-      <ion-col >
-        <img style="margin-bottom: -9em;" src="https://i.ibb.co/3ptnRTm/pixlr-bg-result-2.png" alt="">  
+      <ion-col>
+        <ion-row>
+          <ion-skeleton-text animated style="width: 90%;border-radius:3em;height:.8em;margin-top:2.5em;">
+          </ion-skeleton-text>
+        </ion-row>
+        <ion-skeleton-text animated style="width: 40%;border-radius:3em;height:.5em;"></ion-skeleton-text>
+        <ion-skeleton-text animated style="width: 20%;border-radius:3em;height:.4em;margin-top:.5em;">
+        </ion-skeleton-text>
       </ion-col>
     </ion-row>
-  </ion-card>
-  <h3 style="padding:1em">Veterinarios cerca de ti</h3>
+
+    <ion-row>
+      <ion-col>
+        <ion-skeleton-text animated
+          style="width: 80%;height:8em !important; border-radius:1em;margin-left: 2em;margin-top: 2em;">
+        </ion-skeleton-text>
+      </ion-col>
+      <ion-col>
+        <ion-row>
+          <ion-skeleton-text animated style="width: 90%;border-radius:3em;height:.8em;margin-top:2.5em;">
+          </ion-skeleton-text>
+        </ion-row>
+        <ion-skeleton-text animated style="width: 40%;border-radius:3em;height:.5em;"></ion-skeleton-text>
+        <ion-skeleton-text animated style="width: 20%;border-radius:3em;height:.4em;margin-top:.5em;">
+        </ion-skeleton-text>
+      </ion-col>
+    </ion-row>
+
+  </div>
+
+  <div *ngIf="mostrar">
+
+
+    <div style="margin-left:1em;margin-bottom: 3em;margin-top:2em;">
+      <h1 style="font-size: 2.2em;margin-bottom: -.1em;color:#17202F">Radi</h1>
+      <span (click)="abrirUbicacion()">{{ city }}<span style="color:grey"></span></span>
+    </div>
+
+    <ion-card style="height:11em;border-radius:1em;padding:1em; background:#f7ebff;">
+      <ion-row>
+        <ion-col>
+          <h3 style="color: #47454a;">Inscribe a tu mascota</h3>
+        </ion-col>
+        <ion-col>
+          <img style="margin-bottom: -9em;" src="https://i.ibb.co/3ptnRTm/pixlr-bg-result-2.png" alt="">
+        </ion-col>
+      </ion-row>
+    </ion-card>
+    <h3 style="padding:1em">Veterinarios cerca de ti</h3>
 
 
 
-  <ion-slides class="thumbnail margin"  [options]="slide">
-    <ion-slide class="slider-1 "  (click)="goToPage('/veterinarians/'+vet.id)" *ngFor="let vet of veterinarians">
-     <div style="text-align: left;">
-        <img class="border-radius-img" src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nnx8ZG9jdG9yfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" style="min-height: 14em;">
-        <p style="margin-left: 1em;font-weight: bold;">{{vet.name}}</p>
-        <p class="subtitle-card" style="margin-left: 1em;">{{vet.distance | number : '.2-2'}} km</p>
-        
-      </div>
-    </ion-slide>
-  </ion-slides> 
-  
- <h3 style="padding:1em">Top Servicios</h3>
+    <ion-slides class="thumbnail margin" [options]="slide">
+      <ion-slide class="slider-1 " (click)="goToPage('/veterinarians/'+vet.id)" *ngFor="let vet of veterinarians">
+        <div style="text-align: left;">
+          <img class="border-radius-img"
+            src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nnx8ZG9jdG9yfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
+            style="min-height: 14em;">
+          <p style="margin-left: 1em;font-weight: bold;">{{vet.name}}</p>
+          <p class="subtitle-card" style="margin-left: 1em;">{{vet.distance | number : '.2-2'}} km</p>
 
-  <ion-slides style="margin:1em;" [options]="slideMini">
+        </div>
+      </ion-slide>
+    </ion-slides>
 
-    <ion-slide (click)="openServiceModal()">
-      <ion-chip outline color="primary">
-        <ion-label>Consultas</ion-label>
-      </ion-chip>
-    </ion-slide>
-    
-    <ion-slide>
-      <ion-chip outline color="primary">
-        <ion-label>Estilistas</ion-label>
-      </ion-chip>
-     
-    </ion-slide>
+    <h3 style="padding:1em">Top Servicios</h3>
+
+    <ion-slides style="margin:1em;" [options]="slideMini">
+
+      <ion-slide (click)="openServiceModal()">
+        <ion-chip outline color="primary">
+          <ion-label>Consultas</ion-label>
+        </ion-chip>
+      </ion-slide>
+
+      <ion-slide>
+        <ion-chip outline color="primary">
+          <ion-label>Estilistas</ion-label>
+        </ion-chip>
+
+      </ion-slide>
 
       <ion-slide>
         <ion-chip outline color="primary">
@@ -114,33 +129,41 @@
         </ion-chip>
 
       </ion-slide>
-      
-  
 
-  <ion-slide>
-    <ion-chip outline color="primary">
-      <ion-label>Tratamientos</ion-label>
-    </ion-chip>
-  
-</ion-slide>
-    
 
-  </ion-slides>
 
-  <h3 style="padding:1em">Otras Veterinarias cerca de ti</h3>
+      <ion-slide>
+        <ion-chip outline color="primary">
+          <ion-label>Tratamientos</ion-label>
+        </ion-chip>
 
-  <ion-item lines="none" (click)="goToPage('/veterinarians/'+veterinaria.id)" style="margin:0.7em;border-radius: 1em !important;" *ngFor="let veterinaria of veterinarians">
-    <ion-thumbnail slot="start">
-      <img style="width: 14em;border-radius: 1em !important;"  src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nnx8ZG9jdG9yfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60">
-    </ion-thumbnail>
-    <ion-label> 
-      <h3>{{ veterinaria.name }}</h3>
-      <p>Guadalajara</p>
-      <p>{{ veterinaria.distance | number : '.2-2' }} km</p>
-    </ion-label>
-  </ion-item>
+      </ion-slide>
 
-</div>
 
-  </ion-content>
-  
+    </ion-slides>
+
+    <h3 style="padding:1em">Otras Veterinarias cerca de ti</h3>
+
+    <ion-item lines="none" (click)="goToPage('/veterinarians/'+veterinaria.id)"
+      style="margin:0.7em;border-radius: 1em !important;" *ngFor="let veterinaria of veterinarians">
+      <ion-thumbnail slot="start">
+        <img style="width: 14em;border-radius: 1em !important;"
+          src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nnx8ZG9jdG9yfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60">
+      </ion-thumbnail>
+      <ion-label>
+        <h3>{{ veterinaria.name }}</h3>
+        <p>Guadalajara</p>
+        <p>{{ veterinaria.distance | number : '.2-2' }} km</p>
+      </ion-label>
+    </ion-item>
+
+  </div>
+
+  <ion-infinite-scroll threshold="10%" (ionInfinite)="loadData($event)">
+    <ion-infinite-scroll-content
+      loadingSpinner="bubbles"
+      loadingText="Cargando...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+
+</ion-content>

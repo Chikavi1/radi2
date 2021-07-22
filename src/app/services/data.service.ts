@@ -117,7 +117,7 @@ uploadImage( photo ):any{
 }
 
 
-getVeterinans(){
+getVeterinans(limit:number = 5,offset:number = 0){
   let datos = {
     lat: 20.6486206087280,
     lng: -103.35147949437090
@@ -129,7 +129,7 @@ getVeterinans(){
     headers: headers
   }
 
-  return this.http.get(this.DEVELOPMENT_URL + 'near_vets_score/'+datos.lat+'/'+datos.lng );
+  return this.http.get(this.DEVELOPMENT_URL + 'near_vets_score/'+datos.lat+'/'+datos.lng+'/'+limit+'/'+offset );
 }
 
 

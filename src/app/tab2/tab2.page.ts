@@ -22,7 +22,7 @@ export class Tab2Page {
   organizations:any;
   products:any;
   services:any;
-  @ViewChild(IonInfiniteScroll) infiniteScroll: IonInfiniteScroll;
+  @ViewChild(IonInfiniteScroll, {static: false}) infiniteScroll: IonInfiniteScroll;
 
   constructor(public navCtrl:NavController,public dataService:DataService,    
             private modalController: ModalController
